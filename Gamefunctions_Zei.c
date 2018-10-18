@@ -121,7 +121,7 @@ void highscore(){
 	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
 	scanf("%s", name);
 	
-	fprintf(fptr, "%s; %i;", name);
+	fprintf(fptr, "%s; %i;", name, punktestand);
 	fprintf(fptr, "\n");
 	
 	fehler=fclose(fptr);
