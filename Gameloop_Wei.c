@@ -55,7 +55,7 @@ int leftright(){
 	int max = time/2/delaytime;
 	int flagleft, flagright;
 	int moveleft, moveright;
-	for(int i=0, i<=max, i++){
+	for(int i=0; i<=max; i++){
 		flagleft = GetAsyncKeyState('a');
 		if (flagleft == true){
 			moveleft = true;
