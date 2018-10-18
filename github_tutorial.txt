@@ -1,0 +1,15 @@
+git clone https://github.com/FelixWeichselgartner/Tetris.git
+
+Dateien aus Repository holen:
+git pull origin master
+
+Dateien bearbeiten:
+git commit -am "Hier dein Kommentar"
+git push origin master
+
+
+Dateien hinzufügen:
+git add <filename>
+git status
+git commit -am ""
+git push origin master
