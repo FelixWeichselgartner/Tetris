@@ -1,6 +1,7 @@
 -Matthias:
 	void spielfeldausgabe(char spielfeld[10][26], int score)
 	figuren
+	farbliche gestaltung
 
 -Marc:
 	spawnfuktion()
