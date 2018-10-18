@@ -53,6 +53,8 @@ int collision(){
 	for(int a=0; a<10, a++){
 		if(spielfeld[a][15]=='O'){
 			change();
+			return true;
+			break;
 		}
 	}
 	
@@ -60,9 +62,12 @@ int collision(){
 		for(int j=0; j<25; j++){
 			if(spielfeld[i][j]=='O'&&spielfeld[i][j+1]=='X'){
 				change();
+				return true;
+				break;
 			}
 		}
 	}
+	return false;
 }
 
 //Bewegliche arrays in feste umwandeln
@@ -75,3 +80,30 @@ void change(){
 		}
 	}
 }
+
+//Funktion zum Löschen der Reihe
+void reiheloeschen(){
+	int i, j, x;
+	i=0;
+	j=4;
+	do{
+		if(i==9){
+			for(x=j; x>0; x--){
+				for(int a=0; a<10; a++){
+					spielfeld[a][j]=spielfeld[a][j-1];
+				}
+				j--;
+			}	
+			punktestand=score(10);
+		}
+		if(spielfeld[i][j]=='X'||i<9){
+			i++;
+		}else {j++; i=0;}
+	}while j<25;
+}
+
+//Funktion zur Zählung des Scores
+int score(int x){
+	punktestand=punktestand+x;
+}
+
