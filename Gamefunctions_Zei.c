@@ -99,7 +99,7 @@ void reiheloeschen(){
 		if(spielfeld[i][j]=='X'||i<9){
 			i++;
 		}else {j++; i=0;}
-	}while j<25;
+	}while {j<25;}
 }
 
 //Funktion zur Zählung des Scores
@@ -107,3 +107,26 @@ int score(int x){
 	punktestand=punktestand+x;
 }
 
+//Speicherung in einer Textdatei 
+void highscore(){
+	int fehler;
+	char name[10];
+	FILE *fptr;
+	fptr=fopen("Highscores.txt", "a+");
+	if(fptr==NULL){
+		printf("\nDie Datei konnte nicht geoeffnet werden!\n");
+		return;
+	}
+	
+	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
+	scanf("%s", name);
+	
+	fprintf(fptr, "%s; %i;", name);
+	fprintf(fptr, "\n");
+	
+	fehler=fclose(fptr);
+	if(fehler != 0){
+		printf("\nFehler %i beim Schließen der Datei!\n", fehler);
+	}
+	
+}
