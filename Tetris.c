@@ -9,7 +9,9 @@
 #define false 0
 
 const int xlength = 10;
-const int ylength = 26
+const int ylength = 26;
+
+int punktestand = 0;
 
 char spielfeld[xlength][ylength];
 
