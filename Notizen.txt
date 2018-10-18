@@ -1,3 +1,8 @@
+Regeln:
+	-Alles hört auf Felix (auch Felix)
+	-Alles wird kleingeschrieben
+	-Essen darf nur ich
+	
 -Matthias:
 	void spielfeldausgabe(char spielfeld[10][26], int score)
 	figuren
