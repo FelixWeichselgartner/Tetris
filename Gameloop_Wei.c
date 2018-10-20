@@ -130,7 +130,7 @@ void copyleftright(int direction){
 
 int verloren(){
 	for(int i=0; i<xlength; i++){
-		if (spielfeld[i][4] != ' ')
+		if (spielfeld[i][4] == 'X')
 			return true;
 	}
 }
