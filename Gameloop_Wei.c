@@ -1,3 +1,8 @@
+/*
+* Tetris in C - header by Felix Weichselgartner
+*/
+
+
 #include <stdio.h>
 #include <time.h>
 #include <windows.h>
@@ -22,7 +27,7 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			direction = leftright();
-			copyrightleft(direction);
+			copyleftright(direction);
 			down();
 		}
 		reiheloeschen(); //reiheloeschen() -> score()
@@ -55,7 +60,7 @@ int leftright(){
 	int max = time/2/delaytime;
 	int flagleft, flagright;
 	int moveleft, moveright;
-	for(int i=0, i<=max, i++){
+	for(int i=0; i<=max; i++){
 		flagleft = GetAsyncKeyState('a');
 		if (flagleft == true){
 			moveleft = true;
@@ -75,5 +80,57 @@ int leftright(){
 	}
 	if (moveright == true){
 		return 2;
+	}
+}
+
+void copyleftright(int direction){
+	int flag;
+	for(int i=0; i<ylength; i++){
+		if (spielfeld[0][i] != ' ' || spielfeld[][] != ' '){
+			flag = true;
+		}
+	}
+	if (flag == true)
+		return;
+	//1=left, 2=right
+	char temp_field[xlength][ylength];
+	if(direction == 1){
+		for(int i=0; i<xlength; i++){
+			for(int k=0; k<ylength; k++){
+				spielfeld[i][k] = temp_field[i][k];
+				if (spielfeld[i][k] == 'O')
+					spielfeld[i][k] = ' ';
+			}
+		}
+		for(int i=0; i<xlength; i++){
+			for(int k=0; k<ylength; k++){
+				if (tempfield[i][k] == 'O')
+					spielfeld[i-1][k] = 'O';
+				temp_field[i][k] = temp_field[i][k];
+			}
+		}
+	}
+	if(direction == 2){
+		for(int i=0; i<xlength; i++){
+			for(int k=0; k<ylength; k++){
+				spielfeld[i][k] = temp_field[i][k];
+				if (spielfeld[i][k] == 'O')
+					spielfeld[i][k] = ' ';
+			}
+		}
+		for(int i=0; i<xlength; i++){
+			for(int k=0; k<ylength; k++){
+				if (tempfield[i][k] == 'O')
+					spielfeld[i+1][k] = 'O';
+				temp_field[i][k] = temp_field[i][k];
+			}
+		}
+	}
+}
+
+int verloren(){
+	for(int i=0; i<xlength; i++){
+		if (spielfeld[i][4] == 'X')
+			return true;
 	}
 }
