@@ -1,22 +1,22 @@
-Regeln:
-	-Alles hört auf Felix (auch Felix)
-	-Alles wird kleingeschrieben
-	-Essen darf nur ich
-	
 -Matthias:
-	void spielfeldausgabe(char spielfeld[10][26], int score)
-	figuren
-	farbliche gestaltung
+	Spielfiguren.c
+	Spielfeld_loh.c
+		void spielfeldausgabe(char spielfeld[10][26], int score)
+		figuren
+		farbliche gestaltung
 
 -Marc:
-	spawnfuktion()
-	int collision(char spielfeld[][]) //Returnwert 1: kollision, 0: keine kollision
-	void reiheloeschen(char spielfeld[][])
-	int score(int fall)
-	void spawn(char spielfeld[][])
+	Gamefunctions_Zei.c
+		spawnfuktion()
+		int collision(char spielfeld[][]) //Returnwert 1: kollision, 0: keine kollision
+		void reiheloeschen(char spielfeld[][])
+		int score(int fall)
+		void spawn(char spielfeld[][])
 
 -Felix:
-	void main()
-	int gameloop(char spielfeld[][])
-	void down(char spielfeld[][])
-	void leftright(char spielfeld[][])
+	Gameloop_Wei.c
+	Tetris.c
+		void main()
+		int gameloop(char spielfeld[][])
+		void down(char spielfeld[][])
+		void leftright(char spielfeld[][])
