@@ -15,7 +15,7 @@ Aufteilung der Dateien und Funktionen:
 	- Spielfeld_loh.c
 		- spielfeldausgabe()
 		- figuren
-		- farbliche gestaltung
+		- farbliche Gestaltung
 
 - Marc:
 	- Gamefunctions_Zei.c
