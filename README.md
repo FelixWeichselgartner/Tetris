@@ -1,10 +1,11 @@
-##Tetris in C
+Tetris in C
+===========
 
 *************************************************
 Copyright (c) 2018 	
-	- Felix Weichselgartner
-	- Marc Zeitler
-    - Matthias Lohberger
+- Felix Weichselgartner
+- Marc Zeitler
+- Matthias Lohberger
 
 further information on the end of the file
 *************************************************
