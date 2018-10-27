@@ -2,8 +2,11 @@
 
 *************************************************
 Copyright (c) 2018 		Felix Weichselgartner
+
 						Marc Zeitler
+
 						Matthias Lohberger
+
 further information on the end of the file
 *************************************************
 
@@ -66,7 +69,6 @@ git push origin master
 
 
 
-*************************************************
 Here the information on Copyright:
 
 All files and all lines of code are owned by the
