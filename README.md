@@ -1,15 +1,13 @@
-#Tetris in C
+##Tetris in C
 
 *************************************************
-Copyright (c) 2018 		Felix Weichselgartner
-
-						Marc Zeitler
-
-						Matthias Lohberger
+Copyright (c) 2018 	
+	- Felix Weichselgartner
+	- Marc Zeitler
+    - Matthias Lohberger
 
 further information on the end of the file
 *************************************************
-
 
 Aufteilung der Dateien und Funktionen:
 
@@ -37,6 +35,7 @@ Aufteilung der Dateien und Funktionen:
         - verloren()
 
 *************************************************
+
 Usage of Github:
 
 If you want to clone the repository:
@@ -67,8 +66,6 @@ git push origin master
 
 *************************************************
 
-
-
 Here the information on Copyright:
 
 All files and all lines of code are owned by the
@@ -77,4 +74,5 @@ All rights are reserved.
 
 If you want to use our code please contact:
     e-mail: fwei3012@gmail.com
+
 *************************************************
