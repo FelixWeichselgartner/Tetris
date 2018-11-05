@@ -1,4 +1,4 @@
-//Ausformulierung der Prototypen aus der Header Datei
+//Ausformulierung der Prototypen aus der Header Datei Zei.h
 //Von Marc Zeitler
 
 //Funktion zum Spawnen der Teile im Feld

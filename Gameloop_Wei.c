@@ -26,6 +26,7 @@ int gameloop(){
 	while(verloren() == false){
 		spawn();
 		while(collision() == false){
+			ausgabe();
 			direction = leftright();
 			copyleftright(direction);
 			down();
