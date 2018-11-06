@@ -1,7 +1,11 @@
-//#include<stdio.h>
+#include <stdio.h>
 //#define ylength 26
 //#define xlength 10
 
+#define xlength 10
+#define ylength 26
+
+#include "Gameloop_Wei.h"
 
 void ausgabe(){
 
@@ -9,10 +13,7 @@ void ausgabe(){
 	
 	int a, b;								//Zählvariable
 	int c = xlength + 2;							// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
-
-	char spielfeld[ylength][xlength];					//Spielfelarray
 	 
-
 	for (a = 0; a <= ylength -1; a++) {		//Spielfeld befüllen
 		for (b = 0; b <= xlength-1; b++) {
 			spielfeld[a][b] = ' ';

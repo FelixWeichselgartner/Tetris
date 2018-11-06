@@ -2,6 +2,7 @@
 #define SPIELFELD_LOH_
 
 
+void ausgabe();
 
 
 #endif

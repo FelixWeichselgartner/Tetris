@@ -1,3 +1,7 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+char *gets(char *buffer);
+
 #include <stdio.h>
 #include <time.h>
 #include "Gameloop_Wei.h"
@@ -8,12 +12,8 @@
 #define true 1
 #define false 0
 
-const int xlength = 10;
-const int ylength = 26;
-
-int punktestand = 0;
-
-char spielfeld[xlength][ylength];
+#define xlength 10
+#define ylength 26
 
 void main() {
 	int vorbei;

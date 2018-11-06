@@ -5,12 +5,15 @@
 #ifndef GAMELOOP_WEI_
 #define GAMELOOP_WEI_
 
+extern char spielfeld[10][26];
+extern int punktestand;
+
 void init_spielfeld();
-void delay();
+void delay(int);
 int gameloop();
 void down();
 int leftright();
-void copyleftright();
+void copyleftright(int);
 int verloren();
 
 #endif

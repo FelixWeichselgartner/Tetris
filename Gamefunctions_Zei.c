@@ -1,13 +1,55 @@
 //Ausformulierung der Prototypen aus der Header Datei Zei.h
 //Von Marc Zeitler
 
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+char *gets(char *buffer);
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "Spielfiguren.h"
+#include "Gameloop_Wei.h"
+#include "Spielfeld_loh.h"
+
+#define true 1
+#define false 0
+
+#define xlength 10
+#define ylength 26
+
+//Funktion zum Kopieren von arrays
+void figcpy(char ptr[4][4], char ptrf[4][4]) {
+	for (int i = 0; i<4; i++) {
+		for (int j = 0; j<4; j++) {
+			ptrf[i][j] = ptr[i][j];
+		}
+	}
+}
+
+//Bewegliche arrays in feste umwandeln
+void change() {
+	for (int i = 0; i<10; i++) {
+		for (int j = 0; j<25; j++) {
+			if (spielfeld[i][j] == 'O') {
+				spielfeld[i][j] = 'X';
+			}
+		}
+	}
+}
+
+//Funktion zur Zählung des Scores
+int score(int x) {
+	punktestand = punktestand + x;
+}
+
 //Funktion zum Spawnen der Teile im Feld
 void spawn(){
 	int x;
 	char figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	x=rand(18)+1;
+	x=rand()%18+1;
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){
 		case 1: figcpy(figur, fig1); break;
@@ -38,19 +80,9 @@ void spawn(){
 	}	
 }
 
-//Funktion zum Kopieren von arrays
-void figcpy(char *ptr, char *ptrf){
-	for(int i=0; i<4; i++){
-		for(int j=0; j<4; j++){
-			ptrf[i][j]=ptr[i][j];
-		}
-	}
-}
-
 //Kollisionsprüfung
 int collision(){
-	
-	for(int a=0; a<10, a++){
+	for (int a = 0; a < 10; a++) {
 		if(spielfeld[a][15]=='O'){
 			change();
 			return true;
@@ -68,17 +100,6 @@ int collision(){
 		}
 	}
 	return false;
-}
-
-//Bewegliche arrays in feste umwandeln
-void change(){
-	for(int i=0; i<10; i++){
-		for(int j=0; j<25; j++){
-			if(spielfeld[i][j]=='O'){
-				spielfeld[i][j]='X';
-			}
-		}
-	}
 }
 
 //Funktion zum Löschen der Reihe
@@ -99,18 +120,16 @@ void reiheloeschen(){
 		if(spielfeld[i][j]=='X'||i<9){
 			i++;
 		}else {j++; i=0;}
-	}while {j<25;}
-}
-
-//Funktion zur Zählung des Scores
-int score(int x){
-	punktestand=punktestand+x;
+	}while (j<25);
 }
 
 //Speicherung in einer Textdatei 
 void highscore(){
 	int fehler;
 	char name[10];
+
+	//hier würde ich davor erst mal die Datei erstellen -Felix
+	//am besten mit w
 	FILE *fptr;
 	fptr=fopen("Highscores.txt", "a+");
 	if(fptr==NULL){

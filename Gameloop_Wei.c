@@ -2,10 +2,25 @@
 * Tetris in C - header by Felix Weichselgartner
 */
 
-
 #include <stdio.h>
 #include <time.h>
 #include <windows.h>
+#include "Gamefunctions_Zei.h"
+#include "Spielfeld_loh.h"
+#include "Spielfiguren.h"
+#include "Gameloop_Wei.h"
+
+#define true 1
+#define false 0
+
+#define xlength 10
+#define ylength 26
+
+int punktestand = 0;
+
+char spielfeld[xlength][ylength];
+
+char tempfield[xlength][ylength];
 
 void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
@@ -23,7 +38,7 @@ void delay(int milli_seconds) { //in milli_seconds
 
 int gameloop(){
 	int direction;
-	while(verloren() == false){
+	while(verloren() != false){
 		spawn();
 		while(collision() == false){
 			system("cls");
@@ -88,7 +103,7 @@ int leftright(){
 void copyleftright(int direction){
 	int flag;
 	for(int i=0; i<ylength; i++){
-		if (spielfeld[0][i] != ' ' || spielfeld[][] != ' '){
+		if (spielfeld[0][i] != ' ' || spielfeld[10][i] != ' '){ //zweites kein plan ob des stimmt
 			flag = true;
 		}
 	}
