@@ -82,14 +82,20 @@ int leftright(){
 		if (flagleft == true){
 			moveleft = true;
 		}
+		else {
+			moveleft = false;
+		}
 		delay(delaytime);
 		flagright = GetAsyncKeyState('d');
 		if (flagright == true){
 			moveright = true;
 		}
+		else {
+			moveright = false;
+		}
 		delay(delaytime);
 	}
-	if (moveleft == true && moveright == true){
+	if (moveleft == true && moveright == true){ //moveleft used without being initialized
 		return 0;
 	}
 	if (moveleft == true){

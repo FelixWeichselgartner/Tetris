@@ -82,7 +82,7 @@ void spawn(){
 
 //Kollisionsprüfung
 int collision(){
-	for (int a = 0; a < 10; a++) {
+	for (int a = 0; a < 10; a++) { //warum nicht a <= 10
 		if(spielfeld[a][15]=='O'){
 			change();
 			return true;
@@ -91,7 +91,7 @@ int collision(){
 	}
 	
 	for(int i=0; i<10; i++){
-		for(int j=0; j<25; j++){
+		for(int j=0; j<25; j++){ //warum nicht j <= 25
 			if(spielfeld[i][j]=='O'&&spielfeld[i][j+1]=='X'){
 				change();
 				return true;
@@ -127,9 +127,6 @@ void reiheloeschen(){
 void highscore(){
 	int fehler;
 	char name[10];
-
-	//hier würde ich davor erst mal die Datei erstellen -Felix
-	//am besten mit w
 	FILE *fptr;
 	fptr=fopen("Highscores.txt", "a+");
 	if(fptr==NULL){
