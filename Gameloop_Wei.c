@@ -16,6 +16,8 @@
 #define xlength 10
 #define ylength 26
 
+#define DEBUG 0
+
 int punktestand = 0;
 
 int farbe_formen = 0;
@@ -32,6 +34,14 @@ void init_spielfeld(){
 	}
 }
 
+void init_tempfield() {
+	for (int i = 0; i<xlength; i++) {
+		for (int k = 0; k<ylength; k++) {
+			tempfield[i][k] = ' ';
+		}
+	}
+}
+
 void delay(int milli_seconds) { //in milli_seconds
     clock_t start_time = clock(); 
     while (clock() < start_time + milli_seconds) 
@@ -44,7 +54,14 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			system("cls");
-			ausgabe(farbe_formen);
+			#if DEBUG == 1
+				single_ausgabe();
+			#endif
+			#if DEBUG == 2
+				getch();
+			#else
+				ausgabe(farbe_formen);
+			#endif
 			direction = leftright();
 			copyleftright(direction);
 			down();
@@ -56,18 +73,18 @@ int gameloop(){
 
 void down(){
 	char temp_field[xlength][ylength];
+	init_tempfield();
 	for(int i=0; i<xlength; i++){
 		for(int k=0; k<ylength; k++){
-			spielfeld[i][k] = temp_field[i][k];
+			temp_field[i][k] = spielfeld[i][k];
 			if (spielfeld[i][k] == 'O')
 				spielfeld[i][k] = ' ';
 		}
 	}
-	for(int i=0; i<xlength; i++){
-		for(int k=0; k<ylength; k++){
-			if (tempfield[i][k] == 'O')
-				spielfeld[i][k+1] = 'O';
-			temp_field[i][k] = temp_field[i][k];
+	for(int i=0; i<ylength; i++){
+		for(int k=0; k<xlength; k++){
+			if (tempfield[k][i] == 'O')
+				spielfeld[k][i+1] = 'O';
 		}
 	}
 }
@@ -75,7 +92,7 @@ void down(){
 int leftright(){
 	int left = 'a', right = 'd';
 	int time = 1000;
-	int delaytime = 10;
+	int delaytime = 1000; //10
 	int max = time/2/delaytime;
 	int flagleft, flagright;
 	int moveleft, moveright;

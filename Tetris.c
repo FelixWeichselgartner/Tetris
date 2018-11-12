@@ -12,12 +12,18 @@ char *gets(char *buffer);
 #define true 1
 #define false 0
 
+#define DEBUG 0
+
 #define xlength 10
 #define ylength 26
 
 void main() {
 	int vorbei;
 	init_spielfeld();
+	#if DEBUG
+		single_ausgabe();
+		getch();
+	#endif
 	vorbei = gameloop();
 	if(vorbei == true){
 		highscore();

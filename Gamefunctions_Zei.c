@@ -15,6 +15,8 @@ char *gets(char *buffer);
 #define true 1
 #define false 0
 
+#define DEBUG 0
+
 #define xlength 10
 #define ylength 26
 
@@ -22,7 +24,7 @@ char *gets(char *buffer);
 void figcpy(char ptr[4][4], char ptrf[4][4]) {
 	for (int i = 0; i<4; i++) {
 		for (int j = 0; j<4; j++) {
-			ptrf[i][j] = ptr[i][j];
+			ptr[i][j] = ptrf[i][j];
 		}
 	}
 }
@@ -78,6 +80,10 @@ void spawn(){
 			spielfeld[i+3][j]=figur[i][j];
 		}
 	}	
+	#if DEBUG
+		single_ausgabe();
+		getch();
+	#endif
 }
 
 //Kollisionsprüfung

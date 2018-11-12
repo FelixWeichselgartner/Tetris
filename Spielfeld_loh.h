@@ -1,8 +1,8 @@
 #ifndef SPIELFELD_LOH_
 #define SPIELFELD_LOH_
 
-
-void ausgabe();
+void single_ausgabe();
+void ausgabe(int);
 
 
 #endif

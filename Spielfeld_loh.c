@@ -1,10 +1,20 @@
 #include <stdio.h>
+#include "Gameloop_Wei.h"
+
 #define ylength 26
 #define xlength 10
 
+void single_ausgabe() {
+	for (int i = 0; i < ylength; i++) {
+		for (int k = 0; k < xlength; k++) {
+			printf("%c", spielfeld[k][i]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
 
-void ausgabe(){
-
+void ausgabe(int farbe_formen){
 	printf("\n\n         TETRIS\n\n");
 	
 	int a, b;								//Zählvariable
@@ -20,17 +30,14 @@ void ausgabe(){
 	char m = 205;		//Querteil
 	char n = 185;		//Verbinder rechte Seite
 	char p = 204;		//Verbinder linke Seite
-
-	char spielfeld[ylength][xlength];		//Spielfelarray
 	 
-
+	/*
 	for (a = 0; a <= ylength -1; a++) {		//Spielfeld befüllen
 		for (b = 0; b <= xlength-1; b++) {
 			spielfeld[a][b] = ' ';
 		}
 	}
-			
-
+	*/
 			
 	//Ausgabe Spielfeld
 
@@ -50,13 +57,15 @@ void ausgabe(){
 	}
 	printf("%c%c%c%c\n", l, m, m, f);
 
-	for (a = 4; a <= ylength-1; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
+	
+	for (a = 0; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", d);
-		for (b = 0; b <= xlength-1; b++) {
-			printf("%c", spielfeld[a][b]);
+		for (b = 0; b < xlength; b++) {
+			printf("%c", spielfeld[b][a]);
 		}
 		printf("%c\n", d);
 	}
+	
 
 	printf("   %c%c%c", h, m, m);
 	printf("%c", k);
@@ -79,8 +88,6 @@ void ausgabe(){
 	}
 	printf("%c\n", f); 
 }
-
- 
 
 /* int main() {
 	ausgabe();

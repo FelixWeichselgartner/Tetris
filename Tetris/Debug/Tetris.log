@@ -1,5 +1,5 @@
 ﻿  Gameloop_Wei.c
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(107): warning C4715: "leftright": Nicht alle Steuerelementpfade geben einen Wert zurück.
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(159): warning C4715: "verloren": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(126): warning C4715: "leftright": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(178): warning C4715: "verloren": Nicht alle Steuerelementpfade geben einen Wert zurück.
   Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.exe
   Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.pdb (Full PDB)
