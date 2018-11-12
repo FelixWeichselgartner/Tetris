@@ -1,6 +1,5 @@
 ﻿  Gameloop_Wei.c
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(65): warning C4013: "getch" undefiniert; Annahme: extern mit Rückgabetyp int
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(198): warning C4715: "verloren": Nicht alle Steuerelementpfade geben einen Wert zurück.
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(146): warning C4715: "leftright": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(150): warning C4715: "leftright": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(202): warning C4715: "verloren": Nicht alle Steuerelementpfade geben einen Wert zurück.
   Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.exe
   Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.pdb (Full PDB)

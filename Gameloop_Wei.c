@@ -16,7 +16,7 @@
 #define xlength 10
 #define ylength 26
 
-#define DEBUG 1
+#define DEBUG 0
 
 int punktestand = 0;
 
@@ -59,6 +59,11 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			system("cls");
+
+			#if DEBUG == 0
+				ausgabe(farbe_formen);
+			#endif
+
 			#if DEBUG
 			debug_s();
 			printf("start");
@@ -92,17 +97,16 @@ int gameloop(){
 }
 
 void down(){
-	char temp_field[xlength][ylength];
 	init_tempfield();
-	for(int i=0; i<xlength; i++){
-		for(int k=0; k<ylength; k++){
-			temp_field[i][k] = spielfeld[i][k];
-			if (spielfeld[i][k] == 'O')
-				spielfeld[i][k] = ' ';
+	for(int i=0; i < ylength; i++){
+		for(int k=0; k < xlength; k++){
+			tempfield[k][i] = spielfeld[k][i];
+			if (spielfeld[k][i] == 'O')
+				spielfeld[k][i] = ' ';
 		}
 	}
-	for(int i=0; i<ylength; i++){
-		for(int k=0; k<xlength; k++){
+	for(int i=0; i < ylength; i++){
+		for(int k=0; k < xlength; k++){
 			if (tempfield[k][i] == 'O')
 				spielfeld[k][i+1] = 'O';
 		}
