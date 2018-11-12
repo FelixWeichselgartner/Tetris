@@ -116,7 +116,7 @@ void down(){
 int leftright(){
 	int left = 'a', right = 'd';
 	int time = 1000;
-	int delaytime = 1000; //10
+	float delaytime = 0.001; //10
 	int max = time/2/delaytime;
 	int flagleft, flagright;
 	int moveleft, moveright;

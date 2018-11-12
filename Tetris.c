@@ -18,6 +18,7 @@ char *gets(char *buffer);
 #define ylength 26
 
 void main() {
+	getch();
 	int vorbei;
 	init_spielfeld();
 	#if DEBUG

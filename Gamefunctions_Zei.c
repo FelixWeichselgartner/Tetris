@@ -31,8 +31,8 @@ void figcpy(char ptr[4][4], char ptrf[4][4]) {
 
 //Bewegliche arrays in feste umwandeln
 void change() {
-	for (int i = 0; i<10; i++) {
-		for (int j = 0; j<25; j++) {
+	for (int i = 0; i<xlength; i++) {
+		for (int j = 0; j<ylength; j++) {
 			if (spielfeld[i][j] == 'O') {
 				spielfeld[i][j] = 'X';
 			}
@@ -88,20 +88,18 @@ void spawn(){
 
 //Kollisionsprüfung
 int collision(){
-	for (int a = 0; a < 10; a++) { //warum nicht a <= 10
-		if(spielfeld[a][15]=='O'){
+	for (int a = 0; a < xlength; a++) { 
+		if(spielfeld[a][ylength-1]=='O'){ 
 			change();
 			return true;
-			break;
 		}
 	}
 	
-	for(int i=0; i<10; i++){
-		for(int j=0; j<25; j++){ //warum nicht j <= 25
-			if(spielfeld[i][j]=='O'&&spielfeld[i][j+1]=='X'){
+	for(int i=0; i<ylength; i++){
+		for(int j=0; j<xlength; j++){ 
+			if(spielfeld[j][i]=='O'&&spielfeld[j][i+1]=='X'){
 				change();
 				return true;
-				break;
 			}
 		}
 	}
@@ -110,23 +108,23 @@ int collision(){
 
 //Funktion zum Löschen der Reihe
 void reiheloeschen(){
-	int i, j, x;
-	i=0;
-	j=4;
+	int x, i=0,	j=4;
 	do{
 		if(i==9){
 			for(x=j; x>0; x--){
-				for(int a=0; a<10; a++){
+				for(int a=0; a<xlength; a++){
 					spielfeld[a][j]=spielfeld[a][j-1];
 				}
 				j--;
 			}	
 			punktestand=score(10);
 		}
-		if(spielfeld[i][j]=='X'||i<9){
+		if(spielfeld[i][j]=='X'&&i<9){ 
 			i++;
 		}else {j++; i=0;}
 	}while (j<25);
+	printf("felix schau weg");
+
 }
 
 //Speicherung in einer Textdatei 

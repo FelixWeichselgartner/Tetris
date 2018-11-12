@@ -1,5 +1,3 @@
-﻿  Gameloop_Wei.c
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(150): warning C4715: "leftright": Nicht alle Steuerelementpfade geben einen Wert zurück.
-c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(202): warning C4715: "verloren": Nicht alle Steuerelementpfade geben einen Wert zurück.
-  Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.exe
-  Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.pdb (Full PDB)
+﻿  LINK : U:\Tetris\Tetris\Tetris\Debug\Tetris.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
+  Tetris.vcxproj -> U:\Tetris\Tetris\Tetris\Debug\Tetris.exe
+  Tetris.vcxproj -> U:\Tetris\Tetris\Tetris\Debug\Tetris.pdb (Full PDB)
