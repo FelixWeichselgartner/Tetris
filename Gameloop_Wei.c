@@ -16,7 +16,7 @@
 #define xlength 10
 #define ylength 26
 
-#define DEBUG 0
+#define DEBUG 1
 
 int punktestand = 0;
 
@@ -25,6 +25,11 @@ int farbe_formen = 0;
 char spielfeld[xlength][ylength];
 
 char tempfield[xlength][ylength];
+
+void debug_s() {
+	system("cls");
+	ausgabe(0);
+}
 
 void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
@@ -54,17 +59,32 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			system("cls");
-			#if DEBUG == 1
-				single_ausgabe();
-			#endif
-			#if DEBUG == 2
+			#if DEBUG
+			debug_s();
+			printf("start");
 				getch();
-			#else
-				ausgabe(farbe_formen);
 			#endif
+
 			direction = leftright();
+			#if DEBUG
+				debug_s();
+				printf("leftright");
+				getch();
+			#endif
+
 			copyleftright(direction);
+			#if DEBUG
+				debug_s();
+				printf("cpy leftright");
+				getch();
+			#endif
+
 			down();
+			#if DEBUG
+				debug_s();
+				printf("down");
+				getch();
+			#endif
 		}
 		reiheloeschen(); //reiheloeschen() -> score()
 	}
