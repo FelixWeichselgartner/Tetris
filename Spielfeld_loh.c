@@ -1,6 +1,6 @@
- /*#include<stdio.h>
+#include <stdio.h>
 #define ylength 26
-#define xlength 10 */
+#define xlength 10
 
 
 void ausgabe(){
