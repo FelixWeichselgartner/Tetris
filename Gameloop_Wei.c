@@ -18,6 +18,8 @@
 
 int punktestand = 0;
 
+int farbe_formen = 0;
+
 char spielfeld[xlength][ylength];
 
 char tempfield[xlength][ylength];
@@ -42,7 +44,7 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			system("cls");
-			ausgabe();
+			ausgabe(farbe_formen);
 			direction = leftright();
 			copyleftright(direction);
 			down();

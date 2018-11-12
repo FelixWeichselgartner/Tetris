@@ -7,6 +7,7 @@
 
 extern char spielfeld[10][26];
 extern int punktestand;
+extern int farbe_formen;
 
 void init_spielfeld();
 void delay(int);
