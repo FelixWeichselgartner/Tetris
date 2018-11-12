@@ -51,7 +51,7 @@ void spawn(){
 	char figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	x=rand()%18+1;
+	x=rand()%23+1;
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){
 		case 1: figcpy(figur, fig1); break;
@@ -73,6 +73,11 @@ void spawn(){
 		case 17: figcpy(figur, fig17); break;
 		case 18: figcpy(figur, fig18); break;
 		case 19: figcpy(figur, fig19); break;
+		case 20: figcpy(figur, fig3); break;
+		case 21: figcpy(figur, fig3); break;
+		case 22: figcpy(figur, fig3); break;
+		case 23: figcpy(figur, fig1); break;
+		case 24: figcpy(figur, fig2); break;
 	}
 	//Kopieren des Figur-Arrays in den Spawn-Array
 	for(int i=0; i<4; i++){
@@ -123,8 +128,6 @@ void reiheloeschen(){
 			i++;
 		}else {j++; i=0;}
 	}while (j<25);
-	printf("felix schau weg");
-
 }
 
 //Speicherung in einer Textdatei 

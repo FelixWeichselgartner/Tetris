@@ -55,7 +55,7 @@ void delay(int milli_seconds) { //in milli_seconds
 
 int gameloop(){
 	int direction;
-	while(verloren() != false){
+	while(!verloren()){
 		spawn();
 		while(collision() == false){
 			system("cls");
@@ -93,6 +93,8 @@ int gameloop(){
 		}
 		reiheloeschen(); //reiheloeschen() -> score()
 	}
+	system("cls");
+	ausgabe(farbe_formen);
 	return true;
 }
 
@@ -196,7 +198,9 @@ void copyleftright(int direction){
 
 int verloren(){
 	for(int i=0; i<xlength; i++){
-		if (spielfeld[i][4] == 'X')
+		if (spielfeld[i][4] == 'X') {
 			return true;
+		}
 	}
+	return false;
 }

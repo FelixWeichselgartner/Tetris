@@ -58,7 +58,7 @@ void ausgabe(int farbe_formen){
 	printf("%c%c%c%c\n", l, m, m, f);
 
 	
-	for (a = 0; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
+	for (a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", d);
 		for (b = 0; b < xlength; b++) {
 			printf("%c", spielfeld[b][a]);
