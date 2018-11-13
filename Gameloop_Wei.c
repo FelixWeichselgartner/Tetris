@@ -16,22 +16,13 @@
 #define xlength 10
 #define ylength 26
 
-#define DEBUG 0
-#define KEYSTATE 0
-
 int punktestand = 0, farbe_formen = 0;
-
 char spielfeld[xlength][ylength];
 
 int abs(int x){
 	if (x >= 0)
 		return x;
 	else return -x;
-}
-
-void debug_s() {
-	system("cls");
-	ausgabe(0);
 }
 
 void init_spielfeld(){
@@ -42,7 +33,7 @@ void init_spielfeld(){
 	}
 }
 
-void delay(int milli_seconds) { //in milli_seconds
+void delay(int milli_seconds) {
     clock_t start_time = clock(); 
     while (clock() < start_time + milli_seconds) 
         ; 
@@ -53,40 +44,13 @@ int gameloop(){
 	while(!verloren()){
 		spawn();
 		while(collision() == false){
-			system("cls");
-
-			#if DEBUG == 0
-				ausgabe(farbe_formen);
-			#endif
-
-			#if DEBUG
-			debug_s();
-			printf("start");
-				getch();
-			#endif
-
-			direction = leftright();
-			#if DEBUG
-				debug_s();
-				printf("leftright");
-				getch();
-			#endif
-
-			copyleftright(direction);
-			#if DEBUG
-				debug_s();
-				printf("cpy leftright");
-				getch();
-			#endif
-
 			down();
-			#if DEBUG
-				debug_s();
-				printf("down");
-				getch();
-			#endif
+			system("cls");
+			ausgabe(farbe_formen);
+			direction = leftright();
+			copyleftright(direction);
 		}
-		reiheloeschen(); //reiheloeschen() -> score()
+		reiheloeschen();
 	}
 	system("cls");
 	ausgabe(farbe_formen);
@@ -112,7 +76,7 @@ void down(){
 
 int leftright(){
 	int time = 300000; //1000
-	int delaytime = 0; //10
+	int delaytime = 0; //10 - a bit fine-tuning might be a good idea here
 	int max = time;//delaytime time/delaytime/2
 	int flagleft, flagright, flagfast, moveleft = false, moveright = false;
 
@@ -120,24 +84,13 @@ int leftright(){
 		flagleft = GetAsyncKeyState(VK_LEFT);
 		if (abs(flagleft) > 10000){
 			moveleft = true;
-			//break;
 		}
-		/*
-		else {
-			moveleft = false;
-		}
-		*/
+
 		delay(delaytime);
 		flagright = GetAsyncKeyState(VK_RIGHT);
 		if (abs(flagright) > 10000){
 			moveright = true;
-			//break;
 		}
-		/*
-		else {
-			moveright = false;
-		}
-		*/
 		
 		flagfast = GetAsyncKeyState(VK_DOWN);
 		if (abs(flagfast) > 10000)
@@ -160,14 +113,8 @@ int leftright(){
 }
 
 void copyleftright(int direction){
-	#if KEYSTATE
-		printf("direction = %i", direction);
-		getch();
-	#endif
+	int leftboarder = false, rightboarder = false, leftfigur = false, rightfigur = false;
 
-	int leftboarder = false, rightboarder = false;
-
-	//auch X steine werden als fehler interpretiert
 	for(int i=0; i < ylength; i++){
 		if (spielfeld[0][i] == 'O'){
 			leftboarder = true;
@@ -178,13 +125,25 @@ void copyleftright(int direction){
 			rightboarder = true;
 		}
 	}
-
-	/*
-	hier soll überprüft werden ob neben dem O in bewegungsrichtung schon ein x ist
-	*/
 	
+	for (int i = 0; i < ylength; i++) {
+		for (int k = 0; k < xlength; k++) {
+			if (spielfeld[k][i] == 'O' && spielfeld[k - 1][i] == 'X') {
+				leftfigur = true;
+			}
+		}
+	}
+
+	for (int i = 0; i < ylength; i++) {
+		for (int k = 0; k < xlength; k++) {
+			if (spielfeld[k][i] == 'O' && spielfeld[k + 1][i] == 'X') {
+				rightfigur = true;
+			}
+		}
+	}
+
 	//1=left, 2=right
-	if(direction == 1 && !leftboarder){
+	if(direction == 1 && !leftboarder && !leftfigur){
 		for(int i = 0; i < ylength; i++){
 			for(int k = 0; k < xlength; k++){
 				if (spielfeld[k][i] == 'O') {
@@ -194,7 +153,7 @@ void copyleftright(int direction){
 			}
 		}
 	}
-	if (direction == 2 && !rightboarder) {
+	if (direction == 2 && !rightboarder && !rightfigur) {
 		for (int i = 0; i < ylength; i++) {
 			for (int k = xlength; k >= 0; k--) {
 				if (spielfeld[k][i] == 'O') {

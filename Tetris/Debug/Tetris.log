@@ -1,5 +1,4 @@
-﻿  Gamefunctions_Zei.c
-c:\users\felix\documents\studium\programmieren\tetris\gamefunctions_zei.c(62): warning C4244: "Funktion": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
-c:\users\felix\documents\studium\programmieren\tetris\gamefunctions_zei.c(55): warning C4716: "score": Muss einen Wert zurückgeben
+﻿  Gameloop_Wei.c
+c:\users\felix\documents\studium\programmieren\tetris\gameloop_wei.c(113): warning C4715: "leftright": Nicht alle Steuerelementpfade geben einen Wert zurück.
   Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.exe
   Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.pdb (Full PDB)

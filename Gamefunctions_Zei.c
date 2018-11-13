@@ -15,8 +15,6 @@ char *gets(char *buffer);
 #define true 1
 #define false 0
 
-#define DEBUG 0
-
 #define xlength 10
 #define ylength 26
 
@@ -95,10 +93,6 @@ void spawn(){
 			spielfeld[i+3][j]=figur[i][j];
 		}
 	}	
-	#if DEBUG
-		single_ausgabe();
-		getch();
-	#endif
 }
 
 //Kollisionsprüfung
