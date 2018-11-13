@@ -1,3 +1,5 @@
-﻿  Spielfeld_loh.c
-  Tetris.vcxproj -> U:\Tetris\Tetris\Tetris\Debug\Tetris.exe
-  Tetris.vcxproj -> U:\Tetris\Tetris\Tetris\Debug\Tetris.pdb (Full PDB)
+﻿  Gamefunctions_Zei.c
+c:\users\felix\documents\studium\programmieren\tetris\gamefunctions_zei.c(70): warning C4244: "Funktion": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
+c:\users\felix\documents\studium\programmieren\tetris\gamefunctions_zei.c(63): warning C4716: "score": Muss einen Wert zurückgeben
+  Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.exe
+  Tetris.vcxproj -> C:\Users\Felix\Documents\Studium\Programmieren\Tetris\Debug\Tetris.pdb (Full PDB)

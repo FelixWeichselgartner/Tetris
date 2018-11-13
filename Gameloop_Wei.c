@@ -17,14 +17,17 @@
 #define ylength 26
 
 #define DEBUG 0
+#define KEYSTATE 0
 
-int punktestand = 0;
-
-int farbe_formen = 0;
+int punktestand = 0, farbe_formen = 0;
 
 char spielfeld[xlength][ylength];
 
-char tempfield[xlength][ylength];
+int abs(int x){
+	if (x >= 0)
+		return x;
+	else return -x;
+}
 
 void debug_s() {
 	system("cls");
@@ -35,14 +38,6 @@ void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
 		for(int k=0; k<ylength; k++){
 			spielfeld[i][k] = ' ';
-		}
-	}
-}
-
-void init_tempfield() {
-	for (int i = 0; i<xlength; i++) {
-		for (int k = 0; k<ylength; k++) {
-			tempfield[i][k] = ' ';
 		}
 	}
 }
@@ -99,7 +94,7 @@ int gameloop(){
 }
 
 void down(){
-	init_tempfield();
+	char tempfield[xlength][ylength];
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
 			tempfield[k][i] = spielfeld[k][i];
@@ -116,33 +111,46 @@ void down(){
 }
 
 int leftright(){
-	int left = 'a', right = 'd';
-	int time = 1000;
-	float delaytime = 0.001; //10
-	int max = time/2/delaytime;
-	int flagleft, flagright;
-	int moveleft, moveright;
+	int time = 300000; //1000
+	int delaytime = 0; //10
+	int max = time;//delaytime time/delaytime/2
+	int flagleft, flagright, flagfast, moveleft = false, moveright = false;
+
 	for(int i=0; i<=max; i++){
-		flagleft = GetAsyncKeyState('a');
-		if (flagleft == true){
+		flagleft = GetAsyncKeyState(VK_LEFT);
+		if (abs(flagleft) > 10000){
 			moveleft = true;
+			//break;
 		}
+		/*
 		else {
 			moveleft = false;
 		}
+		*/
 		delay(delaytime);
-		flagright = GetAsyncKeyState('d');
-		if (flagright == true){
+		flagright = GetAsyncKeyState(VK_RIGHT);
+		if (abs(flagright) > 10000){
 			moveright = true;
+			//break;
 		}
+		/*
 		else {
 			moveright = false;
 		}
+		*/
+		
+		flagfast = GetAsyncKeyState(VK_DOWN);
+		if (abs(flagfast) > 10000)
+			break;
+
 		delay(delaytime);
 	}
-	if (moveleft == true && moveright == true){ //moveleft used without being initialized
+
+	if (moveleft == true && moveright == true) {
+		moveleft = moveright = 0;
 		return 0;
 	}
+
 	if (moveleft == true){
 		return 1;
 	}
@@ -152,45 +160,43 @@ int leftright(){
 }
 
 void copyleftright(int direction){
-	int flag;
-	for(int i=0; i<ylength; i++){
-		if (spielfeld[0][i] != ' ' || spielfeld[10][i] != ' '){ //zweites kein plan ob des stimmt
-			flag = true;
+	#if KEYSTATE
+		printf("direction = %i", direction);
+		getch();
+	#endif
+
+	int leftboarder = false, rightboarder = false;
+
+	//auch X steine werden als fehler interpretiert
+	for(int i=0; i < ylength; i++){
+		if (spielfeld[0][i] == 'O'){
+			leftboarder = true;
 		}
 	}
-	if (flag == true)
-		return;
+	for (int i = 0; i < ylength; i++) {
+		if (spielfeld[9][i] == 'O') {
+			rightboarder = true;
+		}
+	}
+	
 	//1=left, 2=right
-	char temp_field[xlength][ylength];
-	if(direction == 1){
-		for(int i=0; i<xlength; i++){
-			for(int k=0; k<ylength; k++){
-				spielfeld[i][k] = temp_field[i][k];
-				if (spielfeld[i][k] == 'O')
-					spielfeld[i][k] = ' ';
-			}
-		}
-		for(int i=0; i<xlength; i++){
-			for(int k=0; k<ylength; k++){
-				if (tempfield[i][k] == 'O')
-					spielfeld[i-1][k] = 'O';
-				temp_field[i][k] = temp_field[i][k];
+	if(direction == 1 && !leftboarder){
+		for(int i = 0; i < ylength; i++){
+			for(int k = 0; k < xlength; k++){
+				if (spielfeld[k][i] == 'O') {
+					spielfeld[k][i] = ' ';
+					spielfeld[k - 1][i] = 'O';
+				}
 			}
 		}
 	}
-	if(direction == 2){
-		for(int i=0; i<xlength; i++){
-			for(int k=0; k<ylength; k++){
-				spielfeld[i][k] = temp_field[i][k];
-				if (spielfeld[i][k] == 'O')
-					spielfeld[i][k] = ' ';
-			}
-		}
-		for(int i=0; i<xlength; i++){
-			for(int k=0; k<ylength; k++){
-				if (tempfield[i][k] == 'O')
-					spielfeld[i+1][k] = 'O';
-				temp_field[i][k] = temp_field[i][k];
+	if (direction == 2 && !rightboarder) {
+		for (int i = 0; i < ylength; i++) {
+			for (int k = xlength; k >= 0; k--) {
+				if (spielfeld[k][i] == 'O') {
+					spielfeld[k][i] = ' ';
+					spielfeld[k + 1][i] = 'O';
+				}
 			}
 		}
 	}

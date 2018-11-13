@@ -29,6 +29,10 @@ void figcpy(char ptr[4][4], char ptrf[4][4]) {
 	}
 }
 
+void dwn(int z) {
+	
+}
+
 //Bewegliche arrays in feste umwandeln
 void change() {
 	for (int i = 0; i<xlength; i++) {
@@ -51,7 +55,8 @@ void spawn(){
 	char figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	x=rand()%23+1;
+	//x=rand()%23+1;
+	x = 3;
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){
 		case 1: figcpy(figur, fig1); break;
@@ -113,21 +118,11 @@ int collision(){
 
 //Funktion zum Löschen der Reihe
 void reiheloeschen(){
-	int x, i=0,	j=4;
-	do{
-		if(i==9){
-			for(x=j; x>0; x--){
-				for(int a=0; a<xlength; a++){
-					spielfeld[a][j]=spielfeld[a][j-1];
-				}
-				j--;
-			}	
-			punktestand=score(10);
+	for (int i = 25; i >= 0; i--) {
+		if (spielfeld[0][i] == 'X' && spielfeld[1][i] == 'X' && spielfeld[2][i] == 'X' && spielfeld[3][i] == 'X' && spielfeld[4][i] == 'X' && spielfeld[5][i] == 'X' && spielfeld[6][i] == 'X' && spielfeld[7][i] == 'X' && spielfeld[8][i] == 'X' && spielfeld[9][i] == 'X') {
+			dwn(i);
 		}
-		if(spielfeld[i][j]=='X'&&i<9){ 
-			i++;
-		}else {j++; i=0;}
-	}while (j<25);
+	}
 }
 
 //Speicherung in einer Textdatei 

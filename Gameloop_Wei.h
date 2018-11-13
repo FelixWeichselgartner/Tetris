@@ -10,7 +10,6 @@ extern int punktestand;
 extern int farbe_formen;
 
 void init_spielfeld();
-void init_tempfield();
 void delay(int);
 int gameloop();
 void down();
