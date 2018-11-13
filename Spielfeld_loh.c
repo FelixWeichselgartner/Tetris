@@ -61,15 +61,15 @@ void ausgabe(int farbe_formen){
 	//Ausgabe Spielfeld
 	
 	
-	/* for (a = 4; a < ylength; a++) {			// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
+	 for (a = 4; a < ylength; a++) {			// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);				
 		for (b = 0; b < xlength; b++) {		
 			printf("%c", spielfeld[b][a]);	
 		}									
 		printf("%c\n", vertikaler_Randstein);					
-	} */
+	} 
 	
-	Ausgabe_mit_Farbzuweisung(Kennziffer_Teilchen) //Kennziffer von Mark übergeben
+	//Ausgabe_mit_Farbzuweisung(Kennziffer_Teilchen); //Kennziffer von Mark übergeben
 	
 
 	//Ausgabe  unter eSpielfeld
@@ -95,8 +95,38 @@ void ausgabe(int farbe_formen){
 	printf("%c\n", Ecke_rechts_unten); 
 }
 
+void farbige_Ausgabe(int color) {		//xlength und y length (nein, da global) sowie Farbwert für O's übergeben!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+	CONSOLE_SCREEN_BUFFER_INFO Screen;	//Lokale Variablen
+	WORD wOldColAttr;
+	HANDLE hStdOut;
 
+	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);	//Anweisungen
+	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
+	wOldColAttr = Screen.wAttributes;
+	SetConsoleTitleA("Tetris");					//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
+	SetConsoleTextAttribute(hStdOut, wOldColAttr); //Farbauswahl ?ber Integerwerte
+
+	char vertikaler_Randstein = 186;		//Hochteil									   
+	int var;								 //spielfeldgröße 10 26!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	for (int a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
+		printf("      %c", vertikaler_Randstein);
+		for (int b = 0; b < xlength; b++) {
+
+			switch (spielfeld[b][a]) {
+			case 'O': var = color; break;		//Variabel für jew Teilchen;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			case 'X': var = 136; break;			//feste Kästchen unten werden grau/ Wert 136
+			default: var = 0; break;
+			}
+			SetConsoleTextAttribute(hStdOut, (var));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
+			printf("%c", spielfeld[a][b]);
+			SetConsoleTextAttribute(hStdOut, wOldColAttr);
+		}
+		printf("%c\n", vertikaler_Randstein);
+	}
+	SetConsoleTextAttribute(hStdOut, wOldColAttr);
+}
  
 void Ausgabe_mit_Farbzuweisung(int Kennziffer_Teilchen) {      //Kennziffer für farbe übergeben!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	int Farbe;
@@ -211,41 +241,6 @@ void Ausgabe_mit_Farbzuweisung(int Kennziffer_Teilchen) {      //Kennziffer für
 		}
 	}
 }
-
-
-void farbige_Ausgabe(int color) {		//xlength und y length (nein, da global) sowie Farbwert für O's übergeben!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	 
-	CONSOLE_SCREEN_BUFFER_INFO Screen;	//Lokale Variablen
-	WORD wOldColAttr;
-	HANDLE hStdOut;
- 
-	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);	//Anweisungen
-	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
-	wOldColAttr = Screen.wAttributes;
-	SetConsoleTitleA("Tetris");					//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
-	SetConsoleTextAttribute(hStdOut, wOldColAttr); //Farbauswahl ?ber Integerwerte
-	
-	char vertikaler_Randstein = 186;		//Hochteil									   
-	int var;								 //spielfeldgröße 10 26!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
-	for (int a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
-		printf("      %c", vertikaler_Randstein);
-		for (int b = 0; b < xlength; b++) {
-			 
-			switch (spielfeld[b][a]) {
-				case 'O': var = color; break;		//Variabel für jew Teilchen;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				case 'X': var = 136; break;			//feste Kästchen unten werden grau/ Wert 136
-				default: var = 0; break;
-			}
-			SetConsoleTextAttribute(hStdOut, (var));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
-			printf("%c", fig4[a][b]);
-			SetConsoleTextAttribute(hStdOut, wOldColAttr); 
-		}
-		printf("%c\n", vertikaler_Randstein);
-	}
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);
-}
-
 
 /* int main() {
 	ausgabe();
