@@ -29,8 +29,13 @@ void figcpy(char ptr[4][4], char ptrf[4][4]) {
 	}
 }
 
-void dwn(int z) {
-	
+void dwn(int i) {
+	spielfeld[0][i] = spielfeld[1][i] = spielfeld[2][i] = spielfeld[3][i] = spielfeld[4][i] = spielfeld[5][i] = spielfeld[6][i] = spielfeld[7][i] = spielfeld[8][i] = spielfeld[9][i] == ' ';
+	for (; i >= 4; i--) {
+		for (int k = 0; k < xlength; k++) {
+			spielfeld[k][i] = spielfeld[k][i - 1];
+		}
+	}
 }
 
 //Bewegliche arrays in feste umwandeln
@@ -55,8 +60,8 @@ void spawn(){
 	char figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	//x=rand()%23+1;
-	x = 3;
+	x=rand()%23+1;
+	//x = 3; zum testen von reihelöschen
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){
 		case 1: figcpy(figur, fig1); break;
@@ -121,6 +126,8 @@ void reiheloeschen(){
 	for (int i = 25; i >= 0; i--) {
 		if (spielfeld[0][i] == 'X' && spielfeld[1][i] == 'X' && spielfeld[2][i] == 'X' && spielfeld[3][i] == 'X' && spielfeld[4][i] == 'X' && spielfeld[5][i] == 'X' && spielfeld[6][i] == 'X' && spielfeld[7][i] == 'X' && spielfeld[8][i] == 'X' && spielfeld[9][i] == 'X') {
 			dwn(i);
+			punktestand += 10;
+			reiheloeschen(); //rekursive funktion
 		}
 	}
 }

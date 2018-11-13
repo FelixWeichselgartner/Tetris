@@ -178,6 +178,10 @@ void copyleftright(int direction){
 			rightboarder = true;
 		}
 	}
+
+	/*
+	hier soll überprüft werden ob neben dem O in bewegungsrichtung schon ein x ist
+	*/
 	
 	//1=left, 2=right
 	if(direction == 1 && !leftboarder){
