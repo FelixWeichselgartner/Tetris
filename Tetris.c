@@ -1,3 +1,12 @@
+/*
+********************************
+Copyright (c) 2018 	
+- Felix Weichselgartner
+- Marc Zeitler
+- Matthias Lohberger
+********************************
+*/
+
 #define _CRT_SECURE_NO_DEPRECATE
 #define _CRT_NONSTDC_NO_DEPRECATE
 char *gets(char *buffer);
@@ -17,9 +26,9 @@ char *gets(char *buffer);
 #define ylength 26
 
 void main() {
+	int vorbei;
 	printf("press any button to start the game! ");
 	getch();
-	int vorbei;
 	init_spielfeld();
 	vorbei = gameloop();
 	if(vorbei == true){

@@ -40,14 +40,14 @@ void delay(int milli_seconds) {
 } 
 
 int gameloop(){
-	int direction;
+	int direction, drehenrechts, drehenlinks;
 	while(!verloren()){
 		spawn();
 		while(collision() == false){
 			down();
 			system("cls");
 			ausgabe(farbe_formen);
-			direction = leftright();
+			direction = input(&drehenrechts, &drehenlinks);
 			copyleftright(direction);
 		}
 		reiheloeschen();
@@ -74,34 +74,36 @@ void down(){
 	}
 }
 
-int leftright(){
-	int time = 300000; //1000
-	int delaytime = 0; //10 - a bit fine-tuning might be a good idea here
-	int max = time;//delaytime time/delaytime/2
-	int flagleft, flagright, flagfast, moveleft = false, moveright = false;
+int input(int *drehenrechts, int *drehenlinks){
+	int flagleft, flagright, flagfast, flagdrehenlinks, flagdrehenrechts, moveleft = false, moveright = false;
+	int milli_seconds = 1000;
+	clock_t start_time = clock(); 
 
-	for(int i=0; i<=max; i++){
+    while (clock() < start_time + milli_seconds) {
 		flagleft = GetAsyncKeyState(VK_LEFT);
-		if (abs(flagleft) > 10000){
+		if (abs(flagleft) > 10000)
 			moveleft = true;
-		}
-
-		delay(delaytime);
 		flagright = GetAsyncKeyState(VK_RIGHT);
-		if (abs(flagright) > 10000){
+		if (abs(flagright) > 10000)
 			moveright = true;
-		}
-		
 		flagfast = GetAsyncKeyState(VK_DOWN);
 		if (abs(flagfast) > 10000)
 			break;
-
-		delay(delaytime);
+		flagdrehenrechts = GetAsyncKeyState(0x41);
+		if (abs(flagdrehenrechts) > 10000)
+			*drehenrechts = true;
+		flagdrehenlinks = GetAsyncKeyState(0x44);
+		if (abs(flagdrehenlinks) > 10000)
+			*drehenlinks = true;
 	}
 
 	if (moveleft == true && moveright == true) {
 		moveleft = moveright = 0;
 		return 0;
+	}
+
+	if (*drehenrechts == true && *drehenlinks == true) {
+		*drehenrechts = *drehenlinks = false;
 	}
 
 	if (moveleft == true){
@@ -110,6 +112,7 @@ int leftright(){
 	if (moveright == true){
 		return 2;
 	}
+	return 0;
 }
 
 void copyleftright(int direction){

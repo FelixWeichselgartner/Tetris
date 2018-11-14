@@ -13,7 +13,7 @@ void init_spielfeld();
 void delay(int);
 int gameloop();
 void down();
-int leftright();
+int input(int *, int *);
 void copyleftright(int);
 int verloren();
 
