@@ -33,12 +33,6 @@ void init_spielfeld(){
 	}
 }
 
-void delay(int milli_seconds) {
-    clock_t start_time = clock(); 
-    while (clock() < start_time + milli_seconds) 
-        ; 
-} 
-
 int gameloop(){
 	int direction, drehenrechts, drehenlinks;
 	while(!verloren()){
