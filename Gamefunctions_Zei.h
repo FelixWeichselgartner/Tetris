@@ -1,3 +1,7 @@
+/*
+* Tetris in C - header by Marc Zeitler
+*/
+
 #ifndef GAMEFUNCTIONS_ZEI_H
 #define GAMEFUNCTIONS_ZEI_H
 

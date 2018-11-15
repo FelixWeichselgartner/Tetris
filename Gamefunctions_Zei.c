@@ -19,7 +19,7 @@ char *gets(char *buffer);
 #define ylength 26
 
 //Funktion zum Kopieren von arrays
-void figcpy(char ptr[4][4], char ptrf[4][4]) {
+void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
 	for (int i = 0; i<4; i++) {
 		for (int j = 0; j<4; j++) {
 			ptr[i][j] = ptrf[i][j];
@@ -28,10 +28,10 @@ void figcpy(char ptr[4][4], char ptrf[4][4]) {
 }
 
 void dwn(int i) {
-	spielfeld[0][i] = spielfeld[1][i] = spielfeld[2][i] = spielfeld[3][i] = spielfeld[4][i] = spielfeld[5][i] = spielfeld[6][i] = spielfeld[7][i] = spielfeld[8][i] = spielfeld[9][i] == ' ';
+	spielfeld[0][i].fgr = spielfeld[1][i].fgr = spielfeld[2][i].fgr = spielfeld[3][i].fgr = spielfeld[4][i].fgr = spielfeld[5][i].fgr = spielfeld[6][i].fgr = spielfeld[7][i].fgr = spielfeld[8][i].fgr = spielfeld[9][i].fgr == ' ';
 	for (; i >= 4; i--) {
 		for (int k = 0; k < xlength; k++) {
-			spielfeld[k][i] = spielfeld[k][i - 1];
+			spielfeld[k][i].fgr = spielfeld[k][i - 1].fgr;
 		}
 	}
 }
@@ -40,8 +40,8 @@ void dwn(int i) {
 void change() {
 	for (int i = 0; i<xlength; i++) {
 		for (int j = 0; j<ylength; j++) {
-			if (spielfeld[i][j] == 'O') {
-				spielfeld[i][j] = 'X';
+			if (spielfeld[i][j].fgr == 'O') {
+				spielfeld[i][j].fgr = 'X';
 			}
 		}
 	}
@@ -55,7 +55,7 @@ int score(int x) {
 //Funktion zum Spawnen der Teile im Feld
 void spawn(){
 	int x;
-	char figur[4][4];
+	struct f figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
 	x=rand()%23+1;
@@ -90,7 +90,7 @@ void spawn(){
 	//Kopieren des Figur-Arrays in den Spawn-Array
 	for(int i=0; i<4; i++){
 		for(int j=0; j<4; j++){
-			spielfeld[i+3][j]=figur[i][j];
+			spielfeld[i+3][j].fgr =figur[i][j];
 		}
 	}	
 }
@@ -98,7 +98,7 @@ void spawn(){
 //Kollisionsprüfung
 int collision(){
 	for (int a = 0; a < xlength; a++) { 
-		if(spielfeld[a][ylength-1]=='O'){ 
+		if(spielfeld[a][ylength-1].fgr =='O'){
 			change();
 			return true;
 		}
@@ -106,7 +106,7 @@ int collision(){
 	
 	for(int i=0; i<ylength; i++){
 		for(int j=0; j<xlength; j++){ 
-			if(spielfeld[j][i]=='O'&&spielfeld[j][i+1]=='X'){
+			if(spielfeld[j][i].fgr =='O'&&spielfeld[j][i+1].fgr =='X'){
 				change();
 				return true;
 			}
@@ -118,7 +118,7 @@ int collision(){
 //Funktion zum Löschen der Reihe
 void reiheloeschen(){
 	for (int i = 25; i >= 0; i--) {
-		if (spielfeld[0][i] == 'X' && spielfeld[1][i] == 'X' && spielfeld[2][i] == 'X' && spielfeld[3][i] == 'X' && spielfeld[4][i] == 'X' && spielfeld[5][i] == 'X' && spielfeld[6][i] == 'X' && spielfeld[7][i] == 'X' && spielfeld[8][i] == 'X' && spielfeld[9][i] == 'X') {
+		if (spielfeld[0][i].fgr == 'X' && spielfeld[1][i].fgr == 'X' && spielfeld[2][i].fgr == 'X' && spielfeld[3][i].fgr == 'X' && spielfeld[4][i].fgr == 'X' && spielfeld[5][i].fgr == 'X' && spielfeld[6][i].fgr == 'X' && spielfeld[7][i].fgr == 'X' && spielfeld[8][i].fgr == 'X' && spielfeld[9][i].fgr == 'X') {
 			dwn(i);
 			punktestand += 10;
 			reiheloeschen(); //rekursive funktion
