@@ -8,7 +8,7 @@
 void single_ausgabe() {
 	for (int i = 0; i < ylength; i++) {
 		for (int k = 0; k < xlength; k++) {
-			printf("%c", spielfeld[k][i]);
+			printf("%c", spielfeld[k][i].fgr);
 		}
 		printf("\n");
 	}
@@ -32,13 +32,7 @@ void ausgabe(int farbe_formen){
 	char T_Verbinder_rechte_Seite = 185;	//Verbinder rechte Seite
 	char T_Verbinder_linke_Seite = 204;		//Verbinder linke Seite
 	 
-	/*
-	for (a = 0; a <= ylength -1; a++) {		//Spielfeld befüllen
-		for (b = 0; b <= xlength-1; b++) {
-			spielfeld[a][b] = ' ';
-		}
-	}
-	*/
+	 
 			
 	//Ausgabe über Spielfeld
 
@@ -64,7 +58,7 @@ void ausgabe(int farbe_formen){
 	 for (a = 4; a < ylength; a++) {			// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);				
 		for (b = 0; b < xlength; b++) {		
-			printf("%c", spielfeld[b][a]);	
+			printf("%c", spielfeld[b][a].fgr);	
 		}									
 		printf("%c\n", vertikaler_Randstein);					
 	} 
@@ -114,7 +108,7 @@ void farbige_Ausgabe(int color) {		//xlength und y length (nein, da global) sowi
 		printf("      %c", vertikaler_Randstein);
 		for (int b = 0; b < xlength; b++) {
 
-			switch (spielfeld[b][a]) {
+			switch (spielfeld[b][a].fgr) {
 			case 'O': var = color; break;		//Variabel für jew Teilchen;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			case 'X': var = 136; break;			//feste Kästchen unten werden grau/ Wert 136
 			default: var = 0; break;
@@ -128,119 +122,7 @@ void farbige_Ausgabe(int color) {		//xlength und y length (nein, da global) sowi
 	SetConsoleTextAttribute(hStdOut, wOldColAttr);
 }
  
-void Ausgabe_mit_Farbzuweisung(int Kennziffer_Teilchen) {      //Kennziffer für farbe übergeben!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	int Farbe;
-	switch (Kennziffer_Teilchen){
-						//Stab			Farbe: blau/ Nummer: 153
-	case 1: {						 
-			Farbe = 153;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 2: {
-			Farbe = 153;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-
-						//Viereck		Farbe: rot/ Nummer: 204
-		case 3: {
-			Farbe = 204;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-
-						//Blitz 1		Farbe: hellblau/ Nummer: 187
-		case 4: {
-			Farbe = 187;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 5: {
-			Farbe = 187;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-
-						//Blitz 2		Farbe: pink/ Nummer: 221
-		case 6: {
-			Farbe = 221;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 7: {
-			Farbe = 221;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-
-						//T-Stück		Farbe: gelb/ Nummer: 238
-		case 8: {
-			Farbe = 238;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 9: {
-			Farbe = 238;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 10: {
-			Farbe = 238;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 11: {
-			Farbe = 238;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-
-						//L1			Farbe: grün/ Nummer: 170
-		case 12: {
-			Farbe = 170;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 13: {
-			Farbe = 170;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 14: {
-			Farbe = 170;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 15: {
-			Farbe = 170;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-
-						//L2			Farbe: weißgrau/ Nummer: 255
-		case 16: {
-			Farbe = 255;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 17: {
-			Farbe = 255;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 18: {
-			Farbe = 255;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-		case 19: {
-			Farbe = 255;
-			farbige_Ausgabe(Farbe);
-			break;
-		}
-	}
-}
+ 
 
 /* int main() {
 	ausgabe();
