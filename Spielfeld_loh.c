@@ -11,6 +11,33 @@ struct f {
 	int spawnnumber;
 };
 
+void spielfeld_ausgabe() {
+
+	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
+	WORD wOldColAttr;
+	HANDLE hStdOut;
+
+	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
+	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
+	wOldColAttr = Screen.wAttributes;
+	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
+	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
+
+	char vertikaler_Randstein = 186;				//Hochteil									   
+
+	for (int a = 4; a < ylength; a++) {				// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
+		printf("      %c", vertikaler_Randstein);
+		for (int b = 0; b < xlength; b++) {
+			SetConsoleTextAttribute(hStdOut, (spielfeld[b][a].clr));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
+			printf("%c", spielfeld[a][b]);
+			SetConsoleTextAttribute(hStdOut, wOldColAttr);
+		}
+		printf("%c\n", vertikaler_Randstein);
+	}
+	SetConsoleTextAttribute(hStdOut, wOldColAttr);
+}
+
+
  void ausgabe(){
 	printf("\n\n         TETRIS\n\n");
 	
@@ -64,7 +91,7 @@ struct f {
 	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);	// rechter Teil der Linie zw Score und Spielfeld	 
 
 
-	printf("   %c  Score: %5i%c\n", vertikaler_Randstein, punktestand, vertikaler_Randstein);				//SCORE mit Randsteinen  
+	printf("   %c  Score: %7i%c\n", vertikaler_Randstein, punktestand, vertikaler_Randstein);				//SCORE mit Randsteinen  
 
 
 	printf("   %c", Ecke_links_unten);
@@ -73,35 +100,6 @@ struct f {
 	}
 	printf("%c\n", Ecke_rechts_unten); 
 }
-
-
-void spielfeld_ausgabe() {
-
-	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
-	WORD wOldColAttr;
-	HANDLE hStdOut;
-
-	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
-	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
-	wOldColAttr = Screen.wAttributes;
-	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
-
-	char vertikaler_Randstein = 186;				//Hochteil									   
-	 								  
-	for (int a = 4; a < ylength; a++) {				// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
-		printf("      %c", vertikaler_Randstein);
-		for (int b = 0; b < xlength; b++) { 
-			SetConsoleTextAttribute(hStdOut, (spielfeld[b][a].clr));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
-			printf("%c", spielfeld[a][b]);
-			SetConsoleTextAttribute(hStdOut, wOldColAttr);
-		}
-		printf("%c\n", vertikaler_Randstein);
-	}
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);
-}
- 
- 
 
 /* int main() {
 	ausgabe();

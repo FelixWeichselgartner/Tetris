@@ -125,6 +125,10 @@ void input(){
 
 void copyleftright(char direction){
 	int leftboarder = false, rightboarder = false, leftfigur = false, rightfigur = false;
+	struct f temp;
+	temp.fgr = ' ';
+	temp.clr = 0;
+	temp.spawnnumber = 0;
 
 	for(int i=0; i < ylength; i++){
 		if (spielfeld[0][i].fgr == 'O'){
@@ -157,10 +161,12 @@ void copyleftright(char direction){
 		for(int i = 0; i < ylength; i++){
 			for(int k = 0; k < xlength; k++){
 				if (spielfeld[k][i].fgr == 'O') {
+					temp = spielfeld[k][i];
 					spielfeld[k][i].fgr = ' ';
 					spielfeld[k][i].clr = 0;
 					spielfeld[k][i].spawnnumber = 0;
-					spielfeld[k - 1][i] = spielfeld[k][i]; //check if not working
+					spielfeld[k - 1][i] = temp;
+					
 				}
 			}
 		}
@@ -169,10 +175,11 @@ void copyleftright(char direction){
 		for (int i = 0; i < ylength; i++) {
 			for (int k = xlength; k >= 0; k--) {
 				if (spielfeld[k][i].fgr == 'O') {
+					temp = spielfeld[k][i];
 					spielfeld[k][i].fgr = ' ';
 					spielfeld[k][i].clr = 0;
 					spielfeld[k][i].spawnnumber = 0;
-					spielfeld[k + 1][i] = spielfeld[k][i]; //check if not working
+					spielfeld[k + 1][i] = temp;
 				}
 			}
 		}
