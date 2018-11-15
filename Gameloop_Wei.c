@@ -18,7 +18,7 @@
 
 int punktestand = 0;
 
-struct spfd {
+struct f {
 	char fgr; //figur
 	int clr; //color
 	int spawnnumber;
