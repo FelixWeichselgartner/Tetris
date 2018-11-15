@@ -21,4 +21,7 @@ extern struct f fig17[4][4];
 extern struct f fig18[4][4];
 extern struct f fig19[4][4];
 
+void init_figuren();
+void build_figures(struct f **, char **, int, int);
+
 #endif 

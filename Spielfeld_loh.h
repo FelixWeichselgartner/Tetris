@@ -4,5 +4,4 @@
 void single_ausgabe();
 void ausgabe();
 
-
 #endif

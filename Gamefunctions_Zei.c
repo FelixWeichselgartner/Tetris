@@ -97,7 +97,7 @@ void spawn(){
 	//Kopieren des Figur-Arrays in den Spawn-Array
 	for(int i=0; i<4; i++){
 		for(int j=0; j<4; j++){
-			spielfeld[i+3][j].fgr =figur[i][j];
+			spielfeld[i+3][j] = figur[i][j];
 		}
 	}	
 }

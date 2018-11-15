@@ -30,6 +30,7 @@ void main() {
 	printf("press any button to start the game! ");
 	getch();
 	init_spielfeld();
+	init_figuren();
 	vorbei = gameloop();
 	if(vorbei == true){
 		highscore();

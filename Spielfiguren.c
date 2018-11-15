@@ -1,3 +1,7 @@
+/*
+* Tetris in C - header by Matthias Lohberger
+*/
+
 #define y 4
 #define x 4
 
@@ -7,117 +11,172 @@ struct f {
 	int spawnnumber;
 };
 
-fig1.clr = fig2.clr = 153; 					//Stab			Farbe: blau/ Nummer: 153	
-fig3.clr = 238;								//Viereck		Farbe: gelb/ Nummer: 238	
-fig4.clr = fig5.clr = fig6.clr = fig7.clr = 204; 	//Blitz	Farbe: rot/ Nummer: 204
-fig8.clr = fig9.clr = fig10.clr = fig11.clr = 221; 	//T-Stück  Farbe: pink/ Nummer: 221	
-fig12.clr = fig13.clr = fig14.clr = fig15.clr = fig16.clr = fig17.clr = fig18.clr = fig19.clr = 170; 	//L-Stück  Farbe: grün/ Nummer: 170 
+struct f fig1[4][4];
+struct f fig2[4][4];
+struct f fig3[4][4];
+struct f fig4[4][4];
+struct f fig5[4][4];
+struct f fig6[4][4];
+struct f fig7[4][4];
+struct f fig8[4][4];
+struct f fig9[4][4];
+struct f fig10[4][4];
+struct f fig11[4][4];
+struct f fig12[4][4];
+struct f fig13[4][4];
+struct f fig14[4][4];
+struct f fig15[4][4];
+struct f fig16[4][4];
+struct f fig17[4][4];
+struct f fig18[4][4];
+struct f fig19[4][4];
+
+//zu Farben:
+//Stab			Farbe: blau/ Nummer: 153	
+//Viereck		Farbe: gelb/ Nummer: 238	
+//Blitz			Farbe: rot/ Nummer: 204
+//T-Stück		Farbe: pink/ Nummer: 221
+//L-Stück		Farbe: grün/ Nummer: 170 
+
+
+void build_figures(struct f fig[x][x], char fg[x][x], int color, int nr) {
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < x; j++) {
+			fig[i][j].fgr = fg[i][j];
+			fig[i][j].clr = color;
+			fig[i][j].spawnnumber = nr;
+		}
+	}
+}
+
+
 
 //Stab					
-char fig1[y][x] =	{'O', ' ', ' ', ' ',
+char fg1[y][x] =	{'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' '};
 						
-char fig2[y][x] =	{' ', ' ', ' ', ' ',
+char fg2[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						'O', 'O', 'O', 'O'};
 						
 						
 //Viereck				
-char fig3[y][x] =	{'O', 'O', ' ', ' ',
+char fg3[y][x] =	{'O', 'O', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' '};
 						
 						
 //Blitz 1						
-char fig4[y][x] =	{' ', ' ', ' ', ' ',
+char fg4[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						' ', 'O', 'O', ' ',
 						'O', 'O', ' ', ' '};
 											
-char fig5[y][x] =	{' ', ' ', ' ', ' ',
+char fg5[y][x] =	{' ', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						' ', 'O', ' ', ' '};
 
 
 //Blitz 2				
-char fig6[y][x] =	{' ', ' ', ' ', ' ',
+char fg6[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						' ', 'O', 'O', ' '};
 						
-char fig7[y][x] =	{' ', ' ', ' ', ' ',
+char fg7[y][x] =	{' ', ' ', ' ', ' ',
 						' ', 'O', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						'O', ' ', ' ', ' '};
 
 
 //T-Stück					
-char fig8[y][x] =	{' ', ' ', ' ', ' ',
+char fg8[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						'O', 'O', 'O', ' ',
 						' ', 'O', ' ', ' '};
 						
-char fig9[y][x] =	{' ', ' ', ' ', ' ',
+char fg9[y][x] =	{' ', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						'O', ' ', ' ', ' '};
 						
-char fig10[y][x] =	{' ', ' ', ' ', ' ',
+char fg10[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						' ', 'O', ' ', ' ',
 						'O', 'O', 'O', ' '};
 						
-char fig11[y][x] =	{' ', ' ', ' ', ' ',
+char fg11[y][x] =	{' ', ' ', ' ', ' ',
 						' ', 'O', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						' ', 'O', ' ', ' '};
 						
 						
 //L 1		
-char fig12[y][x] =	{' ', ' ', ' ', ' ',
+char fg12[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', 'O', 'O', ' '};
 						
-char fig13[y][x] =	{' ', ' ', ' ', ' ',
+char fg13[y][x] =	{' ', ' ', ' ', ' ',
 						' ', 'O', ' ', ' ',
 						' ', 'O', ' ', ' ',
 						'O', 'O', ' ', ' '};
 						
-char fig14[y][x] =	{' ', ' ', ' ', ' ',
+char fg14[y][x] =	{' ', ' ', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' '};
 						
-char fig15[y][x] =	{' ', ' ', ' ', ' ',
+char fg15[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						'O', 'O', 'O', ' ',
 						' ', ' ', 'O', ' '};
 						
 						
 //L 2					
-char fig16[y][x] =	{' ', ' ', ' ', ' ',
+char fg16[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						' ', ' ', 'O', ' ',
 						'O', 'O', 'O', ' '};
 						
-char fig17[y][x] =	{' ', ' ', ' ', ' ',
+char fg17[y][x] =	{' ', ' ', ' ', ' ',
 						'O', 'O', ' ', ' ',
 						' ', 'O', ' ', ' ',
 						' ', 'O', ' ', ' '};
 								
-char fig18[y][x] =	{' ', ' ', ' ', ' ',
+char fg18[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						'O', 'O', 'O', ' ',
 						'O', ' ', ' ', ' '};
 						
-char fig19[y][x] =	{' ', ' ', ' ', ' ',
+char fg19[y][x] =	{' ', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', 'O', ' ', ' '};
- 
+
+void init_figuren() {
+	build_figures(fig1, fg1, 153, 1);
+	build_figures(fig2, fg2, 153, 2);
+	build_figures(fig3, fg3, 238, 3);
+	build_figures(fig4, fg4, 204, 4);
+	build_figures(fig5, fg5, 204, 5);
+	build_figures(fig6, fg6, 204, 6);
+	build_figures(fig7, fg7, 204, 7);
+	build_figures(fig8, fg8, 221, 8);
+	build_figures(fig9, fg9, 221, 9);
+	build_figures(fig10, fg10, 221, 10);
+	build_figures(fig11, fg11, 221, 11);
+	build_figures(fig12, fg12, 170, 12);
+	build_figures(fig13, fg13, 170, 13);
+	build_figures(fig14, fg14, 170, 14);
+	build_figures(fig15, fg15, 170, 15);
+	build_figures(fig16, fg16, 170, 16);
+	build_figures(fig17, fg17, 170, 17);
+	build_figures(fig18, fg18, 170, 18);
+	build_figures(fig19, fg19, 170, 19);
+}
