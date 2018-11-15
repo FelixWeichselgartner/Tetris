@@ -25,6 +25,12 @@ int abs(int x){
 	else return -x;
 }
 
+void delay(int milli_seconds) {
+	clock_t start_time = clock();
+	while (clock() < start_time + milli_seconds)
+		;
+}
+
 void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
 		for(int k=0; k<ylength; k++){
@@ -39,10 +45,11 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			down();
+			/*
 			system("cls");
 			ausgabe(farbe_formen);
-			direction = input(&drehenrechts, &drehenlinks);
-			copyleftright(direction);
+			*/
+			input();
 		}
 		reiheloeschen();
 	}
@@ -68,48 +75,48 @@ void down(){
 	}
 }
 
-int input(int *drehenrechts, int *drehenlinks){
-	int flagleft, flagright, flagfast, flagdrehenlinks, flagdrehenrechts, moveleft = false, moveright = false;
-	int milli_seconds = 1000;
+void input(){
+	int flagleft = 0, flagright = 0, flagfast = 0, flagdrehenlinks = 0, flagdrehenrechts = 0;
+	int milli_seconds = 1000, drehenrechts = 0, drehenlinks = 0;
 	clock_t start_time = clock(); 
 
     while (clock() < start_time + milli_seconds) {
+		system("cls");
+		ausgabe(farbe_formen);
+
+		//delay nur damit das Spielfeld nicht zu oft aktualisiert wird
+		//schlecht für die Augen
+		delay(100);
+
 		flagleft = GetAsyncKeyState(VK_LEFT);
-		if (abs(flagleft) > 10000)
-			moveleft = true;
+		if (abs(flagleft) > 10000) {
+			copyleftright('l');
+			flagleft = 0;
+		}
 		flagright = GetAsyncKeyState(VK_RIGHT);
-		if (abs(flagright) > 10000)
-			moveright = true;
+		if (abs(flagright) > 10000) {
+			copyleftright('r');
+			flagright = 0;
+		}
 		flagfast = GetAsyncKeyState(VK_DOWN);
-		if (abs(flagfast) > 10000)
+		if (abs(flagfast) > 10000) {
 			break;
+		}
 		flagdrehenrechts = GetAsyncKeyState(0x41);
-		if (abs(flagdrehenrechts) > 10000)
-			*drehenrechts = true;
+		if (abs(flagdrehenrechts) > 10000) {
+			//rotate('r');
+			flagdrehenrechts = 0;
+		}
 		flagdrehenlinks = GetAsyncKeyState(0x44);
-		if (abs(flagdrehenlinks) > 10000)
-			*drehenlinks = true;
+		if (abs(flagdrehenlinks) > 10000) {
+			//rotate('l');
+			flagdrehenlinks = 0;
+		}
 	}
-
-	if (moveleft == true && moveright == true) {
-		moveleft = moveright = 0;
-		return 0;
-	}
-
-	if (*drehenrechts == true && *drehenlinks == true) {
-		*drehenrechts = *drehenlinks = false;
-	}
-
-	if (moveleft == true){
-		return 1;
-	}
-	if (moveright == true){
-		return 2;
-	}
-	return 0;
+	return;
 }
 
-void copyleftright(int direction){
+void copyleftright(char direction){
 	int leftboarder = false, rightboarder = false, leftfigur = false, rightfigur = false;
 
 	for(int i=0; i < ylength; i++){
@@ -139,8 +146,7 @@ void copyleftright(int direction){
 		}
 	}
 
-	//1=left, 2=right
-	if(direction == 1 && !leftboarder && !leftfigur){
+	if(direction == 'l' && !leftboarder && !leftfigur){
 		for(int i = 0; i < ylength; i++){
 			for(int k = 0; k < xlength; k++){
 				if (spielfeld[k][i] == 'O') {
@@ -150,7 +156,7 @@ void copyleftright(int direction){
 			}
 		}
 	}
-	if (direction == 2 && !rightboarder && !rightfigur) {
+	if (direction == 'r' && !rightboarder && !rightfigur) {
 		for (int i = 0; i < ylength; i++) {
 			for (int k = xlength; k >= 0; k--) {
 				if (spielfeld[k][i] == 'O') {
