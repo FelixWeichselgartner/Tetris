@@ -85,8 +85,8 @@ void input(){
 		ausgabe(farbe_formen);
 
 		//delay nur damit das Spielfeld nicht zu oft aktualisiert wird
-		//schlecht für die Augen
-		delay(100);
+		//schlecht fï¿½r die Augen
+		delay(50);
 
 		flagleft = GetAsyncKeyState(VK_LEFT);
 		if (abs(flagleft) > 10000) {
