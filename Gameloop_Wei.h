@@ -5,7 +5,7 @@
 #ifndef GAMELOOP_WEI_
 #define GAMELOOP_WEI_
 
-extern char spielfeld[10][26];
+extern struct spfd spielfeld[10][26];
 extern int punktestand;
 extern int farbe_formen;
 

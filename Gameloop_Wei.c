@@ -16,8 +16,13 @@
 #define xlength 10
 #define ylength 26
 
-int punktestand = 0, farbe_formen = 0;
-char spielfeld[xlength][ylength];
+int punktestand = 0;
+
+struct spfd {
+	char fgr; //figur
+	int clr; //color
+	int spawnnumber;
+}spielfeld[xlength][ylength];
 
 int abs(int x){
 	if (x >= 0)
@@ -34,7 +39,7 @@ void delay(int milli_seconds) {
 void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
 		for(int k=0; k<ylength; k++){
-			spielfeld[i][k] = ' ';
+			spielfeld[i][k].fgr = ' ';
 		}
 	}
 }
@@ -45,16 +50,12 @@ int gameloop(){
 		spawn();
 		while(collision() == false){
 			down();
-			/*
-			system("cls");
-			ausgabe(farbe_formen);
-			*/
 			input();
 		}
 		reiheloeschen();
 	}
 	system("cls");
-	ausgabe(farbe_formen);
+	ausgabe();
 	return true;
 }
 
@@ -62,15 +63,15 @@ void down(){
 	char tempfield[xlength][ylength];
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
-			tempfield[k][i] = spielfeld[k][i];
-			if (spielfeld[k][i] == 'O')
-				spielfeld[k][i] = ' ';
+			tempfield[k][i] = spielfeld.fgr[k][i];
+			if (spielfeld[k][i].fgr == 'O')
+				spielfeld[k][i].fgr = ' ';
 		}
 	}
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
-			if (tempfield[k][i] == 'O')
-				spielfeld[k][i+1] = 'O';
+			if (tempfield[k][i].fgr == 'O')
+				spielfeld[k][i+1].fgr = 'O';
 		}
 	}
 }
@@ -120,19 +121,19 @@ void copyleftright(char direction){
 	int leftboarder = false, rightboarder = false, leftfigur = false, rightfigur = false;
 
 	for(int i=0; i < ylength; i++){
-		if (spielfeld[0][i] == 'O'){
+		if (spielfeld[0][i].fgr == 'O'){
 			leftboarder = true;
 		}
 	}
 	for (int i = 0; i < ylength; i++) {
-		if (spielfeld[9][i] == 'O') {
+		if (spielfeld[9][i].fgr == 'O') {
 			rightboarder = true;
 		}
 	}
 	
 	for (int i = 0; i < ylength; i++) {
 		for (int k = 0; k < xlength; k++) {
-			if (spielfeld[k][i] == 'O' && spielfeld[k - 1][i] == 'X') {
+			if (spielfeld[k][i].fgr == 'O' && spielfeld[k - 1][i].fgr == 'X') {
 				leftfigur = true;
 			}
 		}
@@ -140,7 +141,7 @@ void copyleftright(char direction){
 
 	for (int i = 0; i < ylength; i++) {
 		for (int k = 0; k < xlength; k++) {
-			if (spielfeld[k][i] == 'O' && spielfeld[k + 1][i] == 'X') {
+			if (spielfeld[k][i].fgr == 'O' && spielfeld[k + 1][i].fgr == 'X') {
 				rightfigur = true;
 			}
 		}
@@ -149,9 +150,9 @@ void copyleftright(char direction){
 	if(direction == 'l' && !leftboarder && !leftfigur){
 		for(int i = 0; i < ylength; i++){
 			for(int k = 0; k < xlength; k++){
-				if (spielfeld[k][i] == 'O') {
-					spielfeld[k][i] = ' ';
-					spielfeld[k - 1][i] = 'O';
+				if (spielfeld[k][i].fgr == 'O') {
+					spielfeld[k][i].fgr = ' ';
+					spielfeld[k - 1][i].fgr = 'O';
 				}
 			}
 		}
@@ -159,9 +160,9 @@ void copyleftright(char direction){
 	if (direction == 'r' && !rightboarder && !rightfigur) {
 		for (int i = 0; i < ylength; i++) {
 			for (int k = xlength; k >= 0; k--) {
-				if (spielfeld[k][i] == 'O') {
-					spielfeld[k][i] = ' ';
-					spielfeld[k + 1][i] = 'O';
+				if (spielfeld[k][i].fgr == 'O') {
+					spielfeld[k][i].fgr = ' ';
+					spielfeld[k + 1][i].fgr = 'O';
 				}
 			}
 		}
@@ -170,7 +171,7 @@ void copyleftright(char direction){
 
 int verloren(){
 	for(int i=0; i<xlength; i++){
-		if (spielfeld[i][4] == 'X') {
+		if (spielfeld[i][4].fgr == 'X') {
 			return true;
 		}
 	}
