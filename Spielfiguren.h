@@ -1,6 +1,12 @@
 #ifndef SPIELFIGUREN_H_
 #define SPIELFIGUREN_H_
 
+struct f {
+	char fgr; //figur
+	int clr; //color
+	int spawnnumber;
+};
+
 extern struct f fig1[4][4];
 extern struct f fig2[4][4];
 extern struct f fig3[4][4];

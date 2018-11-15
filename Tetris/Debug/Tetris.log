@@ -1,6 +1,0 @@
-﻿  Gameloop_Wei.c
-u:\tetris\tetris\tetris\gameloop_wei.c(51): warning C4101: "drehenrechts": Unreferenzierte lokale Variable
-u:\tetris\tetris\tetris\gameloop_wei.c(51): warning C4101: "direction": Unreferenzierte lokale Variable
-u:\tetris\tetris\tetris\gameloop_wei.c(51): warning C4101: "drehenlinks": Unreferenzierte lokale Variable
-  Tetris.vcxproj -> U:\Tetris\Tetris\Tetris\Debug\Tetris.exe
-  Tetris.vcxproj -> U:\Tetris\Tetris\Tetris\Debug\Tetris.pdb (Full PDB)
