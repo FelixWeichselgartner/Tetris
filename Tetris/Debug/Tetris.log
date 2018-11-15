@@ -1,8 +1,10 @@
 ﻿  Gamefunctions_Zei.c
 c:\users\zeitl\documents\tetris\gamefunctions_zei.c(60): warning C4244: "Funktion": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
   Gameloop_Wei.c
+c:\users\zeitl\documents\tetris\gameloop_wei.c(43): warning C4101: "drehenrechts": Unreferenzierte lokale Variable
+c:\users\zeitl\documents\tetris\gameloop_wei.c(43): warning C4101: "direction": Unreferenzierte lokale Variable
+c:\users\zeitl\documents\tetris\gameloop_wei.c(43): warning C4101: "drehenlinks": Unreferenzierte lokale Variable
   Spielfeld_loh.c
-  Spielfiguren.c
   Tetris.c
   Code wird generiert...
 c:\users\zeitl\documents\tetris\gamefunctions_zei.c(53): warning C4716: "score": Muss einen Wert zurückgeben
