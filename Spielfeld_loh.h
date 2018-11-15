@@ -3,5 +3,7 @@
 
 void single_ausgabe();
 void ausgabe();
+void highscore_aufruf();
+void titel();
 
 #endif
