@@ -19,15 +19,27 @@ void spielfeld_ausgabe() {
 
 	char vertikaler_Randstein = 186;				//Hochteil									   
 
+	/*
 	for (int a = 4; a < ylength; a++) {				// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);
 		for (int b = 0; b < xlength; b++) {
 			SetConsoleTextAttribute(hStdOut, (spielfeld[b][a].clr));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
-			printf("%c", spielfeld[a][b]);
+			printf("%c", spielfeld[a][b].fgr);
 			SetConsoleTextAttribute(hStdOut, wOldColAttr);
 		}
 		printf("%c\n", vertikaler_Randstein);
 	}
+	*/
+	for (int a = 4; a < ylength; a++) {
+		printf("      %c", vertikaler_Randstein);
+		for (int b = 0; b < xlength; b++) {
+			SetConsoleTextAttribute(hStdOut, spielfeld[b][a].clr);
+			printf(" ");
+			SetConsoleTextAttribute(hStdOut, wOldColAttr);
+		}
+		printf("%c\n", vertikaler_Randstein);
+	}
+
 	SetConsoleTextAttribute(hStdOut, wOldColAttr);
 }
 

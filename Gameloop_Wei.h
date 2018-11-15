@@ -9,6 +9,8 @@ struct f {
 	char fgr; //figur
 	int clr; //color
 	int spawnnumber;
+	int turnl;
+	int turnr;
 };
 
 extern struct f spielfeld[10][26];
