@@ -9,6 +9,7 @@
 #include "Spielfeld_loh.h"
 #include "Spielfiguren.h"
 #include "Gameloop_Wei.h"
+#include "rotate_function.h"
 
 #define true 1
 #define false 0
@@ -105,12 +106,12 @@ void input(){
 		}
 		flagdrehenrechts = GetAsyncKeyState(0x41);
 		if (abs(flagdrehenrechts) > 10000) {
-			//rotate('r');
+			rotate('r');
 			flagdrehenrechts = 0;
 		}
 		flagdrehenlinks = GetAsyncKeyState(0x44);
 		if (abs(flagdrehenlinks) > 10000) {
-			//rotate('l');
+			rotate('l');
 			flagdrehenlinks = 0;
 		}
 	}
