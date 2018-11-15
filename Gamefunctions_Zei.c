@@ -19,12 +19,6 @@ char *gets(char *buffer);
 #define xlength 10
 #define ylength 26
 
-struct f {
-	char fgr; //figur
-	int clr; //color
-	int spawnnumber;
-};
-
 //Funktion zum Kopieren von arrays
 void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
 	for (int i = 0; i<4; i++) {

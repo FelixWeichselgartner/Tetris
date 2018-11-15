@@ -5,6 +5,8 @@
 #ifndef GAMEFUNCTIONS_ZEI_H
 #define GAMEFUNCTIONS_ZEI_H
 
+#include "Gameloop_Wei.h"
+
 //void figcpy(char *, char *); //Funktion zum Kopieren von arrays
 void figcpy(struct f ptr[4][4], struct f ptrf[4][4]);
 

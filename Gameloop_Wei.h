@@ -5,7 +5,14 @@
 #ifndef GAMELOOP_WEI_
 #define GAMELOOP_WEI_
 
+struct f {
+	char fgr; //figur
+	int clr; //color
+	int spawnnumber;
+};
+
 extern struct f spielfeld[10][26];
+
 extern int punktestand;
 
 void init_spielfeld();

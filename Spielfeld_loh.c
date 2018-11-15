@@ -5,12 +5,6 @@
 #define ylength 26
 #define xlength 10
 
-struct f {
-	char fgr; //figur
-	int clr; //color
-	int spawnnumber;
-};
-
 void spielfeld_ausgabe() {
 
 	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen

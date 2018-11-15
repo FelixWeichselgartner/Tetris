@@ -17,13 +17,7 @@
 #define ylength 26
 
 int punktestand = 0;
-
-struct f {
-	char fgr; //figur
-	int clr; //color
-	int spawnnumber;
-};
-struct f spielfeld[xlength][ylength];
+struct f spielfeld[10][26];
 
 int abs(int x){
 	if (x >= 0)

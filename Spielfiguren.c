@@ -1,15 +1,10 @@
 /*
 * Tetris in C - header by Matthias Lohberger
 */
+#include "Spielfiguren.h"
 
 #define y 4
 #define x 4
-
-struct f {
-	char fgr; //figur
-	int clr; //color
-	int spawnnumber;
-};
 
 struct f fig1[4][4];
 struct f fig2[4][4];

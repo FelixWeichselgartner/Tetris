@@ -1,11 +1,7 @@
 #ifndef SPIELFIGUREN_H_
 #define SPIELFIGUREN_H_
 
-struct f {
-	char fgr; //figur
-	int clr; //color
-	int spawnnumber;
-};
+#include "Gameloop_Wei.h"
 
 extern struct f fig1[4][4];
 extern struct f fig2[4][4];
@@ -28,6 +24,6 @@ extern struct f fig18[4][4];
 extern struct f fig19[4][4];
 
 void init_figuren();
-void build_figures(struct f **, char **, int, int);
+void build_figures(struct f fig[4][4], char fg[4][4], int color, int nr);
 
 #endif 
