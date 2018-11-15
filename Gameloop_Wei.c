@@ -22,7 +22,8 @@ struct f {
 	char fgr; //figur
 	int clr; //color
 	int spawnnumber;
-}spielfeld[xlength][ylength];
+};
+struct f spielfeld[xlength][ylength];
 
 int abs(int x){
 	if (x >= 0)
@@ -40,6 +41,8 @@ void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
 		for(int k=0; k<ylength; k++){
 			spielfeld[i][k].fgr = ' ';
+			spielfeld[i][k].clr = 0;
+			spielfeld[i][k].spawnnumber = 0;
 		}
 	}
 }
@@ -60,18 +63,21 @@ int gameloop(){
 }
 
 void down(){
-	char tempfield[xlength][ylength];
+	struct f tempfield[xlength][ylength];
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
-			tempfield[k][i] = spielfeld.fgr[k][i];
-			if (spielfeld[k][i].fgr == 'O')
+			tempfield[k][i] = spielfeld[k][i];
+			if (spielfeld[k][i].fgr == 'O') {
 				spielfeld[k][i].fgr = ' ';
+				spielfeld[k][i].clr = 0;
+				spielfeld[k][i].spawnnumber = 0;
+			}
 		}
 	}
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
 			if (tempfield[k][i].fgr == 'O')
-				spielfeld[k][i+1].fgr = 'O';
+				spielfeld[k][i+1] = tempfield[k][i]; //check if not working
 		}
 	}
 }
@@ -152,7 +158,9 @@ void copyleftright(char direction){
 			for(int k = 0; k < xlength; k++){
 				if (spielfeld[k][i].fgr == 'O') {
 					spielfeld[k][i].fgr = ' ';
-					spielfeld[k - 1][i].fgr = 'O';
+					spielfeld[k][i].clr = 0;
+					spielfeld[k][i].spawnnumber = 0;
+					spielfeld[k - 1][i] = spielfeld[k][i]; //check if not working
 				}
 			}
 		}
@@ -162,7 +170,9 @@ void copyleftright(char direction){
 			for (int k = xlength; k >= 0; k--) {
 				if (spielfeld[k][i].fgr == 'O') {
 					spielfeld[k][i].fgr = ' ';
-					spielfeld[k + 1][i].fgr = 'O';
+					spielfeld[k][i].clr = 0;
+					spielfeld[k][i].spawnnumber = 0;
+					spielfeld[k + 1][i] = spielfeld[k][i]; //check if not working
 				}
 			}
 		}
