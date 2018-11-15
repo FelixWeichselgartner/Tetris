@@ -1,5 +1,6 @@
-//Ausformulierung der Prototypen aus der Header Datei Zei.h
-//Von Marc Zeitler
+/*
+* Tetris in C - header by Marc Zeitler
+*/
 
 #define _CRT_SECURE_NO_DEPRECATE
 #define _CRT_NONSTDC_NO_DEPRECATE
@@ -18,6 +19,12 @@ char *gets(char *buffer);
 #define xlength 10
 #define ylength 26
 
+struct f {
+	char fgr; //figur
+	int clr; //color
+	int spawnnumber;
+};
+
 //Funktion zum Kopieren von arrays
 void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
 	for (int i = 0; i<4; i++) {
@@ -28,10 +35,10 @@ void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
 }
 
 void dwn(int i) {
-	spielfeld[0][i].fgr = spielfeld[1][i].fgr = spielfeld[2][i].fgr = spielfeld[3][i].fgr = spielfeld[4][i].fgr = spielfeld[5][i].fgr = spielfeld[6][i].fgr = spielfeld[7][i].fgr = spielfeld[8][i].fgr = spielfeld[9][i].fgr == ' ';
+	spielfeld[0][i].fgr = spielfeld[1][i].fgr = spielfeld[2][i].fgr = spielfeld[3][i].fgr = spielfeld[4][i].fgr = spielfeld[5][i].fgr = spielfeld[6][i].fgr = spielfeld[7][i].fgr = spielfeld[8][i].fgr = spielfeld[9][i].fgr = ' ';
 	for (; i >= 4; i--) {
 		for (int k = 0; k < xlength; k++) {
-			spielfeld[k][i].fgr = spielfeld[k][i - 1].fgr;
+			spielfeld[k][i] = spielfeld[k][i - 1];
 		}
 	}
 }

@@ -2,15 +2,23 @@
 
 #define x 4
 
+struct f {
+	char fgr; //figur
+	int clr; //color
+	int spawnnumber;
+};
+
 struct f fig1[x][x], fig2[x][x], fig3[x][x], fig4[x][x], fig5[x][x], fig6[x][x], fig7[x][x], fig8[x][x], fig9[x][x], fig10[x][x], fig11[x][x], fig12[x][x], fig13[x][x], fig14[x][x], fig15[x][x], fig16[x][x], fig17[x][x], fig18[x][x], fig19[x][x];
 
 
 //Stab					
-fig1.fgr = {'O', ' ', ' ', ' ',
+ struct f fig1[x][x].fgr = {'O', ' ', ' ', ' ',
 			'O', ' ', ' ', ' ',
 			'O', ' ', ' ', ' ',
 			'O', ' ', ' ', ' '};
-				
+
+fig1[3][3].clr = 5;
+
 fig2.fgr = {' ', ' ', ' ', ' ',
 			' ', ' ', ' ', ' ',
 			' ', ' ', ' ', ' ',

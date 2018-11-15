@@ -2,7 +2,7 @@
 #define SPIELFELD_LOH_
 
 void single_ausgabe();
-void ausgabe(int);
+void ausgabe();
 
 
 #endif

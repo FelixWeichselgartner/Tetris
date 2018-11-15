@@ -6,7 +6,7 @@
 #define GAMEFUNCTIONS_ZEI_H
 
 //void figcpy(char *, char *); //Funktion zum Kopieren von arrays
-void figcpy(char ptr[4][4], char ptrf[4][4]);
+void figcpy(struct f ptr[4][4], struct f ptrf[4][4]);
 
 void change(); //Funktion zur Umwandlung der Steine von beweglich in fest
 

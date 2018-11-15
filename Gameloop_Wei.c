@@ -89,7 +89,7 @@ void input(){
 
     while (clock() < start_time + milli_seconds) {
 		system("cls");
-		ausgabe(farbe_formen);
+		ausgabe();
 
 		//delay nur damit das Spielfeld nicht zu oft aktualisiert wird
 		//schlecht f�r die Augen

@@ -5,6 +5,12 @@
 #define ylength 26
 #define xlength 10
 
+struct f {
+	char fgr; //figur
+	int clr; //color
+	int spawnnumber;
+};
+
 void single_ausgabe() {
 	for (int i = 0; i < ylength; i++) {
 		for (int k = 0; k < xlength; k++) {
@@ -15,7 +21,7 @@ void single_ausgabe() {
 	printf("\n");
 }
 
-void ausgabe(int farbe_formen){
+void ausgabe(){
 	printf("\n\n         TETRIS\n\n");
 	
 	int a, b;								//Zählvariablen
