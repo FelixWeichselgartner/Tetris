@@ -11,17 +11,7 @@ struct f {
 	int spawnnumber;
 };
 
-void single_ausgabe() {
-	for (int i = 0; i < ylength; i++) {
-		for (int k = 0; k < xlength; k++) {
-			printf("%c", spielfeld[k][i].fgr);
-		}
-		printf("\n");
-	}
-	printf("\n");
-}
-
-void ausgabe(){
+ void ausgabe(){
 	printf("\n\n         TETRIS\n\n");
 	
 	int a, b;								//Zählvariablen
@@ -40,86 +30,69 @@ void ausgabe(){
 	 
 	 
 			
-	//Ausgabe über Spielfeld
-
+	//Ausgabe Elemente über Spielfeld (Next)
 	printf("   %c", Ecke_links_oben);
-	for (a = 1; a <= 16; a++) {				// Ausgabe oberer Rand next
-		printf("%c", horizontaler_Baustein);
+	for (a = 1; a <= 16; a++) {				 
+		printf("%c", horizontaler_Baustein);	// Oberster Rand (Rand von next)
 	}
 	printf("%c\n", Ecke_rechts_oben);
-	printf("   %c   Next:        %c\n", vertikaler_Randstein, vertikaler_Randstein);	//Next Teil
+
+
+	printf("   %c   Next:        %c\n", vertikaler_Randstein, vertikaler_Randstein);	//NEXT
 	for (a = 1; a <= 3; a++) {
-		printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein);
+		printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein); // Rahmen von Next  
 	}
 	 
-	printf("   %c%c%c%c", Ecke_links_unten, horizontaler_Baustein, horizontaler_Baustein, T_Verbinder_nach_unten);
-	for (a = 3; a <=c; a++) {				// Ausgabe oberer Rand Spielfeld    
+
+	printf("   %c%c%c%c", Ecke_links_unten, horizontaler_Baustein, horizontaler_Baustein, T_Verbinder_nach_unten);	// linker Teil der Linie zw Next und Spielfeld, 
+	for (a = 3; a <=c; a++) {					// Linie zw Next und Spielfeld											da Linie breiter als Spielfeld
 		printf("%c", horizontaler_Baustein);
 	}
-	printf("%c%c%c%c\n", T_Verbinder_nach_unten, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_unten);
+	printf("%c%c%c%c\n", T_Verbinder_nach_unten, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_unten);	// rechter Teil der Linie zw Next und Spielfeld 
 
-	//Ausgabe Spielfeld
-	
-	
-	 for (a = 4; a < ylength; a++) {			// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
-		printf("      %c", vertikaler_Randstein);				
-		for (b = 0; b < xlength; b++) {		
-			printf("%c", spielfeld[b][a].fgr);	
-		}									
-		printf("%c\n", vertikaler_Randstein);					
-	} 
-	
-	//Ausgabe_mit_Farbzuweisung(Kennziffer_Teilchen); //Kennziffer von Mark übergeben
+
+	//Ausgabe Spielfeld		 
+	spielfeld_ausgabe();									//SPIELFELD!!!
 	
 
-	//Ausgabe  unter eSpielfeld
-	printf("   %c%c%c", Ecke_links_oben, horizontaler_Baustein, horizontaler_Baustein);
+	//Ausgabe Elemente unter Spielfeld
+	printf("   %c%c%c", Ecke_links_oben, horizontaler_Baustein, horizontaler_Baustein); // linker Teil der Linie zw Score und Spielfeld, da Linie breiter als Spielfeld
 	printf("%c", T_Verbinder);
-	for (a = 3; a <= c; a++) {				 // Ausgabe unterer Rand Spielfeld
+	for (a = 3; a <= c; a++) {					// Ausgabe unterer Rand Spielfeld
 		printf("%c", horizontaler_Baustein);
 	}										 
-	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);		//Score Teil
-	printf("   %c  Score:        %c\n", vertikaler_Randstein, vertikaler_Randstein);
-	printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein);
-	printf("   %cHighscore:      %c\n", vertikaler_Randstein, vertikaler_Randstein);
-	printf("   %c", T_Verbinder_linke_Seite);						//unterer Rand Score Teil
-	for (a = 1; a <= 16; a++) {				// Ausgabe oberer Rand next
-		printf("%c", horizontaler_Baustein);
-	}
-	printf("%c\n", T_Verbinder_rechte_Seite);
-	printf("   %cName:           %c\n", vertikaler_Randstein, vertikaler_Randstein);	//Spielername
+	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);	// rechter Teil der Linie zw Score und Spielfeld	 
+
+
+	printf("   %c  Score: %5i%c\n", vertikaler_Randstein, punktestand, vertikaler_Randstein);				//SCORE mit Randsteinen  
+
+
 	printf("   %c", Ecke_links_unten);
-	for (a = 1; a <= 16; a++) {				// Ausgabe unterer Rand Name
+	for (a = 1; a <= 16; a++) {					// Ausgabe unterster Rand (unter aktuellem Score)
 		printf("%c", horizontaler_Baustein);
 	}
 	printf("%c\n", Ecke_rechts_unten); 
 }
 
-void farbige_Ausgabe(int color) {		//xlength und y length (nein, da global) sowie Farbwert für O's übergeben!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	CONSOLE_SCREEN_BUFFER_INFO Screen;	//Lokale Variablen
+void spielfeld_ausgabe() {
+
+	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
 	WORD wOldColAttr;
 	HANDLE hStdOut;
 
-	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);	//Anweisungen
+	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
 	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
 	wOldColAttr = Screen.wAttributes;
-	SetConsoleTitleA("Tetris");					//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
-	SetConsoleTextAttribute(hStdOut, wOldColAttr); //Farbauswahl ?ber Integerwerte
+	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
+	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
 
-	char vertikaler_Randstein = 186;		//Hochteil									   
-	int var;								 //spielfeldgröße 10 26!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-	for (int a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
+	char vertikaler_Randstein = 186;				//Hochteil									   
+	 								  
+	for (int a = 4; a < ylength; a++) {				// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);
-		for (int b = 0; b < xlength; b++) {
-
-			switch (spielfeld[b][a].fgr) {
-			case 'O': var = color; break;		//Variabel für jew Teilchen;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			case 'X': var = 136; break;			//feste Kästchen unten werden grau/ Wert 136
-			default: var = 0; break;
-			}
-			SetConsoleTextAttribute(hStdOut, (var));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
+		for (int b = 0; b < xlength; b++) { 
+			SetConsoleTextAttribute(hStdOut, (spielfeld[b][a].clr));				//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
 			printf("%c", spielfeld[a][b]);
 			SetConsoleTextAttribute(hStdOut, wOldColAttr);
 		}
