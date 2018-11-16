@@ -106,8 +106,3 @@ void spielfeld_ausgabe() {
 	}
 	printf("%c\n", Ecke_rechts_unten); 
 }
-
-/* int main() {
-	ausgabe();
-	getch();
-} */
