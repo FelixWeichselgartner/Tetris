@@ -18,7 +18,8 @@
 #define ylength 26
 
 int punktestand = 0;
-struct f spielfeld[10][26];
+struct f spielfeld[xlength][ylength];
+struct f empty;
 
 int abs(int x){
 	if (x >= 0)
@@ -35,14 +36,17 @@ void delay(int milli_seconds) {
 void init_spielfeld(){
 	for(int i=0; i<xlength; i++){
 		for(int k=0; k<ylength; k++){
-			spielfeld[i][k].fgr = ' ';
-			spielfeld[i][k].clr = 0;
-			spielfeld[i][k].spawnnumber = 0;
+			spielfeld[i][k] = empty;
 		}
 	}
 }
 
 int gameloop(){
+	empty.fgr = ' ';
+	empty.clr = 0;
+	empty.spawnnumber = 0;
+	empty.turnr = 0;
+	empty.turnl = 0;
 	int direction, drehenrechts, drehenlinks;
 	while(!verloren()){
 		spawn();
@@ -58,21 +62,20 @@ int gameloop(){
 }
 
 void down(){
+
 	struct f tempfield[xlength][ylength];
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
 			tempfield[k][i] = spielfeld[k][i];
 			if (spielfeld[k][i].fgr == 'O') {
-				spielfeld[k][i].fgr = ' ';
-				spielfeld[k][i].clr = 0;
-				spielfeld[k][i].spawnnumber = 0;
+				spielfeld[k][i] = empty;
 			}
 		}
 	}
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
 			if (tempfield[k][i].fgr == 'O')
-				spielfeld[k][i+1] = tempfield[k][i]; //check if not working
+				spielfeld[k][i+1] = tempfield[k][i];
 		}
 	}
 }
@@ -87,7 +90,6 @@ void input(){
 		ausgabe();
 
 		//delay nur damit das Spielfeld nicht zu oft aktualisiert wird
-		//schlecht f�r die Augen
 		delay(50);
 
 		flagleft = GetAsyncKeyState(VK_LEFT);
@@ -120,10 +122,13 @@ void input(){
 
 void copyleftright(char direction){
 	int leftboarder = false, rightboarder = false, leftfigur = false, rightfigur = false;
+
 	struct f temp;
 	temp.fgr = ' ';
 	temp.clr = 0;
 	temp.spawnnumber = 0;
+	temp.turnr = 0;
+	temp.turnl = 0;
 
 	for(int i=0; i < ylength; i++){
 		if (spielfeld[0][i].fgr == 'O'){
@@ -157,9 +162,7 @@ void copyleftright(char direction){
 			for(int k = 0; k < xlength; k++){
 				if (spielfeld[k][i].fgr == 'O') {
 					temp = spielfeld[k][i];
-					spielfeld[k][i].fgr = ' ';
-					spielfeld[k][i].clr = 0;
-					spielfeld[k][i].spawnnumber = 0;
+					spielfeld[k][i] = empty;
 					spielfeld[k - 1][i] = temp;
 					
 				}
@@ -171,9 +174,7 @@ void copyleftright(char direction){
 			for (int k = xlength; k >= 0; k--) {
 				if (spielfeld[k][i].fgr == 'O') {
 					temp = spielfeld[k][i];
-					spielfeld[k][i].fgr = ' ';
-					spielfeld[k][i].clr = 0;
-					spielfeld[k][i].spawnnumber = 0;
+					spielfeld[k][i] = empty;
 					spielfeld[k + 1][i] = temp;
 				}
 			}

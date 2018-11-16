@@ -1,6 +1,7 @@
-#include <stdio.h>
+ #include <stdio.h>
 #include "Gameloop_Wei.h"
 #include <Windows.h>
+#include<string.h>
 
 #define ylength 26
 #define xlength 10
@@ -44,10 +45,61 @@ void spielfeld_ausgabe() {
 }
 
 
- void ausgabe(){
-	printf("\n\n         TETRIS\n\n");
-	
-	int a, b;								//Zählvariablen
+void titel() {
+	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
+	WORD wOldColAttr;
+	HANDLE hStdOut;
+	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
+	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
+	wOldColAttr = Screen.wAttributes;
+	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
+	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
+
+	printf("\n\n         ");
+	SetConsoleTextAttribute(hStdOut, 9);		//farbiger Tetrisschriftzug
+	printf("T");
+	SetConsoleTextAttribute(hStdOut, 12);
+	printf("e");
+	SetConsoleTextAttribute(hStdOut, 14);
+	printf("t");
+	SetConsoleTextAttribute(hStdOut, 11);
+	printf("r");
+	SetConsoleTextAttribute(hStdOut, 13);
+	printf("i");
+	SetConsoleTextAttribute(hStdOut, 10);
+	printf("s");
+	SetConsoleTextAttribute(hStdOut, wOldColAttr);
+	printf("\n\n");
+
+}
+
+/*
+{void highscore_aufruf() {						//Highscoreausgabe
+	char c;
+	FILE *fptr;
+	int fehler;
+
+	fptr = fopen("Highscores.txt", "r");
+	if (fptr == NULL) {
+		printf("\nDie Datei konnte nicht geoeffnet werden!\n");
+		return;
+	}
+	while (!feof(fptr)) {
+		c = fgetc(fptr);
+		putchar(c);
+	}
+	fehler = fclose(fptr);
+	if (fehler != 0) {
+		printf("\nFehler %i beim Schließen der Datei!\n", fehler);
+		return;
+	}
+}
+
+*/
+
+void ausgabe() {
+	 
+	int a;									//Zählvariable
 	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
 				//Bausteine für die Umrandung
 	char vertikaler_Randstein = 186;		//vertikaler_Randstein
@@ -62,7 +114,10 @@ void spielfeld_ausgabe() {
 	char T_Verbinder_linke_Seite = 204;		//Verbinder linke Seite
 	 
 	 
+	//Ausgabe Schriftzug
+	titel();
 			
+
 	//Ausgabe Elemente über Spielfeld (Next)
 	printf("   %c", Ecke_links_oben);
 	for (a = 1; a <= 16; a++) {				 
@@ -106,8 +161,3 @@ void spielfeld_ausgabe() {
 	}
 	printf("%c\n", Ecke_rechts_unten); 
 }
-
-/* int main() {
-	ausgabe();
-	getch();
-} */

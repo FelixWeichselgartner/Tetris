@@ -29,8 +29,14 @@ void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
 }
 
 void dwn(int i) {
-	spielfeld[0][i].fgr = spielfeld[1][i].fgr = spielfeld[2][i].fgr = spielfeld[3][i].fgr = spielfeld[4][i].fgr = spielfeld[5][i].fgr = spielfeld[6][i].fgr = spielfeld[7][i].fgr = spielfeld[8][i].fgr = spielfeld[9][i].fgr = ' ';
-	for (; i >= 4; i--) {
+	struct f empty;
+	empty.fgr = ' ';
+	empty.clr = 0;
+	empty.spawnnumber = 0;
+	empty.turnr = 0;
+	empty.turnl = 0;
+	spielfeld[0][i] = spielfeld[1][i] = spielfeld[2][i] = spielfeld[3][i] = spielfeld[4][i] = spielfeld[5][i] = spielfeld[6][i] = spielfeld[7][i] = spielfeld[8][i] = spielfeld[9][i] = empty;
+	for (; i > 4; i--) {
 		for (int k = 0; k < xlength; k++) {
 			spielfeld[k][i] = spielfeld[k][i - 1];
 		}
@@ -99,7 +105,7 @@ void spawn(){
 //Kollisionsprüfung
 int collision(){
 	for (int a = 0; a < xlength; a++) { 
-		if(spielfeld[a][ylength-1].fgr =='O'){
+		if(spielfeld[a][ylength-1].fgr == 'O'){
 			change();
 			return true;
 		}
@@ -107,7 +113,7 @@ int collision(){
 	
 	for(int i=0; i<ylength; i++){
 		for(int j=0; j<xlength; j++){ 
-			if(spielfeld[j][i].fgr =='O'&&spielfeld[j][i+1].fgr =='X'){
+			if(spielfeld[j][i].fgr == 'O' && spielfeld[j][i+1].fgr == 'X'){
 				change();
 				return true;
 			}
