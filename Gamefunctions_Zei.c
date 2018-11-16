@@ -36,7 +36,7 @@ void dwn(int i) {
 	empty.turnr = 0;
 	empty.turnl = 0;
 	spielfeld[0][i] = spielfeld[1][i] = spielfeld[2][i] = spielfeld[3][i] = spielfeld[4][i] = spielfeld[5][i] = spielfeld[6][i] = spielfeld[7][i] = spielfeld[8][i] = spielfeld[9][i] = empty;
-	for (; i >= 4; i--) {
+	for (; i > 4; i--) {
 		for (int k = 0; k < xlength; k++) {
 			spielfeld[k][i] = spielfeld[k][i - 1];
 		}
