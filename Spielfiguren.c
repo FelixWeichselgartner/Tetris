@@ -178,7 +178,3 @@ void init_figuren() {
 	build_figures(fig18, fg18, 170, 18, 19, 17);
 	build_figures(fig19, fg19, 170, 19, 16, 18);
 }
-
-void init_turn() {
-
-}
