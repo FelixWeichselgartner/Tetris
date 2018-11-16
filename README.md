@@ -37,6 +37,9 @@ Aufteilung der Dateien und Funktionen:
 
 *************************************************
 
+compile command for gcc: gcc -o Tetris.exe Tetris.c Gameloop_Wei.c Gamefunctions_Zei.c Spielfeld_loh.c Spielfiguren.c rotate_function.c
+
+*************************************************
 Usage of Github:
 
 If you want to clone the repository:
@@ -63,6 +66,12 @@ git add filename.fileending
 git status
 git commit -am ""
 git push origin master
+```
+
+How to restore an old commit-state:
+```
+git reset --hard <commit-number>
+git push -f origin master
 ```
 
 *************************************************
