@@ -34,12 +34,14 @@ struct f fig19[4][4];
 //L-Stück		Farbe: grün/ Nummer: 170 
 
 
-void build_figures(struct f fig[x][x], char fg[x][x], int color, int nr) {
+void build_figures(struct f fig[x][x], char fg[x][x], int color, int nr, int l, int r) {
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < x; j++) {
 			fig[i][j].fgr = fg[i][j];
 			fig[i][j].clr = color;
 			fig[i][j].spawnnumber = nr;
+			fig[i][j].turnl = l;
+			fig[i][j].turnr = r;
 		}
 	}
 }
@@ -51,7 +53,8 @@ char fg1[y][x] =	{'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' ',
 						'O', ' ', ' ', ' '};
-						
+
+
 char fg2[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
@@ -155,23 +158,27 @@ char fg19[y][x] =	{' ', ' ', ' ', ' ',
 						'O', 'O', ' ', ' '};
 
 void init_figuren() {
-	build_figures(fig1, fg1, 153, 1);
-	build_figures(fig2, fg2, 153, 2);
-	build_figures(fig3, fg3, 238, 3);
-	build_figures(fig4, fg4, 204, 4);
-	build_figures(fig5, fg5, 204, 5);
-	build_figures(fig6, fg6, 204, 6);
-	build_figures(fig7, fg7, 204, 7);
-	build_figures(fig8, fg8, 221, 8);
-	build_figures(fig9, fg9, 221, 9);
-	build_figures(fig10, fg10, 221, 10);
-	build_figures(fig11, fg11, 221, 11);
-	build_figures(fig12, fg12, 170, 12);
-	build_figures(fig13, fg13, 170, 13);
-	build_figures(fig14, fg14, 170, 14);
-	build_figures(fig15, fg15, 170, 15);
-	build_figures(fig16, fg16, 170, 16);
-	build_figures(fig17, fg17, 170, 17);
-	build_figures(fig18, fg18, 170, 18);
-	build_figures(fig19, fg19, 170, 19);
+	build_figures(fig1, fg1, 153, 1, 2, 2);
+	build_figures(fig2, fg2, 153, 2, 1, 1);
+	build_figures(fig3, fg3, 238, 3, 3, 3);
+	build_figures(fig4, fg4, 204, 4, 5, 5);
+	build_figures(fig5, fg5, 204, 5, 4, 4);
+	build_figures(fig6, fg6, 204, 6, 7, 7);
+	build_figures(fig7, fg7, 204, 7, 6, 6);
+	build_figures(fig8, fg8, 221, 8, 9, 11);
+	build_figures(fig9, fg9, 221, 9, 10, 8);
+	build_figures(fig10, fg10, 221, 10, 11, 9);
+	build_figures(fig11, fg11, 221, 11, 8, 10);
+	build_figures(fig12, fg12, 170, 12, 13, 14);
+	build_figures(fig13, fg13, 170, 13, 15, 11);
+	build_figures(fig14, fg14, 170, 14, 12, 15);
+	build_figures(fig15, fg15, 170, 15, 14, 13);
+	build_figures(fig16, fg16, 170, 16, 17, 19);
+	build_figures(fig17, fg17, 170, 17, 18, 16);
+	build_figures(fig18, fg18, 170, 18, 19, 17);
+	build_figures(fig19, fg19, 170, 19, 16, 18);
+}
+
+void init_turn() {
+
 }
