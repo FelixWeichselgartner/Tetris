@@ -104,7 +104,7 @@ void input(){
 		if (abs(flagfast) > 10000) {
 			break;
 		}
-		flagdrehenrechts = GetAsyncKeyState(0x41);
+		flagdrehenrechts = GetAsyncKeyState(VK_SPACE);
 		if (abs(flagdrehenrechts) > 10000) {
 			rotate('r');
 			flagdrehenrechts = 0;

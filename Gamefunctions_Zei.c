@@ -59,8 +59,8 @@ void spawn(){
 	struct f figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	//x=rand()%23+1;
-	x = 3; //zum testen von reihelöschen
+	x=rand()%23+1;
+	//x = 3; //zum testen von reihelöschen
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){
 		case 1: figcpy(figur, fig1); break;

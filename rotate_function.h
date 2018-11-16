@@ -7,6 +7,6 @@
 
 
 void rotate(char);
-
+void spawnturn(int, int, int);
 
 #endif
