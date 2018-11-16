@@ -38,10 +38,18 @@ void build_figures(struct f fig[x][x], char fg[x][x], int color, int nr, int l, 
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < x; j++) {
 			fig[i][j].fgr = fg[i][j];
-			fig[i][j].clr = color;
-			fig[i][j].spawnnumber = nr;
-			fig[i][j].turnl = l;
-			fig[i][j].turnr = r;
+			if (fg[i][j] != ' ') {
+				fig[i][j].clr = color;
+				fig[i][j].spawnnumber = nr;
+				fig[i][j].turnl = l;
+				fig[i][j].turnr = r;
+			}
+			else {
+				fig[i][j].clr = 0;
+				fig[i][j].spawnnumber = 0;
+				fig[i][j].turnl = 0;
+				fig[i][j].turnr = 0;
+			}
 		}
 	}
 }
@@ -62,10 +70,10 @@ char fg2[y][x] =	{' ', ' ', ' ', ' ',
 						
 						
 //Viereck				
-char fg3[y][x] =	{'O', 'O', ' ', ' ',
-						'O', 'O', ' ', ' ',
+char fg3[y][x] =	{' ', ' ', ' ', ' ',
 						' ', ' ', ' ', ' ',
-						' ', ' ', ' ', ' '};
+						'O', 'O', ' ', ' ',
+						'O', 'O', ' ', ' '};
 						
 						
 //Blitz 1						
