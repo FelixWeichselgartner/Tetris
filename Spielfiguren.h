@@ -24,6 +24,6 @@ extern struct f fig18[4][4];
 extern struct f fig19[4][4];
 
 void init_figuren();
-void build_figures(struct f fig[4][4], char fg[4][4], int color, int nr);
+void build_figures(struct f fig[4][4], char fg[4][4], int color, int nr, int l, int r);
 
 #endif 
