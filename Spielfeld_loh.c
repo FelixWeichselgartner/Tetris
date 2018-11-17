@@ -1,7 +1,13 @@
- #include <stdio.h>
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+char *gets(char *buffer);
+
+#include <stdio.h>
 #include "Gameloop_Wei.h"
 #include <Windows.h>
 #include<string.h>
+
+
 
 #define ylength 26
 #define xlength 10
@@ -63,8 +69,8 @@ void titel() {
 
 }
 
-/*
-{void highscore_aufruf() {						//Highscoreausgabe
+
+void highscore_aufruf() {						//Highscoreausgabe
 	char c;
 	FILE *fptr;
 	int fehler;
@@ -85,7 +91,7 @@ void titel() {
 	}
 }
 
-*/
+
 
 void ausgabe() {
 	 
