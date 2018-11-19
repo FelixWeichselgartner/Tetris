@@ -65,7 +65,6 @@ int gameloop(){
 }
 
 void down(){
-
 	struct f tempfield[xlength][ylength];
 	for(int i=0; i < ylength; i++){
 		for(int k=0; k < xlength; k++){
@@ -91,7 +90,6 @@ void input(){
     while (clock() < start_time + milli_seconds) {
 		system("cls");
 		ausgabe();
-		//getchar();
 		//delay nur damit das Spielfeld nicht zu oft aktualisiert wird
 		delay(50);
 
@@ -125,7 +123,6 @@ void input(){
 
 void copyleftright(char direction){
 	int leftboarder = false, rightboarder = false, leftfigur = false, rightfigur = false;
-
 	struct f temp;
 	temp.fgr = ' ';
 	temp.clr = 0;
@@ -143,7 +140,6 @@ void copyleftright(char direction){
 			rightboarder = true;
 		}
 	}
-	
 	for (int i = 0; i < ylength; i++) {
 		for (int k = 0; k < xlength; k++) {
 			if (spielfeld[k][i].fgr == 'O' && spielfeld[k - 1][i].fgr == 'X') {
@@ -151,7 +147,6 @@ void copyleftright(char direction){
 			}
 		}
 	}
-
 	for (int i = 0; i < ylength; i++) {
 		for (int k = 0; k < xlength; k++) {
 			if (spielfeld[k][i].fgr == 'O' && spielfeld[k + 1][i].fgr == 'X') {
@@ -159,7 +154,6 @@ void copyleftright(char direction){
 			}
 		}
 	}
-
 	if(direction == 'l' && !leftboarder && !leftfigur){
 		for(int i = 0; i < ylength; i++){
 			for(int k = 0; k < xlength; k++){
