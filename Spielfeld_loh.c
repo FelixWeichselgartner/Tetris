@@ -136,27 +136,43 @@ void unterer_Teil() {
 
 
 void highscore_aufruf() {						//Highscoreausgabe
-	char c;
+	char c;												//Hilfsarray
+	int a = 0;											//Zählvariable
 	FILE *fptr;
 	int fehler;
 
+	printf("\nHighscoreliste:\n");
+	printf("\n");
+									//aus Datei lesen
 	fptr = fopen("Highscores.txt", "r");
 	if (fptr == NULL) {
 		printf("\nDie Datei konnte nicht geoeffnet werden!\n");
 		return;
 	}
-	while (!feof(fptr)) {
+	while (!feof(fptr)) {			//Ausgabe
 		c = fgetc(fptr);
-		if (c == ';')
-			;
-		else
-			putchar(c);
+		
+		if (c == ';' && a <= 7) {
+			printf("\t\t");			//für kleinere Namen
+		}
+		else if (c == ';' && a > 7) {
+			printf("\t");				//für größere Namen
+		}
+		else if (c == '\n') {
+			putchar(c);					//a zurücksetzten
+			a = 0;
+		}
+		else {
+			putchar(c);					//normale Ausgabe, a wird erhöht
+			a++;
+		}
 	}
 	fehler = fclose(fptr);
-	if (fehler != 0) {
+	if (fehler != 0) {					//Datei schließen
 		printf("\nFehler %i beim Schließen der Datei!\n", fehler);
 		return;
 	}
+	getch();
 }
 
 

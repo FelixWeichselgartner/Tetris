@@ -1,3 +1,7 @@
+/*
+* Tetris in C - header by Matthias Lohberger
+*/
+
 #ifndef SPIELFELD_LOH_
 #define SPIELFELD_LOH_
 
