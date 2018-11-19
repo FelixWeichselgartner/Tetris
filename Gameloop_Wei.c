@@ -88,7 +88,7 @@ void input(){
     while (clock() < start_time + milli_seconds) {
 		system("cls");
 		ausgabe();
-
+		//getchar();
 		//delay nur damit das Spielfeld nicht zu oft aktualisiert wird
 		delay(50);
 
@@ -106,12 +106,12 @@ void input(){
 		if (abs(flagfast) > 10000) {
 			break;
 		}
-		flagdrehenrechts = GetAsyncKeyState(VK_SPACE);
+		flagdrehenrechts = GetAsyncKeyState(0x44);
 		if (abs(flagdrehenrechts) > 10000) {
 			rotate('r');
 			flagdrehenrechts = 0;
 		}
-		flagdrehenlinks = GetAsyncKeyState(0x44);
+		flagdrehenlinks = GetAsyncKeyState(0x41);
 		if (abs(flagdrehenlinks) > 10000) {
 			rotate('l');
 			flagdrehenlinks = 0;

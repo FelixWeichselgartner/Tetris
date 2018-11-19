@@ -21,9 +21,10 @@ char *gets(char *buffer);
 
 //Funktion zum Kopieren von arrays
 void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
-	for (int i = 0; i<4; i++) {
-		for (int j = 0; j<4; j++) {
-			ptr[i][j] = ptrf[i][j];
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			ptr[i][j] = ptrf[j][i];
+			//weil andersrum
 		}
 	}
 }
@@ -65,7 +66,8 @@ void spawn(){
 	struct f figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	x=rand()%23+1;
+	x = 7;
+	//x=rand()%23+1;
 	//x = 3; //zum testen von reihelöschen
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){
@@ -95,7 +97,8 @@ void spawn(){
 		case 24: figcpy(figur, fig2); break;
 	}
 	//Kopieren des Figur-Arrays in den Spawn-Array
-	for(int i=0; i<4; i++){
+	
+	for(int i=0; i < 4; i++){
 		for(int j=0; j<4; j++){
 			spielfeld[i+3][j] = figur[i][j];
 		}

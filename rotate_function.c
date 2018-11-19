@@ -21,8 +21,8 @@
 #define xlength 10
 #define ylength 26
 
-void rotate_f(char rotation) {
-	int spawnn = -1;
+void rotate(char rotation) {
+	int spawnn = 1000;
 	//first it shall be checked in how much rows and columns 'O' are
 	//here the rows
 	int rows = 0;
@@ -31,8 +31,13 @@ void rotate_f(char rotation) {
 		flag = 0;
 		for(int i = 0; i < xlength; i++) {
 			if (spielfeld[i][k].fgr == 'O') {
-				if (spawnn == -1) {
-					spawnn = spielfeld[i][k].spawnnumber;
+				//löschen der alten figur
+				if (spawnn == 1000) {
+					spawnn = spielfeld[i][k].turnr;
+					/*
+					printf("turnr = %i", spielfeld[i][k].turnr);
+					getchar();
+					*/
 				}
 				rows++;
 				flag = 1;
@@ -56,81 +61,101 @@ void rotate_f(char rotation) {
 			break;
 		}
 	}
-	//printf("columns = %i, rows = %i", columns, rows);
-	//next the 'O' are copied in a malloc array with the size of columns, rows
-	
-	struct f spass[4][4];
-	/*
-	struct f **spass;
-	if (( spass = malloc(columns * sizeof(struct f *))) == NULL ) {
+
+	if (spawnn == 3) {
 		return;
 	}
-	for (int i = 0; i < columns; i++ ) {
-		if (( spass[i] = malloc( rows * sizeof(struct f) )) == NULL ) {
-			return;
-		}
-	}
-	*/
 
 	/*
-	 * access matrix elements: c[i] give you a pointer
-	 * to the row array, c[i][j] indexes an element
-	 * initialise all elements with empty
+	printf("columns = %i, rows = %i", columns, rows);
+	getchar();
 	*/
+	
+	int fall = 0;
 
-
+	//platzhalter[columns][rows]
+	struct f platzhalter14[1][4];
+	struct f platzhalter41[4][1];
+	struct f platzhalter22[2][2];
+	struct f platzhalter23[2][3];
+	struct f platzhalter32[3][2];
+	if (columns == 1 && rows == 4) {
+		fall = 14;
+	}
+	if (columns == 4 && rows == 1) {
+		fall = 41;
+	}
+	if (columns == 2 && rows == 2) {
+		fall = 22;
+	}
+	if (columns == 2 && rows == 3) {
+		fall = 23;
+	}
+	if (columns == 3 && rows == 2) {
+		fall = 32;
+	}
+	
 	struct f empty;
 	empty.fgr = ' ';
 	empty.clr = 0;
 	empty.spawnnumber = 0;
 	empty.turnr = 0;
 	empty.turnl = 0;
-	for(int i = 0; i < columns; i++)
-		for(int k = 0; k < rows; k++)
-			spass[i][k] = empty;
 
-	for(int i = 0; i < columns; i++) {
-		for(int k = 0; k < rows; k++) {
-			printf("%c", (**spass).fgr);
+	for (int i = 0; i < columns; i++) {
+		for (int k = 0; k < rows; k++) {
+			switch (fall) {
+			case 14: platzhalter14[i][k] = empty; break;
+			case 41: platzhalter41[i][k] = empty; break;
+			case 22: platzhalter22[i][k] = empty; break;
+			case 23: platzhalter23[i][k] = empty; break;
+			case 32: platzhalter32[i][k] = empty; break;
+			}
 		}
-		printf("\n");
 	}
-
-	for(int i = 0; i < columns; i++) {
-		for(int k = 3; k >= 0 /*3 - rows*/ ; k--){
+	//hier rows und columns vertauscht, da zielfigur nicht ausgangsfigur
+	for (int i = 0; i < rows; i++) {
+		for (int k = 3; k > 3-columns; k--) {
 			switch (spawnn) {
-				case 1: spass[i][k] = fig1[i][k]; break;
-				case 2: spass[i][k] = fig2[i][k]; break;
-				case 3: spass[i][k] = fig3[i][k]; break;
-				case 4: spass[i][k] = fig4[i][k]; break;
-				case 5: spass[i][k] = fig5[i][k]; break;
-				case 6: spass[i][k] = fig6[i][k]; break;
-				case 7: spass[i][k] = fig7[i][k]; break;
-				case 8: spass[i][k] = fig8[i][k]; break;
-				case 9: spass[i][k] = fig9[i][k]; break;
-				case 10: spass[i][k] = fig10[i][k]; break;
-				case 11: spass[i][k] = fig11[i][k]; break;
-				case 12: spass[i][k] = fig12[i][k]; break;
-				case 13: spass[i][k] = fig13[i][k]; break;
-				case 14: spass[i][k] = fig14[i][k]; break;
-				case 15: spass[i][k] = fig15[i][k]; break;
-				case 16: spass[i][k] = fig16[i][k]; break;
-				case 17: spass[i][k] = fig17[i][k]; break;
-				case 18: spass[i][k] = fig18[i][k]; break;
-				case 19: spass[i][k] = fig19[i][k]; break;
+			case 1: platzhalter14[i][k] = fig1[i][k]; break;
+			case 2: platzhalter41[i][k] = fig2[i][k]; break;
+			case 3: break;
+			case 4: platzhalter32[i][k] = fig4[i][k]; break;
+			case 5: platzhalter23[i][k] = fig5[i][k]; break;
+			case 6: platzhalter32[i][k] = fig6[i][k]; break;
+			case 7: platzhalter23[i][k] = fig7[i][k]; break;
+			case 8: platzhalter32[i][k] = fig8[i][k]; break;
+			case 9: platzhalter23[i][k] = fig9[i][k]; break;
+			case 10: platzhalter32[i][k] = fig10[i][k]; break;
+			case 11: platzhalter23[i][k] = fig11[i][k]; break;
+			case 12: platzhalter32[i][k] = fig12[i][k]; break;
+			case 13: platzhalter23[i][k] = fig13[i][k]; break;
+			case 14: platzhalter23[i][k] = fig14[i][k]; break;
+			case 15: platzhalter32[i][k] = fig15[i][k]; break;
+			case 16: platzhalter32[i][k] = fig16[i][k]; break;
+			case 17: platzhalter23[i][k] = fig17[i][k]; break;
+			case 18: platzhalter32[i][k] = fig18[i][k]; break;
+			case 19: platzhalter23[i][k] = fig19[i][k]; break;
 			}
 		}
 	}
 
-	for(int i = 0; i < columns; i++) {
-		for(int k = 0; k < rows; k++) {
-			printf("%c", spass[i][k].fgr);
+	printf("spawnn = %i\n", spawnn);
+	for (int i = 0; i < columns; i++) {
+		for (int k = 0; k < rows; k++) {
+			switch (fall) {
+			case 14: printf("%c", platzhalter14[i][k].fgr); break;
+			case 41: printf("%c", platzhalter41[i][k].fgr); break;
+			case 22: printf("%c", platzhalter22[i][k].fgr); break;
+			case 23: printf("%c", platzhalter23[i][k].fgr); break;
+			case 32: printf("%c", platzhalter32[i][k].fgr); break;
+			}
 		}
-		printf("\n");
 	}
+	getchar();
 }
 
-void rotate(char rotation) {
+void rotate_f(char rotation) {
 	int xturn, yturn; //Speicherung der Position der Figur
 	int v; //Speicherung der Nummer der zu rotierenden figur
 	if (rotation == 'r') {

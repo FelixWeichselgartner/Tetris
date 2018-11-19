@@ -179,12 +179,10 @@ void init_figuren() {
 	build_figures(fig11, fg11, 221, 11, 8, 10);
 	build_figures(fig12, fg12, 170, 12, 13, 14);
 	build_figures(fig13, fg13, 170, 13, 15, 12);
-	build_figures(fig13, fg13, 170, 13, 15, 11);
 	build_figures(fig14, fg14, 170, 14, 12, 15);
 	build_figures(fig15, fg15, 170, 15, 14, 13);
 	build_figures(fig16, fg16, 170, 16, 17, 19);
 	build_figures(fig17, fg17, 170, 17, 18, 16);
 	build_figures(fig18, fg18, 170, 18, 19, 17);
-	build_figures(fig19, fg19, 170, 19, 18, 16);
 	build_figures(fig19, fg19, 170, 19, 16, 18);
 }
