@@ -1,3 +1,7 @@
+/*
+* Tetris in C - header by Matthias Lohberger
+*/
+
 #define _CRT_SECURE_NO_DEPRECATE
 #define _CRT_NONSTDC_NO_DEPRECATE
 char *gets(char *buffer);
@@ -7,10 +11,21 @@ char *gets(char *buffer);
 #include <Windows.h>
 #include <string.h>
 
-
-
-#define ylength 26
 #define xlength 10
+#define ylength 26
+
+//Bausteine für die Umrandung
+char vertikaler_Randstein = 186;		//vertikaler_Randstein
+char Ecke_rechts_oben = 187;			//Eckteil rechts oben
+char Ecke_rechts_unten = 188;			//Eckteil rechts unten
+char Ecke_links_unten = 200;			//Eckteil links unten
+char Ecke_links_oben = 201;				//Eckteil links oben
+char T_Verbinder = 202;					//_|_ Verbinder
+char T_Verbinder_nach_unten = 203;		//anderer Verbinder
+char horizontaler_Baustein = 205;		//Querteil
+char T_Verbinder_rechte_Seite = 185;	//Verbinder rechte Seite
+char T_Verbinder_linke_Seite = 204;		//Verbinder linke Seite
+ 
 
 void spielfeld_ausgabe() {
 
@@ -23,8 +38,7 @@ void spielfeld_ausgabe() {
 	wOldColAttr = Screen.wAttributes;
 	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
 	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
-
-	char vertikaler_Randstein = 186;				//Hochteil									   
+								   
 
 	for (int a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);
@@ -50,7 +64,7 @@ void titel() {
 	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
 	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
 
-	printf("\n\n         ");
+	//printf("\n\n         ");
 	SetConsoleTextAttribute(hStdOut, 9);		//farbiger Tetrisschriftzug
 	printf("T");
 	SetConsoleTextAttribute(hStdOut, 12);
@@ -64,8 +78,60 @@ void titel() {
 	SetConsoleTextAttribute(hStdOut, 10);
 	printf("s");
 	SetConsoleTextAttribute(hStdOut, wOldColAttr);
-	printf("\n\n");
+	//printf("\n\n");
 
+}
+
+
+void oberer_Teil() {
+	int a;
+	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
+	
+	printf("   %c", Ecke_links_oben);
+	for (a = 1; a <= 16; a++) {
+		printf("%c", horizontaler_Baustein);	// Oberster Rand (Rand von Titel)
+	}
+	printf("%c\n", Ecke_rechts_oben);
+
+	printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein); // Rahmen von Titel
+
+	printf("   %c     ", vertikaler_Randstein, vertikaler_Randstein);	//TITEL
+	titel();
+	printf("     %c\n", vertikaler_Randstein, vertikaler_Randstein);		//TITEL
+
+	for (a = 1; a <= 2; a++) {
+		printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein); // Rahmen von Titel  
+	}
+
+
+	printf("   %c%c%c%c", Ecke_links_unten, horizontaler_Baustein, horizontaler_Baustein, T_Verbinder_nach_unten);	// linker Teil der Linie zw Titel und Spielfeld, 
+	for (a = 3; a <= c; a++) {					// Linie zw Next und Spielfeld											da Linie breiter als Spielfeld
+		printf("%c", horizontaler_Baustein);
+	}
+	printf("%c%c%c%c\n", T_Verbinder_nach_unten, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_unten);	// rechter Teil der Linie zw Titel und Spielfeld 
+}
+
+
+void unterer_Teil() {
+	int a;
+	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
+
+	printf("   %c%c%c", Ecke_links_oben, horizontaler_Baustein, horizontaler_Baustein); // linker Teil der Linie zw Score und Spielfeld, da Linie breiter als Spielfeld
+	printf("%c", T_Verbinder);
+	for (a = 3; a <= c; a++) {					// Ausgabe unterer Rand Spielfeld
+		printf("%c", horizontaler_Baustein);
+	}
+	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);	// rechter Teil der Linie zw Score und Spielfeld	 
+
+
+	printf("   %c  Score: %7i%c\n", vertikaler_Randstein, punktestand, vertikaler_Randstein);				//SCORE mit Randsteinen  
+
+
+	printf("   %c", Ecke_links_unten);
+	for (a = 1; a <= 16; a++) {					// Ausgabe unterster Rand (unter aktuellem Score)
+		printf("%c", horizontaler_Baustein);
+	}
+	printf("%c\n", Ecke_rechts_unten);
 }
 
 
@@ -99,63 +165,17 @@ void ausgabe() {
 	 
 	int a;									//Zählvariable
 	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
-				//Bausteine für die Umrandung
-	char vertikaler_Randstein = 186;		//vertikaler_Randstein
-	char Ecke_rechts_oben = 187;			//Eckteil rechts oben
-	char Ecke_rechts_unten = 188;			//Eckteil rechts unten
-	char Ecke_links_unten = 200;			//Eckteil links unten
-	char Ecke_links_oben = 201;				//Eckteil links oben
-	char T_Verbinder = 202;					//_|_ Verbinder
-	char T_Verbinder_nach_unten = 203;		//anderer Verbinder
-	char horizontaler_Baustein = 205;		//Querteil
-	char T_Verbinder_rechte_Seite = 185;	//Verbinder rechte Seite
-	char T_Verbinder_linke_Seite = 204;		//Verbinder linke Seite
+		 
+	printf("\n\n");
 	 
-	 
-	//Ausgabe Schriftzug
-	titel();
-			
-
-	//Ausgabe Elemente über Spielfeld (Next)
-	printf("   %c", Ecke_links_oben);
-	for (a = 1; a <= 16; a++) {				 
-		printf("%c", horizontaler_Baustein);	// Oberster Rand (Rand von next)
-	}
-	printf("%c\n", Ecke_rechts_oben);
-
-
-	printf("   %c   Next:        %c\n", vertikaler_Randstein, vertikaler_Randstein);	//NEXT
-	for (a = 1; a <= 3; a++) {
-		printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein); // Rahmen von Next  
-	}
-	 
-
-	printf("   %c%c%c%c", Ecke_links_unten, horizontaler_Baustein, horizontaler_Baustein, T_Verbinder_nach_unten);	// linker Teil der Linie zw Next und Spielfeld, 
-	for (a = 3; a <=c; a++) {					// Linie zw Next und Spielfeld											da Linie breiter als Spielfeld
-		printf("%c", horizontaler_Baustein);
-	}
-	printf("%c%c%c%c\n", T_Verbinder_nach_unten, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_unten);	// rechter Teil der Linie zw Next und Spielfeld 
-
+	//Ausgabe Elemente über Spielfeld (Next) 
+	oberer_Teil(); 
 
 	//Ausgabe Spielfeld		 
 	spielfeld_ausgabe();									//SPIELFELD!!!
 	
-
 	//Ausgabe Elemente unter Spielfeld
-	printf("   %c%c%c", Ecke_links_oben, horizontaler_Baustein, horizontaler_Baustein); // linker Teil der Linie zw Score und Spielfeld, da Linie breiter als Spielfeld
-	printf("%c", T_Verbinder);
-	for (a = 3; a <= c; a++) {					// Ausgabe unterer Rand Spielfeld
-		printf("%c", horizontaler_Baustein);
-	}										 
-	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);	// rechter Teil der Linie zw Score und Spielfeld	 
-
-
-	printf("   %c  Score: %7i%c\n", vertikaler_Randstein, punktestand, vertikaler_Randstein);				//SCORE mit Randsteinen  
-
-
-	printf("   %c", Ecke_links_unten);
-	for (a = 1; a <= 16; a++) {					// Ausgabe unterster Rand (unter aktuellem Score)
-		printf("%c", horizontaler_Baustein);
-	}
-	printf("%c\n", Ecke_rechts_unten); 
+	unterer_Teil();
 }
+
+ 
