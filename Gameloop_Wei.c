@@ -42,6 +42,7 @@ void init_spielfeld(){
 }
 
 int gameloop(){
+	int flag_spawn = 1;
 	empty.fgr = ' ';
 	empty.clr = 0;
 	empty.spawnnumber = 0;
@@ -50,9 +51,11 @@ int gameloop(){
 	int direction, drehenrechts, drehenlinks;
 	while(!verloren()){
 		spawn();
+		flag_spawn = 1;
 		while(collision() == false){
+			if (flag_spawn != 0)
+				down();
 			input();
-			down();
 		}
 		reiheloeschen();
 	}
