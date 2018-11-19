@@ -23,7 +23,7 @@ char *gets(char *buffer);
 void figcpy(struct f ptr[4][4], struct f ptrf[4][4]) {
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			ptr[i][j] = ptrf[j][i];
+			ptr[i][j] = ptrf[i][j];
 			//weil andersrum
 		}
 	}
@@ -66,8 +66,9 @@ void spawn(){
 	struct f figur[4][4];
 	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
 	srand(time(0));
-	x = 7;
-	//x=rand()%23+1;
+	//x = 7;
+	//x = 2;
+	x=rand()%23+1;
 	//x = 3; //zum testen von reihelöschen
 	//Kopieren der Zufallsfigur in den Figur Array
 	switch(x){

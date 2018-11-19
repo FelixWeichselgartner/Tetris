@@ -21,8 +21,58 @@
 #define xlength 10
 #define ylength 26
 
+//Funktion zum Kopieren von arrays
+void drecksfunktion(struct f ptr[4][4], int rows, int columns, int x_start, int y_start) {
+	int collision, boarder;
+	for (int i = 3; i >= 4 - columns; i--) {
+		for (int j = 0; j < rows; j++) {
+			if (ptr[j][i].fgr != ' ') {
+				if (spielfeld[j + x_start][i + y_start].fgr == 'X') {
+					collision = 1;
+				}
+			}
+		}
+	}
+	if (collision == 1) {
+		return;
+	}
+
+	for (int i = 3; i >= 4 - columns; i--) {
+		for (int j = 0; j < rows; j++) {
+			//größer als 10
+			//größer als 26
+		}
+	}
+
+	for (int i = 3; i >= 4-columns; i--) {
+		for (int j = 0; j < rows; j++) {
+			if (ptr[j][i].fgr == 'O') {
+				spielfeld[j+x_start][i+y_start] = ptr[j][i];
+			//weil andersrum
+			}
+		}
+	}
+	/*
+	ausgabe();
+	putchar('\n');
+	for (int i = 0; i < 4; i++) {
+		for (int k = 0; k < 4; k++) {
+			putchar(ptr[k][i].fgr);
+		}
+		putchar('\n');
+	}
+	getchar();
+	*/
+}
+
 void rotate(char rotation) {
-	int spawnn = 1000;
+	int x_start = -1, y_start = -1, spawnn = -1;
+	struct f empty;
+	empty.fgr = ' ';
+	empty.clr = 0;
+	empty.spawnnumber = 0;
+	empty.turnr = 0;
+	empty.turnl = 0;
 	//first it shall be checked in how much rows and columns 'O' are
 	//here the rows
 	int rows = 0;
@@ -31,13 +81,18 @@ void rotate(char rotation) {
 		flag = 0;
 		for(int i = 0; i < xlength; i++) {
 			if (spielfeld[i][k].fgr == 'O') {
-				//löschen der alten figur
-				if (spawnn == 1000) {
+				if (spawnn == -1) {
 					spawnn = spielfeld[i][k].turnr;
 					/*
 					printf("turnr = %i", spielfeld[i][k].turnr);
 					getchar();
 					*/
+				}
+				if (x_start == -1) {
+					x_start = i;
+				}
+				if (y_start == -1) {
+					y_start = k;
 				}
 				rows++;
 				flag = 1;
@@ -65,12 +120,42 @@ void rotate(char rotation) {
 	if (spawnn == 3) {
 		return;
 	}
-
 	/*
 	printf("columns = %i, rows = %i", columns, rows);
 	getchar();
 	*/
+
+	for (int i = 0; i<xlength; i++) {
+		for (int j = 0; j<ylength; j++) {
+			if (spielfeld[i][j].fgr == 'O') {
+				spielfeld[i][j] = empty;
+			}
+		}
+	}
+
+	switch (spawnn) {
+	case 1: drecksfunktion(fig1, rows, columns, x_start, y_start); break;
+	case 2: drecksfunktion(fig2, rows, columns, x_start, y_start); break;
+	case 3: break;
+	case 4: drecksfunktion(fig4, rows, columns, x_start, y_start); break;
+	case 5: drecksfunktion(fig5, rows, columns, x_start, y_start); break;
+	case 6: drecksfunktion(fig6, rows, columns, x_start, y_start); break;
+	case 7: drecksfunktion(fig7, rows, columns, x_start, y_start); break;
+	case 8: drecksfunktion(fig8, rows, columns, x_start, y_start); break;
+	case 9: drecksfunktion(fig9, rows, columns, x_start, y_start); break;
+	case 10: drecksfunktion(fig10, rows, columns, x_start, y_start); break;
+	case 11: drecksfunktion(fig11, rows, columns, x_start, y_start); break;
+	case 12: drecksfunktion(fig12, rows, columns, x_start, y_start); break;
+	case 13: drecksfunktion(fig13, rows, columns, x_start, y_start); break;
+	case 14: drecksfunktion(fig14, rows, columns, x_start, y_start); break;
+	case 15: drecksfunktion(fig15, rows, columns, x_start, y_start); break;
+	case 16: drecksfunktion(fig16, rows, columns, x_start, y_start); break;
+	case 17: drecksfunktion(fig17, rows, columns, x_start, y_start); break;
+	case 18: drecksfunktion(fig18, rows, columns, x_start, y_start); break;
+	case 19: drecksfunktion(fig19, rows, columns, x_start, y_start); break;
+	}
 	
+	/*
 	int fall = 0;
 
 	//platzhalter[columns][rows]
@@ -94,13 +179,6 @@ void rotate(char rotation) {
 	if (columns == 3 && rows == 2) {
 		fall = 32;
 	}
-	
-	struct f empty;
-	empty.fgr = ' ';
-	empty.clr = 0;
-	empty.spawnnumber = 0;
-	empty.turnr = 0;
-	empty.turnl = 0;
 
 	for (int i = 0; i < columns; i++) {
 		for (int k = 0; k < rows; k++) {
@@ -115,8 +193,8 @@ void rotate(char rotation) {
 	}
 	//hier rows und columns vertauscht, da zielfigur nicht ausgangsfigur
 	//funktioniert nicht -> ist nach dem kopieren immernoch leer
-	for (int i = 0; i < rows; i++) {
-		for (int k = 3; k > 3-columns; k--) {
+	for (int k = 3; k > 3 - columns; k--) {
+		for (int i = 0; i < rows; i++) {
 			switch (spawnn) {
 			case 1: platzhalter14[i][k] = fig1[i][k]; break;
 			case 2: platzhalter41[i][k] = fig2[i][k]; break;
@@ -141,12 +219,17 @@ void rotate(char rotation) {
 		}
 	}
 	
-	for (int k = 3; k > columns - 1; k--) {
+	for (int k = 3; k > 3 - columns; k--) {
 		for (int i = 0; i < rows; i++) {
-			if (fig6[i][k].fgr == ' ')
-				putchar('L');
-			else
-				putchar(fig6[i][k].fgr);
+			putchar(fig6[i][k].fgr);
+		}
+		putchar('\n');
+	}
+	getchar();
+	for (int k = 4-columns; k <= 3; k++) {
+		for (int i = 0; i < rows; i++) {
+			putchar(platzhalter32[i][k].fgr);
+
 		}
 		putchar('\n');
 	}
@@ -165,6 +248,7 @@ void rotate(char rotation) {
 		}
 	}
 	getchar();
+	*/
 }
 
 void rotate_f(char rotation) {

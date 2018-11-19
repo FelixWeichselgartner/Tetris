@@ -37,8 +37,8 @@ struct f fig19[4][4];
 void build_figures(struct f fig[x][x], char fg[x][x], int color, int nr, int l, int r) {
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < x; j++) {
-			fig[i][j].fgr = fg[i][j];
-			if (fg[i][j] != ' ') {
+			fig[i][j].fgr = fg[j][i];
+			if (fg[j][i] != ' ') {
 				fig[i][j].clr = color;
 				fig[i][j].spawnnumber = nr;
 				fig[i][j].turnl = l;
