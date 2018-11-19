@@ -160,7 +160,7 @@ void rotate(char rotation) {
 		for (int i = 0; i<ylength; i++) {
 			for (int j = 0; j<xlength; j++) {
 				if (spielfeld[j][i].fgr == 'O') {
-					spielfeld[j][i].fgr == ' ';
+					spielfeld[j][i].fgr = ' ';
 				}
 				spawnturn(v, j, i);
 			}
@@ -198,7 +198,7 @@ void spawnturn(int v, int j, int i) {
 	case 24: figcpy(figur, fig2); break;
 	}
 	printf("%i", v);
-	getch();
+	//getch();
 	//Kopieren des Figur-Arrays an die position des alten teils
 	for (int a=i; a<i+4; a++) {
 		for (int b = j; b < j + 4; b++) {

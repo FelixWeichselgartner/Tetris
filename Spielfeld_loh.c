@@ -82,7 +82,10 @@ void highscore_aufruf() {						//Highscoreausgabe
 	}
 	while (!feof(fptr)) {
 		c = fgetc(fptr);
-		putchar(c);
+		if (c == ';')
+			;
+		else
+			putchar(c);
 	}
 	fehler = fclose(fptr);
 	if (fehler != 0) {

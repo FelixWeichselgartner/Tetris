@@ -154,5 +154,5 @@ void highscore(){
 	if(fehler != 0){
 		printf("\nFehler %i beim Schließen der Datei!\n", fehler);
 	}
-	
+	highscore_aufruf();
 }
