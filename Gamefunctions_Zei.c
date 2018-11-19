@@ -149,6 +149,7 @@ void highscore(){
 	}
 	
 	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
+	while (getchar != '\n');
 	scanf("%s", name);
 	
 	fprintf(fptr, "%s; %i;", name, punktestand);
