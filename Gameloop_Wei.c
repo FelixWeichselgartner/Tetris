@@ -50,6 +50,7 @@ int gameloop(){
 	int direction, drehenrechts, drehenlinks;
 	while(!verloren()){
 		spawn();
+		input();
 		while(collision() == false){
 			down();
 			input();

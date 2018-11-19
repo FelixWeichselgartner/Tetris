@@ -114,6 +114,7 @@ void rotate(char rotation) {
 		}
 	}
 	//hier rows und columns vertauscht, da zielfigur nicht ausgangsfigur
+	//funktioniert nicht -> ist nach dem kopieren immernoch leer
 	for (int i = 0; i < rows; i++) {
 		for (int k = 3; k > 3-columns; k--) {
 			switch (spawnn) {
@@ -139,8 +140,19 @@ void rotate(char rotation) {
 			}
 		}
 	}
+	
+	for (int k = 3; k > columns - 1; k--) {
+		for (int i = 0; i < rows; i++) {
+			if (fig6[i][k].fgr == ' ')
+				putchar('L');
+			else
+				putchar(fig6[i][k].fgr);
+		}
+		putchar('\n');
+	}
+	getchar();
 
-	printf("spawnn = %i\n", spawnn);
+	printf("spawnn = %i\nfall = %i\n", spawnn, fall);
 	for (int i = 0; i < columns; i++) {
 		for (int k = 0; k < rows; k++) {
 			switch (fall) {
