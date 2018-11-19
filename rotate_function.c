@@ -40,8 +40,8 @@ void drecksfunktion(struct f ptr[4][4], int rows, int columns, int x_start, int 
 
 	for (int i = 3; i >= 4 - columns; i--) {
 		for (int j = 0; j < rows; j++) {
-			//größer als 10
-			//größer als 26
+			//grï¿½ï¿½er als 10
+			//grï¿½ï¿½er als 26
 			if ((j + x_start) > 9 || (j+x_start) <0) {
 				boarder = 1;
 				break;
@@ -80,17 +80,6 @@ void drecksfunktion(struct f ptr[4][4], int rows, int columns, int x_start, int 
 			}
 		}
 	}
-	/*
-	ausgabe();
-	putchar('\n');
-	for (int i = 0; i < 4; i++) {
-		for (int k = 0; k < 4; k++) {
-			putchar(ptr[k][i].fgr);
-		}
-		putchar('\n');
-	}
-	getchar();
-	*/
 }
 
 void rotate(char rotation) {
