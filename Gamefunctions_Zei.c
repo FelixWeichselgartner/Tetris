@@ -147,14 +147,12 @@ void highscore(){
 		printf("\nDie Datei konnte nicht geoeffnet werden!\n");
 		return;
 	}
-	
-<<<<<<< HEAD
-	printf("\nName fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
-	//while (getchar() != '\n');
-=======
-	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
+	fflush(stdin);
 	while (getchar() != '\n');
->>>>>>> a884284ad7c8b1687c2c256996b291950f200a39
+	//hier virtuelles enter
+	//system("cls");
+	//ausgabe();
+	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
 	scanf("%s", name);
 	
 	fprintf(fptr, "%s; %i;", name, punktestand);

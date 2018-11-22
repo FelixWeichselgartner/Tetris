@@ -107,12 +107,12 @@ void input(){
 		if (abs(flagfast) > 10000) {
 			break;
 		}
-		flagdrehenrechts = GetAsyncKeyState(0x44);
+		flagdrehenrechts = GetAsyncKeyState(0x44); //0x44 ist d
 		if (abs(flagdrehenrechts) > 10000) {
 			rotate('r');
 			flagdrehenrechts = 0;
 		}
-		flagdrehenlinks = GetAsyncKeyState(0x41);
+		flagdrehenlinks = GetAsyncKeyState(0x41); //0x41 ist a
 		if (abs(flagdrehenlinks) > 10000) {
 			rotate('l');
 			flagdrehenlinks = 0;

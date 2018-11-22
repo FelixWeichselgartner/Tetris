@@ -10,6 +10,7 @@ char *gets(char *buffer);
 #include "Gameloop_Wei.h"
 #include <Windows.h>
 #include <string.h>
+#include <conio.h>
 
 #define xlength 10
 #define ylength 26
