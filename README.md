@@ -38,7 +38,7 @@ Aufteilung der Dateien und Funktionen:
 - Alle:
 	- rotate_function.c
 		- rotate()
-		- drecksfunktion()
+		- place_fgr()
 		
 *************************************************
 

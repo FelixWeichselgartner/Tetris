@@ -22,7 +22,7 @@
 #define ylength 26
 
 //Funktion zum Kopieren von arrays
-void drecksfunktion(struct f ptr[4][4], int rows, int columns, int x_start, int y_start) {
+void place_fgr(struct f ptr[4][4], int rows, int columns, int x_start, int y_start) {
 	int collision = 0, boarder = 0;
 	for (int i = 3; i >= 4 - columns; i--) {
 		for (int j = 0; j < rows; j++) {
@@ -138,24 +138,24 @@ void rotate(char rotation) {
 	}
 
 	switch (spawnn) {
-	case 1: drecksfunktion(fig1, rows, columns, x_start, y_start); break;
-	case 2: drecksfunktion(fig2, rows, columns, x_start, y_start); break;
+	case 1: place_fgr(fig1, rows, columns, x_start, y_start); break;
+	case 2: place_fgr(fig2, rows, columns, x_start, y_start); break;
 	case 3: break;
-	case 4: drecksfunktion(fig4, rows, columns, x_start, y_start); break;
-	case 5: drecksfunktion(fig5, rows, columns, x_start, y_start); break;
-	case 6: drecksfunktion(fig6, rows, columns, x_start, y_start); break;
-	case 7: drecksfunktion(fig7, rows, columns, x_start, y_start); break;
-	case 8: drecksfunktion(fig8, rows, columns, x_start, y_start); break;
-	case 9: drecksfunktion(fig9, rows, columns, x_start, y_start); break;
-	case 10: drecksfunktion(fig10, rows, columns, x_start, y_start); break;
-	case 11: drecksfunktion(fig11, rows, columns, x_start, y_start); break;
-	case 12: drecksfunktion(fig12, rows, columns, x_start, y_start); break;
-	case 13: drecksfunktion(fig13, rows, columns, x_start, y_start); break;
-	case 14: drecksfunktion(fig14, rows, columns, x_start, y_start); break;
-	case 15: drecksfunktion(fig15, rows, columns, x_start, y_start); break;
-	case 16: drecksfunktion(fig16, rows, columns, x_start, y_start); break;
-	case 17: drecksfunktion(fig17, rows, columns, x_start, y_start); break;
-	case 18: drecksfunktion(fig18, rows, columns, x_start, y_start); break;
-	case 19: drecksfunktion(fig19, rows, columns, x_start, y_start); break;
+	case 4: place_fgr(fig4, rows, columns, x_start, y_start); break;
+	case 5: place_fgr(fig5, rows, columns, x_start, y_start); break;
+	case 6: place_fgr(fig6, rows, columns, x_start, y_start); break;
+	case 7: place_fgr(fig7, rows, columns, x_start, y_start); break;
+	case 8: place_fgr(fig8, rows, columns, x_start, y_start); break;
+	case 9: place_fgr(fig9, rows, columns, x_start, y_start); break;
+	case 10: place_fgr(fig10, rows, columns, x_start, y_start); break;
+	case 11: place_fgr(fig11, rows, columns, x_start, y_start); break;
+	case 12: place_fgr(fig12, rows, columns, x_start, y_start); break;
+	case 13: place_fgr(fig13, rows, columns, x_start, y_start); break;
+	case 14: place_fgr(fig14, rows, columns, x_start, y_start); break;
+	case 15: place_fgr(fig15, rows, columns, x_start, y_start); break;
+	case 16: place_fgr(fig16, rows, columns, x_start, y_start); break;
+	case 17: place_fgr(fig17, rows, columns, x_start, y_start); break;
+	case 18: place_fgr(fig18, rows, columns, x_start, y_start); break;
+	case 19: place_fgr(fig19, rows, columns, x_start, y_start); break;
 	}
 }
