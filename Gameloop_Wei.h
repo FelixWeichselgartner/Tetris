@@ -17,6 +17,7 @@ extern struct f spielfeld[10][26];
 
 extern int punktestand;
 
+void start();
 void init_spielfeld();
 void delay(int);
 int gameloop();

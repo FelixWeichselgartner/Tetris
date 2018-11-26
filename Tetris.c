@@ -27,10 +27,7 @@ char *gets(char *buffer);
 
 void main() {
 	int vorbei;
-	printf("WARNING: DO NOT PLAY THIS GAME IF YOU HAVE EPILEPSY\n");
-	printf("\n");
-	printf("press any button to start the game! ");
-	getch();
+	start();
 	init_spielfeld();
 	init_figuren();
 	vorbei = gameloop();

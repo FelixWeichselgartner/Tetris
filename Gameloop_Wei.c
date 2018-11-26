@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <conio.h>
 #include <windows.h>
 #include "Gamefunctions_Zei.h"
 #include "Spielfeld_loh.h"
@@ -20,6 +21,17 @@
 int punktestand = 0;
 struct f spielfeld[xlength][ylength];
 struct f empty;
+
+void start() {
+	printf("WARNING: DO NOT PLAY THIS GAME IF YOU HAVE EPILEPSY\n");
+	printf("\n");
+	printf("Move left and right with the arrow-keys. Turn left by pressing 'a' and right by pressing 'd'.\n");
+	printf("You can fast-forward by pressing the arrow-key down.\n");
+	printf("\n");
+	printf("Press any button to start the game! ");
+	getch();
+}
+
 
 int abs(int x){
 	if (x >= 0)
