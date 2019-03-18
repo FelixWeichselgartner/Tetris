@@ -10,6 +10,18 @@ Copyright (c) 2018
 further information on the end of the file
 *************************************************
 
+Compiling:
+==========
+
+* with cmake for windows:
+* * `cmake . -G "MinGW Makefiles`
+* * `mingw32-make`
+
+* with gcc:
+* * `gcc -o Tetris.exe Tetris.c Gameloop_Wei.c Gamefunctions_Zei.c Spielfeld_loh.c Spielfiguren.c rotate_function.c`
+
+*************************************************
+
 Aufteilung der Dateien und Funktionen:
 
 - Matthias:
@@ -42,9 +54,6 @@ Aufteilung der Dateien und Funktionen:
 		
 *************************************************
 
-compile command for gcc: gcc -o Tetris.exe Tetris.c Gameloop_Wei.c Gamefunctions_Zei.c Spielfeld_loh.c Spielfiguren.c rotate_function.c
-
-*************************************************
 Usage of Github:
 
 If you want to clone the repository:
@@ -88,6 +97,7 @@ persons named in the beginning of the file.
 All rights are reserved.
 
 If you want to use our code please contact:
-    e-mail: fwei3012@gmail.com
+
+e-mail: info@felix-weichselgartner.de
 
 *************************************************
