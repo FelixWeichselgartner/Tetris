@@ -14,11 +14,11 @@ Compiling:
 ==========
 
 * with cmake for windows:
-* * `cmake . -G "MinGW Makefiles`
-* * `mingw32-make`
+	* `cmake . -G "MinGW Makefiles`
+	* `mingw32-make`
 
 * with gcc:
-* * `gcc -o Tetris.exe Tetris.c Gameloop_Wei.c Gamefunctions_Zei.c Spielfeld_loh.c Spielfiguren.c rotate_function.c`
+	* `gcc -o Tetris.exe Tetris.c Gameloop_Wei.c Gamefunctions_Zei.c Spielfeld_loh.c Spielfiguren.c rotate_function.c`
 
 *************************************************
 
