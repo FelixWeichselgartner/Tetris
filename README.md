@@ -10,6 +10,12 @@ Copyright (c) 2018
 further information on the end of the file
 *************************************************
 
+This is how the game looks like (in windows shell):
+
+![img](https://github.com/FelixWeichselgartner/Tetris/blob/master/Tetris.png)
+
+*************************************************
+
 Compiling:
 ==========
 
