@@ -14,7 +14,7 @@ Compiling:
 ==========
 
 * with cmake for windows:
-	* `cmake . -G "MinGW Makefiles`
+	* `cmake . -G "MinGW Makefiles"`
 	* `mingw32-make`
 
 * with gcc:
