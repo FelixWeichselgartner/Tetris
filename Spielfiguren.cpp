@@ -1,7 +1,7 @@
 /*
 * Tetris in C - header by Matthias Lohberger
 */
-#include "Spielfiguren.h"
+#include "Spielfiguren.hpp"
 
 #define y 4
 #define x 4

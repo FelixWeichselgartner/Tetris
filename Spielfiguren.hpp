@@ -1,7 +1,7 @@
 #ifndef SPIELFIGUREN_H_
 #define SPIELFIGUREN_H_
 
-#include "Gameloop_Wei.h"
+#include "Tetris.hpp"
 
 extern struct f fig1[4][4];
 extern struct f fig2[4][4];

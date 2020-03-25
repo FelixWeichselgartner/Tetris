@@ -2,18 +2,11 @@
 * Tetris in C - header by Matthias Lohberger
 */
 
-#define _CRT_SECURE_NO_DEPRECATE
-#define _CRT_NONSTDC_NO_DEPRECATE
-char *gets(char *buffer);
-
 #include <stdio.h>
-#include "Gameloop_Wei.h"
-#include <Windows.h>
+#include "Tetris.hpp"
 #include <string.h>
-#include <conio.h>
 
-#define xlength 10
-#define ylength 26
+
 
 //Bausteine für die Umrandung
 char vertikaler_Randstein = 186;		//vertikaler_Randstein
@@ -28,59 +21,30 @@ char T_Verbinder_rechte_Seite = 185;	//Verbinder rechte Seite
 char T_Verbinder_linke_Seite = 204;		//Verbinder linke Seite
  
 
-void spielfeld_ausgabe() {
+void Tetris::spielfeld_ausgabe() {
 
-	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
-	WORD wOldColAttr;
-	HANDLE hStdOut;
+	//CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
+	//WORD wOldColAttr;
+	//HANDLE hStdOut;
 
-	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
-	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
-	wOldColAttr = Screen.wAttributes;
-	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
+	//hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
+	//GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
+	//wOldColAttr = Screen.wAttributes;
+	//SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
+	//SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
 								   
 
 	for (int a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);
 		for (int b = 0; b < xlength; b++) {
-			SetConsoleTextAttribute(hStdOut, spielfeld[b][a].clr); 	//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
+			//SetConsoleTextAttribute(hStdOut, spielfeld[b][a].clr); 	//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
 			printf("%c", spielfeld[b][a].fgr);
-			SetConsoleTextAttribute(hStdOut, wOldColAttr);
+			//SetConsoleTextAttribute(hStdOut, wOldColAttr);
 		}
 		printf("%c\n", vertikaler_Randstein);
 	}
 
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);
-}
-
-
-void titel() {
-	CONSOLE_SCREEN_BUFFER_INFO Screen;				//Lokale Variablen
-	WORD wOldColAttr;
-	HANDLE hStdOut;
-	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);		//Anweisungen
-	GetConsoleScreenBufferInfo(hStdOut, &Screen);	//Aktuelle Konsoleninfo und  Textfarbe abspeichern
-	wOldColAttr = Screen.wAttributes;
-	SetConsoleTitleA("Tetris");						//Bennenung des Konsolenfensters ?ndern |||		SetConsoleTitleA("Name der Konsolenausgabe");
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);	//Farbauswahl ?ber Integerwerte
-
-	//printf("\n\n         ");
-	SetConsoleTextAttribute(hStdOut, 9);		//farbiger Tetrisschriftzug
-	printf("T");
-	SetConsoleTextAttribute(hStdOut, 12);
-	printf("e");
-	SetConsoleTextAttribute(hStdOut, 14);
-	printf("t");
-	SetConsoleTextAttribute(hStdOut, 11);
-	printf("r");
-	SetConsoleTextAttribute(hStdOut, 13);
-	printf("i");
-	SetConsoleTextAttribute(hStdOut, 10);
-	printf("s");
-	SetConsoleTextAttribute(hStdOut, wOldColAttr);
-	//printf("\n\n");
-
+	//SetConsoleTextAttribute(hStdOut, wOldColAttr);
 }
 
 
@@ -97,7 +61,7 @@ void oberer_Teil() {
 	printf("   %c                %c\n", vertikaler_Randstein, vertikaler_Randstein); // Rahmen von Titel
 
 	printf("   %c     ", vertikaler_Randstein, vertikaler_Randstein);	//TITEL
-	titel();
+	printf("Tetris");
 	printf("     %c\n", vertikaler_Randstein, vertikaler_Randstein);		//TITEL
 
 	for (a = 1; a <= 2; a++) {
@@ -113,7 +77,7 @@ void oberer_Teil() {
 }
 
 
-void unterer_Teil() {
+void Tetris::unterer_Teil() {
 	int a;
 	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
 
@@ -136,7 +100,7 @@ void unterer_Teil() {
 }
 
 
-void highscore_aufruf() {						//Highscoreausgabe
+void Tetris::highscore_aufruf() {						//Highscoreausgabe
 	char c;												//Hilfsarray
 	int a = 0;											//Zählvariable
 	FILE *fptr;
@@ -173,12 +137,12 @@ void highscore_aufruf() {						//Highscoreausgabe
 		printf("\nFehler %i beim Schließen der Datei!\n", fehler);
 		return;
 	}
-	getch();
+	getchar();
 }
 
 
 
-void ausgabe() {
+void Tetris::ausgabe() {
 	 
 	int a;									//Zählvariable
 	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
