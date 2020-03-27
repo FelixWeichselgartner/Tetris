@@ -34,6 +34,11 @@ if(ANDROID)
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    Tetris.cpp
+    Tetris.hpp
+    Spielfiguren.cpp
+    Spielfiguren.hpp
+    Spielfeld_loh.cpp
     ${TS_FILES}
   )
 else()
@@ -42,6 +47,11 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    Tetris.cpp
+    Tetris.hpp
+    Spielfiguren.cpp
+    Spielfiguren.hpp
+    Spielfeld_loh.cpp
     ${TS_FILES}
   )
 endif()
