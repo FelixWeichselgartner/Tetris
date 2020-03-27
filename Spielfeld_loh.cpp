@@ -37,8 +37,8 @@ void Tetris::spielfeld_ausgabe() {
 	for (int a = 4; a < ylength; a++) {		// Ausgabe Zeile 4, 4 obere Zeilen = Spawn -> werden nicht ausgegeben
 		printf("      %c", vertikaler_Randstein);
 		for (int b = 0; b < xlength; b++) {
-			//SetConsoleTextAttribute(hStdOut, spielfeld[b][a].clr); 	//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
-			printf("%c", spielfeld[b][a].fgr);
+			//SetConsoleTextAttribute(hStdOut, field[b][a].clr); 	//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
+			printf("%c", field[b][a].fgr);
 			//SetConsoleTextAttribute(hStdOut, wOldColAttr);
 		}
 		printf("%c\n", vertikaler_Randstein);
@@ -69,11 +69,11 @@ void oberer_Teil() {
 	}
 
 
-	printf("   %c%c%c%c", Ecke_links_unten, horizontaler_Baustein, horizontaler_Baustein, T_Verbinder_nach_unten);	// linker Teil der Linie zw Titel und Spielfeld, 
-	for (a = 3; a <= c; a++) {					// Linie zw Next und Spielfeld											da Linie breiter als Spielfeld
+	printf("   %c%c%c%c", Ecke_links_unten, horizontaler_Baustein, horizontaler_Baustein, T_Verbinder_nach_unten);	// linker Teil der Linie zw Titel und field, 
+	for (a = 3; a <= c; a++) {					// Linie zw Next und field											da Linie breiter als field
 		printf("%c", horizontaler_Baustein);
 	}
-	printf("%c%c%c%c\n", T_Verbinder_nach_unten, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_unten);	// rechter Teil der Linie zw Titel und Spielfeld 
+	printf("%c%c%c%c\n", T_Verbinder_nach_unten, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_unten);	// rechter Teil der Linie zw Titel und field 
 }
 
 
@@ -81,15 +81,15 @@ void Tetris::unterer_Teil() {
 	int a;
 	int c = xlength + 2;					// Spaltenanzahl rand = 12 --> 12 x _ + Endenull
 
-	printf("   %c%c%c", Ecke_links_oben, horizontaler_Baustein, horizontaler_Baustein); // linker Teil der Linie zw Score und Spielfeld, da Linie breiter als Spielfeld
+	printf("   %c%c%c", Ecke_links_oben, horizontaler_Baustein, horizontaler_Baustein); // linker Teil der Linie zw Score und field, da Linie breiter als field
 	printf("%c", T_Verbinder);
-	for (a = 3; a <= c; a++) {					// Ausgabe unterer Rand Spielfeld
+	for (a = 3; a <= c; a++) {					// Ausgabe unterer Rand field
 		printf("%c", horizontaler_Baustein);
 	}
-	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);	// rechter Teil der Linie zw Score und Spielfeld	 
+	printf("%c%c%c%c\n", T_Verbinder, horizontaler_Baustein, horizontaler_Baustein, Ecke_rechts_oben);	// rechter Teil der Linie zw Score und field	 
 
 
-	printf("   %c  Score: %7i%c\n", vertikaler_Randstein, punktestand, vertikaler_Randstein);				//SCORE mit Randsteinen  
+	printf("   %c  Score: %7i%c\n", vertikaler_Randstein, score, vertikaler_Randstein);				//SCORE mit Randsteinen  
 
 
 	printf("   %c", Ecke_links_unten);
@@ -149,13 +149,13 @@ void Tetris::ausgabe() {
 		 
 	printf("\n\n");
 	 
-	//Ausgabe Elemente über Spielfeld (Next) 
+	//Ausgabe Elemente über field (Next) 
 	oberer_Teil(); 
 
-	//Ausgabe Spielfeld		 
-	spielfeld_ausgabe();									//SPIELFELD!!!
+	//Ausgabe field		 
+	spielfeld_ausgabe();									//field!!!
 	
-	//Ausgabe Elemente unter Spielfeld
+	//Ausgabe Elemente unter field
 	unterer_Teil();
 }
 

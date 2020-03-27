@@ -36,8 +36,9 @@ if(ANDROID)
     mainwindow.ui
     Tetris.cpp
     Tetris.hpp
-    Spielfiguren.cpp
-    Spielfiguren.hpp
+    Tetromino.cpp
+    Tetromino.hpp
+    Node.hpp
     Spielfeld_loh.cpp
     ${TS_FILES}
   )
@@ -49,8 +50,9 @@ else()
     mainwindow.ui
     Tetris.cpp
     Tetris.hpp
-    Spielfiguren.cpp
-    Spielfiguren.hpp
+    Tetromino.cpp
+    Tetromino.hpp
+    Node.hpp
     Spielfeld_loh.cpp
     ${TS_FILES}
   )
