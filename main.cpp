@@ -1,9 +1,11 @@
-#include <iostream>
-#include "Tetris.hpp"
+#include "mainwindow.h"
 
-int main() {
-	Tetris game;
-    game.run();
+#include <QApplication>
 
-    return 0;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
