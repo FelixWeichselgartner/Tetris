@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1138</width>
-    <height>827</height>
+    <height>1101</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,7 +49,7 @@
       <x>370</x>
       <y>60</y>
       <width>400</width>
-      <height>640</height>
+      <height>880</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -140,11 +140,11 @@ font-size: 15px;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>710</y>
+      <y>950</y>
       <width>231</width>
       <height>31</height>
      </rect>

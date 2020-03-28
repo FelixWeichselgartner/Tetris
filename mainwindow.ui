@@ -18,31 +18,12 @@
 color: rgb(170, 0, 0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnplay1">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>230</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(170, 0, 0);
-background-color: rgb(0, 0, 255);
-font-size: 20px;
-</string>
-    </property>
-    <property name="text">
-     <string>Single-Player</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="lbltitle">
     <property name="geometry">
      <rect>
       <x>230</x>
       <y>60</y>
-      <width>309</width>
+      <width>311</width>
       <height>73</height>
      </rect>
     </property>
@@ -62,72 +43,82 @@ font-size: 20px;
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>180</y>
-      <width>118</width>
+      <x>230</x>
+      <y>150</y>
+      <width>311</width>
       <height>23</height>
      </rect>
     </property>
     <property name="value">
      <number>24</number>
     </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
    </widget>
-   <widget class="QPushButton" name="btnplay2">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>280</y>
-      <width>141</width>
-      <height>41</height>
+      <y>230</y>
+      <width>191</width>
+      <height>231</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(170, 0, 0);
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="btnplay1">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(170, 0, 0);
 background-color: rgb(0, 0, 255);
 font-size: 20px;
 </string>
-    </property>
-    <property name="text">
-     <string>Multi-Player</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnexit">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>330</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(170, 0, 0);
+       </property>
+       <property name="text">
+        <string>Single-Player</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnplay2">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(170, 0, 0);
 background-color: rgb(0, 0, 255);
 font-size: 20px;
 </string>
-    </property>
-    <property name="text">
-     <string>Highscores</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnscores">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>380</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(170, 0, 0);
+       </property>
+       <property name="text">
+        <string>Multi-Player</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnexit">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(170, 0, 0);
 background-color: rgb(0, 0, 255);
 font-size: 20px;
 </string>
-    </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
+       </property>
+       <property name="text">
+        <string>Highscores</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnscores">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(170, 0, 0);
+background-color: rgb(0, 0, 255);
+font-size: 20px;
+</string>
+       </property>
+       <property name="text">
+        <string>Exit</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
