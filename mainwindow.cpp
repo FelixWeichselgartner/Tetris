@@ -38,5 +38,10 @@ void MainWindow::on_btnplay2_clicked()
 
 void MainWindow::on_btnscores_clicked()
 {
+
+}
+
+void MainWindow::on_btnexit_clicked()
+{
     close();
 }
