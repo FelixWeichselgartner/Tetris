@@ -2,6 +2,7 @@
 #define MAINWINDOW2_H
 
 #include <QMainWindow>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow2;
@@ -14,6 +15,15 @@ class MainWindow2 : public QMainWindow
 public:
     explicit MainWindow2(QWidget *parent = nullptr);
     ~MainWindow2();
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override
+         {
+             if(event->key() == Qt::Key_R)
+             {
+                 close();
+             }
+         }
 
 private slots:
     void on_pshExit_clicked();

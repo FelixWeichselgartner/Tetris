@@ -38,7 +38,7 @@ void Tetris::spielfeld_ausgabe() {
 		printf("      %c", vertikaler_Randstein);
 		for (int b = 0; b < xlength; b++) {
 			//SetConsoleTextAttribute(hStdOut, field[b][a].clr); 	//Zahl = Wert für Kombination aus Tabelle | Kombination aus Foreground + Background
-			printf("%c", field[b][a].fgr);
+            printf("%c", field[b][a].get_figure());
 			//SetConsoleTextAttribute(hStdOut, wOldColAttr);
 		}
 		printf("%c\n", vertikaler_Randstein);

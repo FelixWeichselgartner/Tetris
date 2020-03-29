@@ -34,6 +34,9 @@ if(ANDROID)
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    mainwindow2.cpp
+    mainwindow2.h
+    mainwindow2.ui
     Tetris.cpp
     Tetris.hpp
     Tetromino.cpp
@@ -48,6 +51,9 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    mainwindow2.cpp
+    mainwindow2.h
+    mainwindow2.ui
     Tetris.cpp
     Tetris.hpp
     Tetromino.cpp
