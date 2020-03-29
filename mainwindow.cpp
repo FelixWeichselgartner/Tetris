@@ -30,6 +30,12 @@ void MainWindow::on_btnplay1_clicked()
     window2 -> show();
 }
 
+void MainWindow::on_btnplay2_clicked()
+{
+    window3 = new MainWindow3(this);
+    window3 -> show();
+}
+
 void MainWindow::on_btnscores_clicked()
 {
     close();

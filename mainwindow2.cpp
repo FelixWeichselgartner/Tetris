@@ -17,3 +17,15 @@ void MainWindow2::on_pshExit_clicked()
 {
     close();
 }
+
+
+
+void MainWindow2::on_pushButton_clicked()
+{
+    showMaximized();
+}
+
+void MainWindow2::on_pushButton_2_clicked()
+{
+    showNormal();
+}

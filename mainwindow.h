@@ -4,6 +4,8 @@
 #include <QMainWindow>
 
 #include "mainwindow2.h"
+#include "mainwindow3.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,10 +23,14 @@ private slots:
 
     void on_btnplay1_clicked();
 
+    void on_btnplay2_clicked();
+
     void on_btnscores_clicked();
 
 private:
     Ui::MainWindow *ui;
     MainWindow2 *window2;
+    MainWindow3 *window3;
 };
+
 #endif // MAINWINDOW_H
