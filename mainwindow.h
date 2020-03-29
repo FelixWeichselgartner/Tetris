@@ -27,6 +27,8 @@ private slots:
 
     void on_btnscores_clicked();
 
+    void on_btnexit_clicked();
+
 private:
     Ui::MainWindow *ui;
     MainWindow2 *window2;
