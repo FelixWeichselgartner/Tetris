@@ -72,6 +72,10 @@ else()
   )
 endif()
 
-target_link_libraries(Tetris PRIVATE Qt5::Widgets)
+if(WIN32)
+    target_link_libraries(Tetris PRIVATE Qt5::Widgets)
+else()
+    target_link_libraries(Tetris PRIVATE Qt5::Widgets libpthread.so.0)
+endif()
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
