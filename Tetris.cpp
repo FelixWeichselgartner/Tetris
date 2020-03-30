@@ -1,15 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <QDebug>
 #include <time.h>
 #include "Node.hpp"
 #include "Tetris.hpp"
 #include "Tetromino.hpp"
+#include <QThread>
 
-int VK_LEFT, VK_DOWN, VK_RIGHT = 0;
-int get_key_state(int a)
-{
-	return 0;
-}
+
 
 //Funktion zum Kopieren von arrays
 void Tetris::place_piece(Node ptr[4][4], int rows, int columns, int x_start, int y_start)
@@ -210,7 +206,7 @@ void Tetris::figcpy(Node ptr[4][4], Node ptrf[4][4])
 {
 	for (int i = 0; i < 4; i++)
 	{
-		for (int j = 0; j < 4; j++)
+        for (int j = 0; j < 4; j++)
 		{
 			ptr[i][j] = ptrf[i][j];
 			//weil andersrum
@@ -220,7 +216,10 @@ void Tetris::figcpy(Node ptr[4][4], Node ptrf[4][4])
 
 void Tetris::vertical_movement(int i)
 {
-	field[0][i] = field[1][i] = field[2][i] = field[3][i] = field[4][i] = field[5][i] = field[6][i] = field[7][i] = field[8][i] = field[9][i] = empty;
+    for (int k = 0; k < xlength; k++) {
+        field[k][i] = empty;
+    }
+
 	for (; i > 4; i--)
 	{
 		for (int k = 0; k < xlength; k++)
@@ -458,11 +457,9 @@ int Tetris::gameloop()
 
         while (!check_collision())
 		{
-
             if (flag_spawn != 0) {
 				down();
             }
-
 			input();
 		}
 		delete_line();
@@ -526,7 +523,7 @@ void Tetris::input()
         rotate_piece('l');
     }
 
-    delay(50);
+    QThread::msleep(1000);
 
 	return;
 }
@@ -621,7 +618,8 @@ int Tetris::check_lost()
 
 Tetris::Tetris()
 {
-
+    initialise_field();
+    initialise_pieces();
 }
 
 void Tetris::run()
