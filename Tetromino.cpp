@@ -3,23 +3,22 @@
 */
 #include "Tetromino.hpp"
 
-Node fig1[y][x];
+Node fig1[y][x];    // I-Block / Hero / color: cyan
 Node fig2[y][x];
-Node fig3[y][x];
-Node fig4[y][x];
+Node fig3[y][x];    // O-Block / Smashboy / color: yellow
+Node fig4[y][x];    // S-Block / Rhode Island Z / color: green
 Node fig5[y][x];
-Node fig6[y][x];
+Node fig6[y][x];    // Z-Block / Cleveland Z / color: red
 Node fig7[y][x];
-Node fig8[y][x];
+Node fig8[y][x];    // T-Block / Teewee / color: magenta
 Node fig9[y][x];
 Node fig10[y][x];
 Node fig11[y][x];
-Node fig12[y][x];
+Node fig12[y][x];   // J-Block / Blue Ricky / color: blue
 Node fig13[y][x];
 Node fig14[y][x];
 Node fig15[y][x];
-Node fig16[y][x];
-Node fig17[y][x];
+Node fig16[y][x];   // L-Block / Orange Ricky / color: orange
 Node fig18[y][x];
 Node fig19[y][x];
 
@@ -30,7 +29,7 @@ Node fig19[y][x];
 //T-Stück		Farbe: pink/ Nummer: 221
 //L-Stück		Farbe: grün/ Nummer: 170
 
-void build_figures(Node fig[x][x], char fg[x][x], int color, int nr, int l, int r)
+void build_figures(Node fig[x][x], char fg[x][x], QColor color, int nr, int l, int r)
 {
 	for (int i = 0; i < x; i++)
 	{
@@ -46,7 +45,7 @@ void build_figures(Node fig[x][x], char fg[x][x], int color, int nr, int l, int 
 			}
 			else
 			{
-				fig[i][j].set_color(0);
+                fig[i][j].set_color(QColor(0, 0, 0, 255));      // color: black (background)
 				fig[i][j].set_spawn_number(0);
 				fig[i][j].set_turn_left(0);
 				fig[i][j].set_turn_right(0);
@@ -159,23 +158,24 @@ char fg19[y][x] = {' ', ' ', ' ', ' ',
 
 void initialise_pieces()
 {
-	build_figures(fig1, fg1, 153, 1, 2, 2);
-	build_figures(fig2, fg2, 153, 2, 1, 1);
-	build_figures(fig3, fg3, 238, 3, 3, 3);
-	build_figures(fig4, fg4, 204, 4, 5, 5);
-	build_figures(fig5, fg5, 204, 5, 4, 4);
-	build_figures(fig6, fg6, 204, 6, 7, 7);
-	build_figures(fig7, fg7, 204, 7, 6, 6);
-	build_figures(fig8, fg8, 221, 8, 9, 11);
-	build_figures(fig9, fg9, 221, 9, 10, 8);
-	build_figures(fig10, fg10, 221, 10, 11, 9);
-	build_figures(fig11, fg11, 221, 11, 8, 10);
-	build_figures(fig12, fg12, 170, 12, 13, 14);
-	build_figures(fig13, fg13, 170, 13, 15, 12);
-	build_figures(fig14, fg14, 170, 14, 12, 15);
-	build_figures(fig15, fg15, 170, 15, 14, 13);
-	build_figures(fig16, fg16, 170, 16, 17, 19);
-	build_figures(fig17, fg17, 170, 17, 18, 16);
-	build_figures(fig18, fg18, 170, 18, 19, 17);
-	build_figures(fig19, fg19, 170, 19, 16, 18);
+    build_figures(fig1, fg1, QColor(0, 255, 255, 255), 1, 2, 2);        // cyan
+    build_figures(fig2, fg2, QColor(0, 255, 255, 255), 2, 1, 1);
+    build_figures(fig3, fg3, QColor(255, 255, 0, 255), 3, 3, 3);        // yellow
+    build_figures(fig4, fg4, QColor(0, 255, 0, 255), 4, 5, 5);          // green
+    build_figures(fig5, fg5, QColor(0, 255, 0, 255), 5, 4, 4);
+    build_figures(fig6, fg6, QColor(255, 0, 0, 255), 6, 7, 7);          // red
+    build_figures(fig7, fg7, QColor(255, 0, 0, 255), 7, 6, 6);
+    build_figures(fig8, fg8, QColor(255, 0, 255, 255), 8, 9, 11);       // magenta
+    build_figures(fig9, fg9, QColor(255, 0, 255, 255), 9, 10, 8);
+    build_figures(fig10, fg10, QColor(255, 0, 255, 255), 10, 11, 9);
+    build_figures(fig11, fg11, QColor(255, 0, 255, 255), 11, 8, 10);
+    build_figures(fig12, fg12, QColor(0, 0, 255, 255), 12, 13, 14);     // blue
+    build_figures(fig13, fg13, QColor(0, 0, 255, 255), 13, 15, 12);
+    build_figures(fig14, fg14, QColor(0, 0, 255, 255), 14, 12, 15);
+    build_figures(fig15, fg15, QColor(0, 0, 255, 255), 15, 14, 13);
+    build_figures(fig16, fg16, QColor(255, 129, 0, 255), 16, 17, 19);   // orange
+    build_figures(fig17, fg17, QColor(255, 129, 0, 255), 17, 18, 16);
+    build_figures(fig18, fg18, QColor(255, 129, 0, 255), 18, 19, 17);
+    build_figures(fig19, fg19, QColor(255, 129, 0, 255), 19, 16, 18);
 }
+

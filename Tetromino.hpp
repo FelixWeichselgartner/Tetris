@@ -26,4 +26,4 @@ extern Node fig18[y][x];
 extern Node fig19[y][x];
 
 void initialise_pieces();
-void build_figures(Node fig[4][4], char fg[4][4], int color, int nr, int l, int r);
+void build_figures(Node fig[4][4], char fg[4][4], QColor color, int nr, int l, int r);
