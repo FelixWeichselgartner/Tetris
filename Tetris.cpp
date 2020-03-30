@@ -455,17 +455,23 @@ int Tetris::gameloop()
 	int direction, drehenrechts, drehenlinks;
 	while (!check_lost())
 	{
+
 		spawn_new_piece();
 		flag_spawn = 1;
+
 		while (check_collision() == false)
 		{
+
 			if (flag_spawn != 0)
 				down();
+
+
 			input();
+            //return 1;
+
 		}
 		delete_line();
 	}
-	system("cls");
     draw_field(this->window, this->field);
 	return true;
 }
@@ -496,14 +502,16 @@ void Tetris::down()
 
 void Tetris::input()
 {
+
 	int flagleft = 0, flagright = 0, flagfast = 0, flagdrehenlinks = 0, flagdrehenrechts = 0;
 	int milli_seconds = 1000, drehenrechts = 0, drehenlinks = 0;
 	clock_t start_time = clock();
 
 	while (clock() < start_time + milli_seconds)
 	{
-		system("cls");
+
         draw_field(this->window, this->field);
+        //return;
 		//delay nur damit das field nicht zu oft aktualisiert wird
 		delay(50);
 
@@ -641,8 +649,7 @@ Tetris::Tetris(QMainWindow *window) {
 
 void Tetris::run()
 {
-	int gameover = gameloop();
-	if (gameover == true)
+    if (gameloop())
 	{
 		highscore();
 	}

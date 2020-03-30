@@ -3,6 +3,7 @@
 #include <string.h>
 #include <QPainter>
 #include "output_playing_field.h"
+#include <QDebug>
 
 
 void Tetris::highscore_aufruf() {						//Highscoreausgabe
@@ -68,8 +69,8 @@ void draw_field(QMainWindow *window, Node field[xlength][ylength]) {       //feh
     int i, j;                           // Laufvar
     int xCoord, yCoord;                 // tatsächliche Koord der lnke oberen Ecke jedes ausgegebenen Quadrats
 
-
-
+    qInfo() << window << endl;
+    return;
     QPainter painter(window);
     QPen pen;                           // Var für Rahmen
     QBrush brush;                       // Var für Füllung

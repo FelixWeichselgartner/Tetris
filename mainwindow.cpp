@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "QThread"
 #include "Tetris.hpp"
+#include <QDebug>
 
 Tetris t;
 
@@ -29,7 +30,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnplay1_clicked()
 {
     window2 = new MainWindow2(this);
-    t = Tetris();
+    qInfo() << window2 << endl;
+    t = Tetris(window2);
     QThread *t1 = QThread::create([]() {t.run();});
     t1->start();
     window2 -> show();

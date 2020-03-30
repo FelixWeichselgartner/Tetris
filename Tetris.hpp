@@ -15,11 +15,7 @@ private:
 	Node field[xlength][ylength];
 	Node empty = Node(' ', 0, 0, 0, 0);
 
-	void ausgabe();
 	void highscore_aufruf();
-	void titel();
-	void spielfeld_ausgabe();
-	void unterer_Teil();
 
 	void place_piece(Node ptr[4][4], int, int, int, int);
 	void down();
