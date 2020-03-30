@@ -1,10 +1,11 @@
 #pragma once
+#include <QPainter>
 
 class Node
 {
 private:
     char figure;
-    int color;
+    QColor color;
     int spawn_number;
     int turn_left;
     int turn_right;
@@ -15,7 +16,7 @@ public:
         this->figure = ' ';
         this->color = this->spawn_number = this->turn_left = this->turn_right = 0;
     }
-    Node(char figure, int color, int spawn_number, int turn_left, int turn_right)
+    Node(char figure, QColor color, int spawn_number, int turn_left, int turn_right)
     {
         this->figure = figure;
         this->color = color;
@@ -27,7 +28,7 @@ public:
     int get_figure() { return this->figure; }
     void set_figure(char figure) { this->figure = figure; }
     int get_color() { return this->color; }
-    void set_color(int color) { this->color = color; }
+    void set_color(QColor color) { this->color = color; }
     int get_spawn_number() { return this->spawn_number; }
     void set_spawn_number(int spawn_number) { this->spawn_number = spawn_number; }
     int get_turn_left() { return this->turn_left; }
