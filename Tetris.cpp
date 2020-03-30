@@ -4,6 +4,7 @@
 #include "Node.hpp"
 #include "Tetris.hpp"
 #include "Tetromino.hpp"
+#include "output_playing_field.h"
 
 int VK_LEFT, VK_DOWN, VK_RIGHT = 0;
 int get_key_state(int a)
@@ -465,7 +466,7 @@ int Tetris::gameloop()
 		delete_line();
 	}
 	system("cls");
-	ausgabe();
+    draw_field(this->window, this->field);
 	return true;
 }
 
@@ -502,7 +503,7 @@ void Tetris::input()
 	while (clock() < start_time + milli_seconds)
 	{
 		system("cls");
-		ausgabe();
+        draw_field(this->window, this->field);
 		//delay nur damit das field nicht zu oft aktualisiert wird
 		delay(50);
 
@@ -629,8 +630,13 @@ int Tetris::check_lost()
 
 Tetris::Tetris()
 {
-	initialise_field();
-	initialise_pieces();
+
+}
+
+Tetris::Tetris(QMainWindow *window) {
+    this->window = window;
+    initialise_field();
+    initialise_pieces();
 }
 
 void Tetris::run()

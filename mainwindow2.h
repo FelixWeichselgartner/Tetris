@@ -17,8 +17,6 @@ public:
     explicit MainWindow2(QWidget *parent = nullptr);
     ~MainWindow2();
 
-    virtual void paintEvent(QPaintEvent *event);
-
 protected:
     void keyPressEvent(QKeyEvent *event) override
          {

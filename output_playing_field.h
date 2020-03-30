@@ -1,3 +1,4 @@
 #pragma once
+#include <QMainWindow>
 
-#include "mainwindow2.h"
+void draw_field(QMainWindow *window, Node field[xlength][ylength]);

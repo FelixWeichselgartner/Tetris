@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "Tetris.hpp"
+
+extern Tetris t;
 
 #include "mainwindow2.h"
 #include "mainwindow3.h"

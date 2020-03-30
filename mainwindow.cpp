@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QThread"
+#include "Tetris.hpp"
 
+Tetris t;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -27,6 +29,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnplay1_clicked()
 {
     window2 = new MainWindow2(this);
+    t = Tetris();
+    QThread *t1 = QThread::create([]() {t.run();});
+    t1->start();
     window2 -> show();
 }
 

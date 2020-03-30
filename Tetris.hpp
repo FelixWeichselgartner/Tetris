@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Node.hpp"
+#include <QMainWindow>
 
 #define xlength 10
 #define ylength 26
@@ -9,6 +10,7 @@ class Tetris
 {
 
 private:
+    QMainWindow *window;
 	int score = 0;
 	Node field[xlength][ylength];
 	Node empty = Node(' ', 0, 0, 0, 0);
@@ -40,6 +42,7 @@ private:
 	int check_lost();
 
 public:
-	Tetris();
+    Tetris();
+    Tetris(QMainWindow *window);
 	void run();
 };
