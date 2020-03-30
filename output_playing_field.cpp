@@ -84,12 +84,13 @@ void draw_field(QPainter *painter, Node field[xlength][ylength]) {       //fehlt
             xCoord = xOffset + (j * quadSideLegth) + OffsetSecondField;
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
 
+
             pen.setColor(Qt::black);                // Farbe des Rahmens
             pen.setWidth(quadFrameWidth);                        // Breite des Rahmens
             painter->setPen(pen);                    // Setzten des Rahmens
 
             brush.setStyle(Qt::SolidPattern);       // Art der Füllung
-            brush.setColor(Qt::red);                // Farbe der Füllung
+            brush.setColor(field[j][i+4].get_color());                // Farbe der Füllung
             painter->setBrush(brush);                // Setzten der Füllung
 
             painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
