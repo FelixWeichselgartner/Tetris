@@ -45,7 +45,8 @@ if(ANDROID)
     Tetromino.cpp
     Tetromino.hpp
     Node.hpp
-    Spielfeld_loh.cpp
+    output_playing_field.cpp
+    output_playing_field.h
     ${TS_FILES}
   )
 else()
@@ -65,7 +66,8 @@ else()
     Tetromino.cpp
     Tetromino.hpp
     Node.hpp
-    Spielfeld_loh.cpp
+    output_playing_field.cpp
+    output_playing_field.h
     ${TS_FILES}
   )
 endif()

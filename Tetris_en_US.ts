@@ -86,5 +86,71 @@
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="mainwindow2.ui" line="223"/>
+        <source>Full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow2.ui" line="244"/>
+        <source>Norm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow3</name>
+    <message>
+        <location filename="mainwindow3.ui" line="14"/>
+        <source>MainWindow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="37"/>
+        <location filename="mainwindow3.ui" line="215"/>
+        <source>&lt;font color = yellow&gt;Score:&lt;font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="90"/>
+        <location filename="mainwindow3.ui" line="192"/>
+        <source>&lt;font color = green&gt;Next:&lt;font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="110"/>
+        <source>&lt;h2&gt;&lt;font color = red&gt;T
+&lt;font color = green&gt;E
+&lt;font color = orange&gt;T
+&lt;font color = purple&gt;R
+&lt;font color = blue&gt;I
+&lt;font color = yellow&gt;S&lt;font&gt;&lt;/h2&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="139"/>
+        <location filename="mainwindow3.ui" line="236"/>
+        <source>SCORE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="270"/>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="298"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="322"/>
+        <source>Player 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="346"/>
+        <source>Player 2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

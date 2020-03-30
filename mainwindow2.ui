@@ -14,7 +14,7 @@
    <string>Tetris-SinglePlayer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);
+   <string notr="true"> background-color: rgba(0, 0, 0, 150);
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -53,7 +53,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: rgb(0, 0, 255);
 border-style: solid;
@@ -251,7 +251,7 @@ color: purple;
      <x>0</x>
      <y>0</y>
      <width>1138</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <QPainter>
 
 namespace Ui {
 class MainWindow2;
@@ -15,6 +16,8 @@ class MainWindow2 : public QMainWindow
 public:
     explicit MainWindow2(QWidget *parent = nullptr);
     ~MainWindow2();
+
+    virtual void paintEvent(QPaintEvent *event);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override
