@@ -4,7 +4,6 @@
 #include "Node.hpp"
 #include "Tetris.hpp"
 #include "Tetromino.hpp"
-#include "output_playing_field.h"
 
 int VK_LEFT, VK_DOWN, VK_RIGHT = 0;
 int get_key_state(int a)
@@ -452,27 +451,22 @@ int Tetris::gameloop()
 {
 	int flag_spawn = 1;
 
-	int direction, drehenrechts, drehenlinks;
 	while (!check_lost())
 	{
-
 		spawn_new_piece();
 		flag_spawn = 1;
 
-		while (check_collision() == false)
+        while (!check_collision())
 		{
 
-			if (flag_spawn != 0)
+            if (flag_spawn != 0) {
 				down();
-
+            }
 
 			input();
-            //return 1;
-
 		}
 		delete_line();
 	}
-    draw_field(this->window, this->field);
 	return true;
 }
 
@@ -502,49 +496,38 @@ void Tetris::down()
 
 void Tetris::input()
 {
+    if (this->pressed_left.is_set())
+    {
+        this->pressed_left.clear();
+        horizontal_movement('l');
+    }
 
-	int flagleft = 0, flagright = 0, flagfast = 0, flagdrehenlinks = 0, flagdrehenrechts = 0;
-	int milli_seconds = 1000, drehenrechts = 0, drehenlinks = 0;
-	clock_t start_time = clock();
+    if (this->pressed_right.is_set())
+    {
+        this->pressed_right.clear();
+        horizontal_movement('r');
+    }
 
-	while (clock() < start_time + milli_seconds)
-	{
+    if (this->pressed_down.is_set())
+    {
+        this->pressed_down.clear();
+        return;
+    }
 
-        draw_field(this->window, this->field);
-        //return;
-		//delay nur damit das field nicht zu oft aktualisiert wird
-		delay(50);
+    if (this->pressed_rotate_right.is_set())
+    {
+        this->pressed_rotate_right.clear();
+        rotate_piece('r');
+    }
 
-		flagleft = get_key_state(VK_LEFT);
-		if (abs(flagleft) > 10000)
-		{
-			horizontal_movement('l');
-			flagleft = 0;
-		}
-		flagright = get_key_state(VK_RIGHT);
-		if (abs(flagright) > 10000)
-		{
-			horizontal_movement('r');
-			flagright = 0;
-		}
-		flagfast = get_key_state(VK_DOWN);
-		if (abs(flagfast) > 10000)
-		{
-			break;
-		}
-		flagdrehenrechts = get_key_state(0x44); //0x44 ist d
-		if (abs(flagdrehenrechts) > 10000)
-		{
-			rotate_piece('r');
-			flagdrehenrechts = 0;
-		}
-		flagdrehenlinks = get_key_state(0x41); //0x41 ist a
-		if (abs(flagdrehenlinks) > 10000)
-		{
-			rotate_piece('l');
-			flagdrehenlinks = 0;
-		}
-	}
+    if (this->pressed_rotate_left.is_set())
+    {
+        this->pressed_rotate_left.clear();
+        rotate_piece('l');
+    }
+
+    delay(50);
+
 	return;
 }
 
@@ -639,12 +622,6 @@ int Tetris::check_lost()
 Tetris::Tetris()
 {
 
-}
-
-Tetris::Tetris(QMainWindow *window) {
-    this->window = window;
-    initialise_field();
-    initialise_pieces();
 }
 
 void Tetris::run()

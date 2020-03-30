@@ -46,8 +46,9 @@ void Tetris::highscore_aufruf() {						//Highscoreausgabe
 	getchar();
 }
 
+int i = 0;
 
-void draw_field(QMainWindow *window, Node field[xlength][ylength]) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void draw_field(QPainter *painter, Node field[xlength][ylength]) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
     int xBasisCoord = 400;
@@ -69,9 +70,6 @@ void draw_field(QMainWindow *window, Node field[xlength][ylength]) {       //feh
     int i, j;                           // Laufvar
     int xCoord, yCoord;                 // tatsächliche Koord der lnke oberen Ecke jedes ausgegebenen Quadrats
 
-    qInfo() << window << endl;
-    return;
-    QPainter painter(window);
     QPen pen;                           // Var für Rahmen
     QBrush brush;                       // Var für Füllung
 
@@ -88,13 +86,13 @@ void draw_field(QMainWindow *window, Node field[xlength][ylength]) {       //feh
 
             pen.setColor(Qt::black);                // Farbe des Rahmens
             pen.setWidth(quadFrameWidth);                        // Breite des Rahmens
-            painter.setPen(pen);                    // Setzten des Rahmens
+            painter->setPen(pen);                    // Setzten des Rahmens
 
             brush.setStyle(Qt::SolidPattern);       // Art der Füllung
             brush.setColor(Qt::red);                // Farbe der Füllung
-            painter.setBrush(brush);                // Setzten der Füllung
+            painter->setBrush(brush);                // Setzten der Füllung
 
-            painter.drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
+            painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
         }
         }
     }

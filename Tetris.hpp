@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Node.hpp"
+#include "Event.hpp"
 #include <QMainWindow>
 
 #define xlength 10
@@ -12,7 +13,6 @@ class Tetris
 private:
     QMainWindow *window;
 	int score = 0;
-	Node field[xlength][ylength];
 	Node empty = Node(' ', 0, 0, 0, 0);
 
 	void highscore_aufruf();
@@ -24,7 +24,7 @@ private:
 	void update_score(int);
 	void highscore();
 	void delay(int);
-	void input();
+    void input();
 
 	void initialise_field();
 	void moveable2solid();
@@ -38,7 +38,8 @@ private:
 	int check_lost();
 
 public:
+    Event pressed_left, pressed_right, pressed_down, pressed_rotate_left, pressed_rotate_right;
     Tetris();
-    Tetris(QMainWindow *window);
+    Node field[xlength][ylength];
 	void run();
 };

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QKeyEvent>
 #include <QPainter>
+#include "Tetris.hpp"
 
 namespace Ui {
 class MainWindow2;
@@ -16,6 +17,8 @@ class MainWindow2 : public QMainWindow
 public:
     explicit MainWindow2(QWidget *parent = nullptr);
     ~MainWindow2();
+
+    virtual void paintEvent(QPaintEvent *event);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override
@@ -37,6 +40,7 @@ private slots:
 
 private:
     Ui::MainWindow2 *ui;
+    Tetris tetris;
 };
 
 #endif // MAINWINDOW2_H

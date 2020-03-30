@@ -40,6 +40,7 @@ if(ANDROID)
     mainwindow3.cpp
     mainwindow3.h
     mainwindow3.ui
+    Event.hpp
     Tetris.cpp
     Tetris.hpp
     Tetromino.cpp
@@ -61,6 +62,7 @@ else()
     mainwindow3.cpp
     mainwindow3.h
     mainwindow3.ui
+    Event.hpp
     Tetris.cpp
     Tetris.hpp
     Tetromino.cpp
