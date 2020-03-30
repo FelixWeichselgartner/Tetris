@@ -19,6 +19,7 @@ Node fig13[y][x];
 Node fig14[y][x];
 Node fig15[y][x];
 Node fig16[y][x];   // L-Block / Orange Ricky / color: orange
+Node fig17[y][x];
 Node fig18[y][x];
 Node fig19[y][x];
 
@@ -45,7 +46,7 @@ void build_figures(Node fig[x][x], char fg[x][x], QColor color, int nr, int l, i
 			}
 			else
 			{
-                fig[i][j].set_color(QColor(0, 0, 0, 255));      // color: black (background)
+                fig[i][j].set_color(QColor(0, 0, 0, 0));      // color: black (background)
 				fig[i][j].set_spawn_number(0);
 				fig[i][j].set_turn_left(0);
 				fig[i][j].set_turn_right(0);

@@ -3,6 +3,7 @@
 #include "Node.hpp"
 #include "Event.hpp"
 #include <QMainWindow>
+#include <QColor>
 
 #define xlength 10
 #define ylength 26
@@ -13,7 +14,7 @@ class Tetris
 private:
     QMainWindow *window;
 	int score = 0;
-	Node empty = Node(' ', 0, 0, 0, 0);
+    Node empty = Node(' ', QColor(0, 0, 0, 0), 0, 0, 0);
 
 	void highscore_aufruf();
 

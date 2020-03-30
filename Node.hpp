@@ -27,7 +27,7 @@ public:
 
     int get_figure() { return this->figure; }
     void set_figure(char figure) { this->figure = figure; }
-    int get_color() { return this->color; }
+    QColor get_color() { return this->color; }
     void set_color(QColor color) { this->color = color; }
     int get_spawn_number() { return this->spawn_number; }
     void set_spawn_number(int spawn_number) { this->spawn_number = spawn_number; }
