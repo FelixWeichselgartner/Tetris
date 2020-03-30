@@ -52,7 +52,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="35"/>
+        <location filename="mainwindow2.ui" line="34"/>
         <source>&lt;h2&gt;&lt;font color = red&gt;T
 &lt;font color = green&gt;E
 &lt;font color = orange&gt;T
@@ -62,37 +62,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="93"/>
+        <location filename="mainwindow2.ui" line="92"/>
         <source>&lt;font color = green&gt;Next:&lt;font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="116"/>
+        <location filename="mainwindow2.ui" line="115"/>
         <source>&lt;font color = yellow&gt;Score:&lt;font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="137"/>
+        <location filename="mainwindow2.ui" line="138"/>
         <source>SCORE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="171"/>
+        <location filename="mainwindow2.ui" line="172"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="199"/>
+        <location filename="mainwindow2.ui" line="200"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="223"/>
+        <location filename="mainwindow2.ui" line="224"/>
         <source>Full</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="244"/>
+        <location filename="mainwindow2.ui" line="245"/>
         <source>Norm</source>
         <translation type="unfinished"></translation>
     </message>
@@ -106,13 +106,13 @@
     </message>
     <message>
         <location filename="mainwindow3.ui" line="37"/>
-        <location filename="mainwindow3.ui" line="215"/>
+        <location filename="mainwindow3.ui" line="217"/>
         <source>&lt;font color = yellow&gt;Score:&lt;font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow3.ui" line="90"/>
-        <location filename="mainwindow3.ui" line="192"/>
+        <location filename="mainwindow3.ui" line="194"/>
         <source>&lt;font color = green&gt;Next:&lt;font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -127,28 +127,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="139"/>
-        <location filename="mainwindow3.ui" line="236"/>
+        <location filename="mainwindow3.ui" line="141"/>
+        <location filename="mainwindow3.ui" line="239"/>
         <source>SCORE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="270"/>
+        <location filename="mainwindow3.ui" line="273"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="298"/>
+        <location filename="mainwindow3.ui" line="301"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="322"/>
+        <location filename="mainwindow3.ui" line="325"/>
         <source>Player 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="346"/>
+        <location filename="mainwindow3.ui" line="349"/>
         <source>Player 2</source>
         <translation type="unfinished"></translation>
     </message>
