@@ -14,13 +14,7 @@
    <string>Tetris-SinglePlayer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"> background-color: rgba(0, 0, 0, 150);
-</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="lbltitle">
     <property name="geometry">
-     <rect>
       <x>460</x>
       <y>10</y>
       <width>232</width>
@@ -83,7 +77,7 @@ gridline-style: solid;
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: green;
 border-style: solid;
@@ -106,7 +100,7 @@ border-style: solid;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: yellow;
 border-style: solid;
@@ -129,7 +123,9 @@ border-style: solid;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: yellow;
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+
+color: yellow;
 font-size: 15px;
  </string>
     </property>

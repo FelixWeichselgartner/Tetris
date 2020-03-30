@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: yellow;
 border-style: solid;
@@ -50,7 +50,7 @@ border-style: solid;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: rgb(0, 0, 255);
 border-style: solid;
@@ -80,7 +80,7 @@ gridline-style: solid;
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: green;
 border-style: solid;
@@ -131,7 +131,9 @@ border-style: solid;
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: yellow;
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+
+color: yellow;
 font-size: 15px;
  </string>
     </property>
@@ -152,7 +154,7 @@ font-size: 15px;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: rgb(0, 0, 255);
 border-style: solid;
@@ -182,7 +184,7 @@ gridline-style: solid;
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: green;
 border-style: solid;
@@ -205,7 +207,7 @@ border-style: solid;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
 border-width: 3px;
 border-color: yellow;
 border-style: solid;
@@ -228,7 +230,8 @@ border-style: solid;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: yellow;
+     <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: yellow;
 font-size: 15px;
  </string>
     </property>
