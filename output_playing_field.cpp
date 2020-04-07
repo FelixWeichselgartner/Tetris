@@ -4,6 +4,24 @@
 #include <QPainter>
 #include "output_playing_field.h"
 #include <QDebug>
+#include <Node.hpp>
+#include <Tetromino.hpp>
+
+
+// Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
+#define xBasisCoord 400
+#define yBasisCoord 70
+
+#define xGap 0
+#define yGap 0
+
+#define quadSideLegth 35
+#define quadFrameWidth 2
+
+#define OffsetSecondField 0        // im Singleplayer, im Mp konstanter Wert
+
+#define CenterPointNextWidget 0
+//-------------------------------------------------------------------------------------------
 
 
 void Tetris::highscore_aufruf() {						//Highscoreausgabe
@@ -51,20 +69,9 @@ int i = 0;
 void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
-    int xBasisCoord = 400;
-    int yBasisCoord = 70;
-
-    int xGap = 0;
-    int yGap = 0;
 
     int xOffset;                        // sollte 403 sein
     int yOffset;                        // sollte 73 sein
-
-    int quadSideLegth = 35;
-    int quadFrameWidth = 2;
-
-    int OffsetSecondField = 0;          // im Singleplayer, im Mp konstanter Wert
-
 
     // Leere Var, werden errrechnet, etc.
     int i, j;                           // Laufvar
@@ -72,6 +79,7 @@ void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von F
 
     QPen pen;                           // Var für Rahmen
     QBrush brush;                       // Var für Füllung
+
 
 
     xOffset = xBasisCoord + xGap;                      //kann im vorhinein berechnet werden, bleibt immer konstant
@@ -83,6 +91,8 @@ void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von F
         for(j=0; j<10; j++){                                                // Zeile durchlaufen ^= x
             xCoord = xOffset + (j * quadSideLegth) + OffsetSecondField;
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
+
+            //qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
 
 
             pen.setColor(Qt::black);                // Farbe des Rahmens
@@ -97,3 +107,47 @@ void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von F
         }
     }
 }
+
+void OutputNextWidget(QPainter *painter, int spawn_number){
+
+    qDebug() << "Spawnnumber: " << spawn_number << "\n";
+
+    if (spawn_number == 1 || spawn_number == 2){            // I-Block / Hero / color: cyan
+
+    }
+    else if (spawn_number == 3){        // O-Block / Smashboy / color: yellow
+                                        // Besonders!!!!!!!!!!!!!!!!!!!!!!!!
+
+    }
+    else if (spawn_number == 4 || spawn_number == 5){       // S-Block / Rhode Island Z / color: green
+
+    }
+    else if (spawn_number == 6 || spawn_number == 7){       // Z-Block / Cleveland Z / color: red
+
+    }
+    else if (spawn_number == 8 || spawn_number == 9 || spawn_number == 10 || spawn_number == 11){           // T-Block / Teewee / color: magenta
+
+    }
+    else if (spawn_number == 12 || spawn_number == 13 || spawn_number == 14 || spawn_number == 15){         // J-Block / Blue Ricky / color: blue
+
+    }
+    else if (spawn_number == 16 || spawn_number == 17 || spawn_number == 18 || spawn_number == 19){         // L-Block / Orange Ricky / color: orange
+
+    }
+    else{
+        qDebug() << "Spawnnumber nicht vorhanden: " << spawn_number << "\n";                // in case of failure
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 

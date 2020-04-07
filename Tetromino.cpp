@@ -47,7 +47,7 @@ void build_figures(Node fig[x][y], char fg[x][y], QColor color, int nr, int l, i
 			else
 			{
                 fig[i][j].set_color(QColor(0, 0, 0, 0));      // color: black (background)
-				fig[i][j].set_spawn_number(0);
+                fig[i][j].set_spawn_number(nr);
 				fig[i][j].set_turn_left(0);
 				fig[i][j].set_turn_right(0);
 			}
