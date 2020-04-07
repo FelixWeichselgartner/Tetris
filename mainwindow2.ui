@@ -69,10 +69,10 @@ gridline-style: solid;
    <widget class="QLabel" name="lblnext">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>90</x>
       <y>67</y>
-      <width>130</width>
-      <height>110</height>
+      <width>280</width>
+      <height>245</height>
      </rect>
     </property>
     <property name="sizePolicy">
