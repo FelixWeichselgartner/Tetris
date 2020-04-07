@@ -48,7 +48,7 @@ void Tetris::highscore_aufruf() {						//Highscoreausgabe
 
 int i = 0;
 
-void draw_field(QPainter *painter, Node field[xlength][ylength]) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
     int xBasisCoord = 400;
@@ -90,23 +90,10 @@ void draw_field(QPainter *painter, Node field[xlength][ylength]) {       //fehlt
             painter->setPen(pen);                    // Setzten des Rahmens
 
             brush.setStyle(Qt::SolidPattern);       // Art der Füllung
-            brush.setColor(field[j][i+4].get_color());                // Farbe der Füllung
+            brush.setColor(field->get_copy(j, i+4).get_color());                // Farbe der Füllung
             painter->setBrush(brush);                // Setzten der Füllung
 
             painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
         }
-        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
- 
+}

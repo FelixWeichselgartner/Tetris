@@ -1,10 +1,10 @@
 #pragma once
-//#include <mutex>
+#include <QMutex>
 
 class Event {
 
 private:
-    //std::mutex l;
+    QMutex qmutex;
     bool flag = false;
 
 public:
@@ -13,18 +13,27 @@ public:
 
     }
 
+    Event& operator = (const Event& obj) {
+        return *this;
+    }
+
     void set() {
-        //std::lock_guard<std::mutex> lock(l);
+        qmutex.lock();
         flag = true;
+        qmutex.unlock();
     }
 
     void clear() {
-        //std::lock_guard<std::mutex> lock(l);
+        qmutex.lock();
         flag = false;
+        qmutex.unlock();
     }
 
     bool is_set() {
-        //std::lock_guard<std::mutex> lock(l);
-        return this->flag;
+        bool tmp;
+        qmutex.lock();
+        tmp = this->flag;
+        qmutex.unlock();
+        return tmp;
     }
 };

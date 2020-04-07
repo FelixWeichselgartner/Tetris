@@ -30,7 +30,7 @@ Node fig19[y][x];
 //T-Stück		Farbe: pink/ Nummer: 221
 //L-Stück		Farbe: grün/ Nummer: 170
 
-void build_figures(Node fig[x][x], char fg[x][x], QColor color, int nr, int l, int r)
+void build_figures(Node fig[x][y], char fg[x][y], QColor color, int nr, int l, int r)
 {
 	for (int i = 0; i < x; i++)
 	{

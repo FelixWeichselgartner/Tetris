@@ -23,9 +23,12 @@ public:
 protected:
     void keyPressEvent(QKeyEvent *event) override
          {
-             if(event->key() == Qt::Key_R)
-             {
-                 close();
+             switch(event->key()) {
+             case Qt::Key_A: tetris.pressed_left.set(); break;
+             case Qt::Key_D: tetris.pressed_right.set(); break;
+             case Qt::Key_S: tetris.pressed_down.set(); break;
+             case Qt::Key_Q: tetris.pressed_rotate_left.set(); break;
+             case Qt::Key_E: tetris.pressed_rotate_right.set(); break;
              }
          }
 

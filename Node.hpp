@@ -14,7 +14,8 @@ public:
     Node()
     {
         this->figure = ' ';
-        this->color = this->spawn_number = this->turn_left = this->turn_right = 0;
+        this->color = QColor(0, 0, 0, 0);
+        this->spawn_number = this->turn_left = this->turn_right = 0;
     }
     Node(char figure, QColor color, int spawn_number, int turn_left, int turn_right)
     {
@@ -25,6 +26,9 @@ public:
         this->turn_right = turn_right;
     }
 
+    bool is_solid() { return this->figure == 'X'; }
+    bool is_moveable() { return this->figure == 'O'; }
+    bool is_empty() { return this->figure == ' '; }
     int get_figure() { return this->figure; }
     void set_figure(char figure) { this->figure = figure; }
     QColor get_color() { return this->color; }

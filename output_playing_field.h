@@ -1,6 +1,6 @@
 #pragma once
 #include <QMainWindow>
-#include "Node.hpp"
+#include "Field.hpp"
 #include "Tetris.hpp"
 
-void draw_field(QPainter *, Node field[xlength][ylength]);
+void draw_field(QPainter *, Field* field);

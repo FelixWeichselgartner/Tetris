@@ -46,6 +46,7 @@ if(ANDROID)
     Tetromino.cpp
     Tetromino.hpp
     Node.hpp
+    Field.hpp
     output_playing_field.cpp
     output_playing_field.h
     ${TS_FILES}
@@ -68,6 +69,7 @@ else()
     Tetromino.cpp
     Tetromino.hpp
     Node.hpp
+    Field.hpp
     output_playing_field.cpp
     output_playing_field.h
     ${TS_FILES}

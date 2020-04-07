@@ -1,10 +1,8 @@
+#include <QTime>
 #include <QDebug>
-#include <time.h>
-#include "Node.hpp"
 #include "Tetris.hpp"
 #include "Tetromino.hpp"
 #include <QThread>
-
 
 
 //Funktion zum Kopieren von arrays
@@ -15,9 +13,9 @@ void Tetris::place_piece(Node ptr[4][4], int rows, int columns, int x_start, int
 	{
 		for (int j = 0; j < rows; j++)
 		{
-			if (ptr[j][i].get_figure() != ' ')
+            if (!ptr[j][i].is_empty())
 			{
-				if (field[j + x_start][i + y_start].get_figure() == 'X')
+                if (field.get_copy(j + x_start, i + y_start).is_solid())
 				{
 					collision = 1;
 					break;
@@ -58,9 +56,9 @@ void Tetris::place_piece(Node ptr[4][4], int rows, int columns, int x_start, int
 	{
 		for (int j = 0; j < ylength; j++)
 		{
-			if (field[i][j].get_figure() == 'O')
+            if (field.get_copy(i, j).is_moveable())
 			{
-				field[i][j] = empty;
+                field.set(empty, i, j);
 			}
 		}
 	}
@@ -69,9 +67,9 @@ void Tetris::place_piece(Node ptr[4][4], int rows, int columns, int x_start, int
 	{
 		for (int j = 0; j < rows; j++)
 		{
-			if (ptr[j][i].get_figure() == 'O')
+            if (ptr[j][i].is_moveable())
 			{
-				field[j + x_start][i + y_start] = ptr[j][i];
+                field.set(ptr[j][i], j + x_start, i + y_start);
 				//weil andersrum
 			}
 		}
@@ -91,15 +89,15 @@ void Tetris::rotate_piece(char rotation)
 		flag = 0;
 		for (int i = 0; i < xlength; i++)
 		{
-			if (field[i][k].get_figure() == 'O')
+            if (field.get_copy(i, k).is_moveable())
 			{
 				if (spawnn == -1 && rotation == 'r')
 				{
-					spawnn = field[i][k].get_turn_right();
+                    spawnn = field.get_copy(i, k).get_turn_right();
 				}
 				if (spawnn == -1 && rotation == 'l')
 				{
-					spawnn = field[i][k].get_turn_left();
+                    spawnn = field.get_copy(i, k).get_turn_left();
 				}
 				if (x_start == -1)
 				{
@@ -124,7 +122,7 @@ void Tetris::rotate_piece(char rotation)
 		flag = 0;
 		for (int i = 0; i < ylength; i++)
 		{
-			if (field[k][i].get_figure() == 'O')
+            if (field.get_copy(k, i).is_moveable())
 			{
 				columns++;
 				flag = 1;
@@ -217,14 +215,14 @@ void Tetris::figcpy(Node ptr[4][4], Node ptrf[4][4])
 void Tetris::vertical_movement(int i)
 {
     for (int k = 0; k < xlength; k++) {
-        field[k][i] = empty;
+        field.set(empty, k, i);
     }
 
 	for (; i > 4; i--)
 	{
 		for (int k = 0; k < xlength; k++)
 		{
-			field[k][i] = field[k][i - 1];
+            field.set(field.get_copy(k, i - 1), k, i);
 		}
 	}
 }
@@ -236,9 +234,11 @@ void Tetris::moveable2solid()
 	{
 		for (int j = 0; j < ylength; j++)
 		{
-			if (field[i][j].get_figure() == 'O')
+            if (field.get_copy(i, j).is_moveable())
 			{
-				field[i][j].set_figure('X');
+                Node tmp = field.get_copy(i, j);
+                tmp.set_figure('X');
+                field.set(tmp, i, j);
 			}
 		}
 	}
@@ -250,102 +250,99 @@ void Tetris::update_score(int a)
 	score += a;
 }
 
+void Tetris::generate_new_piece() {
+    QTime now = QTime::currentTime();
+    qsrand((unsigned int)now.msec());
+
+    switch (qrand() % 23 + 1)
+    {
+    case 1:
+        figcpy(next_piece, fig1);
+        break;
+    case 2:
+        figcpy(next_piece, fig2);
+        break;
+    case 3:
+        figcpy(next_piece, fig3);
+        break;
+    case 4:
+        figcpy(next_piece, fig4);
+        break;
+    case 5:
+        figcpy(next_piece, fig5);
+        break;
+    case 6:
+        figcpy(next_piece, fig6);
+        break;
+    case 7:
+        figcpy(next_piece, fig7);
+        break;
+    case 8:
+        figcpy(next_piece, fig8);
+        break;
+    case 9:
+        figcpy(next_piece, fig9);
+        break;
+    case 10:
+        figcpy(next_piece, fig10);
+        break;
+    case 11:
+        figcpy(next_piece, fig11);
+        break;
+    case 12:
+        figcpy(next_piece, fig12);
+        break;
+    case 13:
+        figcpy(next_piece, fig13);
+        break;
+    case 14:
+        figcpy(next_piece, fig14);
+        break;
+    case 15:
+        figcpy(next_piece, fig15);
+        break;
+    case 16:
+        figcpy(next_piece, fig16);
+        break;
+    case 17:
+        figcpy(next_piece, fig17);
+        break;
+    case 18:
+        figcpy(next_piece, fig18);
+        break;
+    case 19:
+        figcpy(next_piece, fig19);
+        break;
+    case 20:
+        figcpy(next_piece, fig3);
+        break;
+    case 21:
+        figcpy(next_piece, fig3);
+        break;
+    case 22:
+        figcpy(next_piece, fig3);
+        break;
+    case 23:
+        figcpy(next_piece, fig1);
+        break;
+    case 24:
+        figcpy(next_piece, fig2);
+        break;
+    }
+}
+
 //Funktion zum Spawnen der Teile im Feld
 void Tetris::spawn_new_piece()
 {
-	int a;
-	Node piece[4][4];
-	//Auswählen einer Zufallsfigur für den nächsten Spawn-Array
-	srand(time(0));
-	//x = 7;
-	//x = 2;
-	a = rand() % 23 + 1;
-	//x = 3; //zum testen von reihelöschen
-	//Kopieren der Zufallsfigur in den Figur Array
-	switch (a)
-	{
-	case 1:
-		figcpy(piece, fig1);
-		break;
-	case 2:
-		figcpy(piece, fig2);
-		break;
-	case 3:
-		figcpy(piece, fig3);
-		break;
-	case 4:
-		figcpy(piece, fig4);
-		break;
-	case 5:
-		figcpy(piece, fig5);
-		break;
-	case 6:
-		figcpy(piece, fig6);
-		break;
-	case 7:
-		figcpy(piece, fig7);
-		break;
-	case 8:
-		figcpy(piece, fig8);
-		break;
-	case 9:
-		figcpy(piece, fig9);
-		break;
-	case 10:
-		figcpy(piece, fig10);
-		break;
-	case 11:
-		figcpy(piece, fig11);
-		break;
-	case 12:
-		figcpy(piece, fig12);
-		break;
-	case 13:
-		figcpy(piece, fig13);
-		break;
-	case 14:
-		figcpy(piece, fig14);
-		break;
-	case 15:
-		figcpy(piece, fig15);
-		break;
-	case 16:
-		figcpy(piece, fig16);
-		break;
-	case 17:
-		figcpy(piece, fig17);
-		break;
-	case 18:
-		figcpy(piece, fig18);
-		break;
-	case 19:
-		figcpy(piece, fig19);
-		break;
-	case 20:
-		figcpy(piece, fig3);
-		break;
-	case 21:
-		figcpy(piece, fig3);
-		break;
-	case 22:
-		figcpy(piece, fig3);
-		break;
-	case 23:
-		figcpy(piece, fig1);
-		break;
-	case 24:
-		figcpy(piece, fig2);
-		break;
-	}
-	//Kopieren des Figur-Arrays in den Spawn-Array
-
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			field[i + 3][j] = piece[i][j];
+            field.set(next_piece[i][j], i + 3, j);
 		}
 	}
+
+    generate_new_piece();
 }
 
 //Kollisionsprüfung
@@ -353,7 +350,7 @@ int Tetris::check_collision()
 {
 	for (int a = 0; a < xlength; a++)
 	{
-		if (field[a][ylength - 1].get_figure() == 'O')
+        if (field.get_copy(a, ylength - 1).is_moveable())
 		{
 			moveable2solid();
 			return true;
@@ -364,7 +361,7 @@ int Tetris::check_collision()
 	{
 		for (int j = 0; j < xlength; j++)
 		{
-			if (field[j][i].get_figure() == 'O' && field[j][i + 1].get_figure() == 'X')
+            if (field.get_copy(j, i).is_moveable() && field.get_copy(j ,i + 1).is_solid())
 			{
 				moveable2solid();
 				return true;
@@ -379,12 +376,20 @@ void Tetris::delete_line()
 {
 	for (int i = 25; i >= 0; i--)
 	{
-		if (field[0][i].get_figure() == 'X' && field[1][i].get_figure() == 'X' && field[2][i].get_figure() == 'X' && field[3][i].get_figure() == 'X' && field[4][i].get_figure() == 'X' && field[5][i].get_figure() == 'X' && field[6][i].get_figure() == 'X' && field[7][i].get_figure() == 'X' && field[8][i].get_figure() == 'X' && field[9][i].get_figure() == 'X')
+        bool condition = true;
+
+        for (int k = 0; k < 10; k++) {
+            condition = (field.get_copy(k, i).is_solid()) && condition;
+        }
+
+        if (condition)
 		{
 			vertical_movement(i);
 			score += 1;
 			delete_line(); //rekursive funktion
 		}
+
+        // if multiplayer -> enemy one new line
 	}
 }
 
@@ -395,7 +400,7 @@ void Tetris::highscore()
 	char name[10];
 	FILE *fptr;
 	fptr = fopen("Highscores.txt", "a+");
-	if (fptr == NULL)
+    if (fptr == nullptr)
 	{
 		printf("\nDie Datei konnte nicht geoeffnet werden!\n");
 		return;
@@ -435,58 +440,28 @@ void Tetris::delay(int milli_seconds)
 		;
 }
 
-void Tetris::initialise_field()
-{
-	for (int i = 0; i < xlength; i++)
-	{
-		for (int k = 0; k < ylength; k++)
-		{
-			field[i][k] = empty;
-		}
-	}
-}
-
-int Tetris::gameloop()
-{
-	int flag_spawn = 1;
-
-	while (!check_lost())
-	{
-		spawn_new_piece();
-		flag_spawn = 1;
-
-        while (!check_collision())
-		{
-            if (flag_spawn != 0) {
-				down();
-            }
-			input();
-		}
-		delete_line();
-	}
-	return true;
-}
-
 void Tetris::down()
 {
 	Node tempfield[xlength][ylength];
+
 	for (int i = 0; i < ylength; i++)
 	{
 		for (int k = 0; k < xlength; k++)
 		{
-			tempfield[k][i] = field[k][i];
-			if (field[k][i].get_figure() == 'O')
+            tempfield[k][i] = field.get_copy(k, i);
+            if (field.get_copy(k, i).is_moveable())
 			{
-				field[k][i] = empty;
+                field.set(empty, k, i);
 			}
 		}
 	}
+
 	for (int i = 0; i < ylength; i++)
 	{
 		for (int k = 0; k < xlength; k++)
 		{
-			if (tempfield[k][i].get_figure() == 'O')
-				field[k][i + 1] = tempfield[k][i];
+            if (tempfield[k][i].is_moveable())
+                field.set(tempfield[k][i], k, i + 1);
 		}
 	}
 }
@@ -535,7 +510,7 @@ void Tetris::horizontal_movement(char direction)
 
 	for (int i = 0; i < ylength; i++)
 	{
-		if (field[0][i].get_figure() == 'O')
+        if (field.get_copy(0 ,i).is_moveable())
 		{
 			leftboarder = true;
 		}
@@ -543,7 +518,7 @@ void Tetris::horizontal_movement(char direction)
 
 	for (int i = 0; i < ylength; i++)
 	{
-		if (field[9][i].get_figure() == 'O')
+        if (field.get_copy(9, i).is_moveable())
 		{
 			rightboarder = true;
 		}
@@ -553,7 +528,7 @@ void Tetris::horizontal_movement(char direction)
 	{
 		for (int k = 0; k < xlength; k++)
 		{
-			if (field[k][i].get_figure() == 'O' && field[k - 1][i].get_figure() == 'X')
+            if (field.get_copy(k, i).is_moveable() && field.get_copy(k - 1, i).is_solid())
 			{
 				leftfigur = true;
 			}
@@ -564,7 +539,7 @@ void Tetris::horizontal_movement(char direction)
 	{
 		for (int k = 0; k < xlength; k++)
 		{
-			if (field[k][i].get_figure() == 'O' && field[k + 1][i].get_figure() == 'X')
+            if (field.get_copy(k, i).is_moveable() && field.get_copy(k + 1, i).is_solid())
 			{
 				rightfigur = true;
 			}
@@ -577,11 +552,11 @@ void Tetris::horizontal_movement(char direction)
 		{
 			for (int k = 0; k < xlength; k++)
 			{
-				if (field[k][i].get_figure() == 'O')
+                if (field.get_copy(k, i).is_moveable())
 				{
-					temp = field[k][i];
-					field[k][i] = empty;
-					field[k - 1][i] = temp;
+                    temp = field.get_copy(k, i);
+                    field.set(empty, k, i);
+                    field.set(temp, k - 1, i);
 				}
 			}
 		}
@@ -593,11 +568,11 @@ void Tetris::horizontal_movement(char direction)
 		{
 			for (int k = xlength; k >= 0; k--)
 			{
-				if (field[k][i].get_figure() == 'O')
+                if (field.get_copy(k, i).is_moveable())
 				{
-					temp = field[k][i];
-					field[k][i] = empty;
-					field[k + 1][i] = temp;
+                    temp = field.get_copy(k, i);
+                    field.set(empty, k, i);
+                    field.set(temp, k + 1, i);
 				}
 			}
 		}
@@ -608,7 +583,7 @@ int Tetris::check_lost()
 {
 	for (int i = 0; i < xlength; i++)
 	{
-		if (field[i][4].get_figure() == 'X')
+        if (field.get_copy(i, 4).is_solid())
 		{
 			return true;
 		}
@@ -616,9 +591,30 @@ int Tetris::check_lost()
 	return false;
 }
 
+int Tetris::gameloop()
+{
+    int flag_spawn = 1;
+
+    while (!check_lost())
+    {
+        spawn_new_piece();
+        flag_spawn = 1;
+
+        while (!check_collision())
+        {
+            if (flag_spawn != 0) {
+                down();
+            }
+            input();
+        }
+        delete_line();
+    }
+    return true;
+}
+
 Tetris::Tetris()
 {
-    initialise_field();
+    generate_new_piece();
     initialise_pieces();
 }
 
