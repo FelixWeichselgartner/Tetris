@@ -7,24 +7,47 @@
 #include <Node.hpp>
 #include <Tetromino.hpp>
 
+//-------------------------------------------------------------------------------------------
+// Var für Positionsermittlung, Größenermittlung und Formatierung der Ausgabe können angepasst werden
 
-// Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
-#define xBasisCoordPlayField 400
-#define yBasisCoordPlayField 70
+// Koordinaten Singleplayer
+    // Spielfeld Singleplayer
+#define xBasisCoordPlayFieldSg 400
+#define yBasisCoordPlayFieldSg 70
+    // NextWidget Singleplayer
+#define xBasisCoordNextWidgetSg 230
+#define yBasisCoordNextWidgetSg 70
+#define xCenterPointNextWidgetSg 300
+#define yCenterPointNextWidgetSg 124
 
-#define xBasisCoordNextWidget 230
-#define yBasisCoordNextWidget 70
+// Koordinaten Multiplayer
+    // Spielfeld Multiplayer links
+#define xBasisCoordPlayFieldMpLeft 177
+#define yBasisCoordPlayFieldMpLeft 117
+    // NextWidget Multiplayer links
+#define xBasisCoordNextWidgetMpLeft 30
+#define yBasisCoordNextWidgetMpLeft 117
+#define xCenterPointNextWidgetMpLeft 100
+#define yCenterPointNextWidgetMpLeft 170
+    // Spielfeld Multiplayer rechts
+#define xBasisCoordPlayFieldMpRight 637
+#define yBasisCoordPlayFieldMpRight 1000
+    // NextWidget Multiplayer rechts
+#define xBasisCoordNextWidgetMpRight 1000
+#define yBasisCoordNextWidgetMpRight 117
+#define xCenterPointNextWidgetMpRight 1070
+#define yCenterPointNextWidgetMpRight 170
 
+
+//Defines für die Größe der Spielsteine, etc.
+    // Rand (Abstand zu gezeichnetem Spielfeldrahmen
 #define xGap 0                  //in mehreren Fnk verwendet
 #define yGap 0
-
+    //Seitenlänge und Randdicke eines Ausgegebenen Quadrats
 #define quadSideLegth 35
 #define quadFrameWidth 3
 
-#define OffsetSecondField 0        // im Singleplayer, im Mp konstanter Wert
-
-#define xCenterPointNextWidget 300
-#define yCenterPointNextWidget 124
+//#define OffsetSecondField 0        // im Singleplayer, im Mp konstanter Wert
 //-------------------------------------------------------------------------------------------
 
 
@@ -70,7 +93,12 @@ void Tetris::highscore_aufruf() {						//Highscoreausgabe
 
 int i = 0;
 
-void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+void draw_field(QPainter *painter, Field* field, int xBasisCoordPlayField, int yBasisCoordPlayField) {       //fehlt Übergabe von Farbe als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
 
@@ -93,7 +121,7 @@ void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von F
 
     for(i=0; i<22; i++){                                                    // Zeile durchlaufen ^= y
         for(j=0; j<10; j++){                                                // Zeile durchlaufen ^= x
-            xCoord = xOffset + (j * quadSideLegth) + OffsetSecondField;
+            xCoord = xOffset + (j * quadSideLegth);
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
 
             //qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
@@ -120,33 +148,33 @@ void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von F
 
 
 
-void OutputNextWidget(QPainter *painter, int spawn_number){
+void OutputNextWidget(QPainter *painter, int spawn_number, int xBasisCoordNextWidget, int yBasisCoordNextWidget, int xCenterPointNextWidget, int yCenterPointNextWidget){
 
-    qDebug() << "Spawnnumber: " << spawn_number << "\n";
+    //qDebug() << "Spawnnumber: " << spawn_number << "\n";
 
     if (spawn_number == 1 || spawn_number == 2){            // I-Block / Hero / color: cyan
-        OutputNextWidgetIBlock(painter, fig2);
+        OutputNextWidgetIBlock(painter, fig2, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else if (spawn_number == 3){                            // O-Block / Smashboy / color: yellow
-        OutputNextWidgetOBlock(painter, fig3);
+        OutputNextWidgetOBlock(painter, fig3, xCenterPointNextWidget, yCenterPointNextWidget);
     }
     else if (spawn_number == 4 || spawn_number == 5){       // S-Block / Rhode Island Z / color: green
-        OutputNextWidget3x2(painter, fig5);
+        OutputNextWidget3x2(painter, fig5, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else if (spawn_number == 6 || spawn_number == 7){       // Z-Block / Cleveland Z / color: red
-        OutputNextWidget3x2(painter, fig7);
+        OutputNextWidget3x2(painter, fig7, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else if (spawn_number == 8 || spawn_number == 9 || spawn_number == 10 || spawn_number == 11){           // T-Block / Teewee / color: magenta
-        OutputNextWidget3x2(painter, fig9);
+        OutputNextWidget3x2(painter, fig9, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else if (spawn_number == 12 || spawn_number == 13 || spawn_number == 14 || spawn_number == 15){         // J-Block / Blue Ricky / color: blue
-        OutputNextWidget3x2(painter, fig13);
+        OutputNextWidget3x2(painter, fig13, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else if (spawn_number == 16 || spawn_number == 17 || spawn_number == 18 || spawn_number == 19){         // L-Block / Orange Ricky / color: orange
-        OutputNextWidget3x2(painter, fig19);
+        OutputNextWidget3x2(painter, fig19, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else{
-        qDebug() << "Spawnnumber nicht vorhanden: " << spawn_number << "\n";                // in case of failure
+        qDebug() << "Fatal!!!Spawnnumber nicht vorhanden: " << spawn_number << "\n";                // in case of failure
     }
 }
 
@@ -154,7 +182,7 @@ void OutputNextWidget(QPainter *painter, int spawn_number){
 
 
 
-void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4]){
+void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4], int xBasisCoordNextWidget, int yBasisCoordNextWidget){
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
 
     int xOffset;                        // sollte 403 sein
@@ -181,8 +209,8 @@ void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4]){
     xOffset = xBasisCoordNextWidget + xGap;                      //kann im vorhinein berechnet werden, bleibt immer konstant
     yOffset = yBasisCoordNextWidget + yGap;
 
-    xCoord = xOffset + OffsetSecondField;
-    yCoord = yOffset;                         // kein Offset notw.
+    xCoord = xOffset;
+    yCoord = yOffset;                         // Zusammenlegen mit dem drüber und in fnk abändern!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
     for(i = 1; i <=3; i++){
@@ -200,7 +228,7 @@ void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4]){
             painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
         }
         yCoord +=35;
-        xCoord = xOffset + OffsetSecondField;
+        xCoord = xOffset;
     }
 }
 
@@ -208,7 +236,7 @@ void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4]){
 
 
 
-void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4]){
+void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4], int xBasisCoordNextWidget, int yBasisCoordNextWidget){
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
 
     int xOffset;                        // sollte 403 sein
@@ -233,8 +261,8 @@ void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4]){
     xOffset = xBasisCoordNextWidget + xGap;                      //kann im vorhinein berechnet werden, bleibt immer konstant
     yOffset = yBasisCoordNextWidget + yGap;
 
-    xCoord = xOffset + OffsetSecondField;
-    yCoord = yOffset;                         // kein Offset notw.
+    xCoord = xOffset;
+    yCoord = yOffset;                         // Zusammenlegen mit dem drüber und in fnk abändern!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
     for(i = 0; i <=3; i++){                                                             // Ausgabe 4 schwarze Quadrate oben
@@ -244,7 +272,7 @@ void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4]){
         xCoord += 35;
     }
     yCoord += 35;
-    xCoord = xOffset + OffsetSecondField;
+    xCoord = xOffset;
 
     for (j=0; j<=3; j++){                                                               // Ausgabe Stab mittig
         brush.setColor(tempfigure[j][3].get_color());   // Farbe der Füllung
@@ -253,7 +281,7 @@ void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4]){
         xCoord += 35;
     }
     yCoord += 35;
-    xCoord = xOffset + OffsetSecondField;
+    xCoord = xOffset;
 
     for(i = 0; i <=3; i++){                                                             // Ausgabe 4 schwarze Quadrate oben
         brush.setColor(color);                              // Farbe der Füllung
@@ -262,7 +290,7 @@ void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4]){
         xCoord += 35;
     }
     yCoord += 35;
-    xCoord = xOffset + OffsetSecondField;
+    xCoord = xOffset;
 }
 
 
@@ -274,7 +302,7 @@ void OutputNextWidgetIBlock (QPainter *painter, Node tempfigure[4][4]){
 
 
 
-void OutputNextWidgetOBlock (QPainter *painter, Node tempfigure[4][4]){
+void OutputNextWidgetOBlock (QPainter *painter, Node tempfigure[4][4], int xCenterPointNextWidget, int yCenterPointNextWidget){
     // Var für Positionsermittlung/ Formatierung der Ausgabe können angepasst werden
 
     int xOffset;                        // sollte 403 sein
@@ -305,7 +333,7 @@ void OutputNextWidgetOBlock (QPainter *painter, Node tempfigure[4][4]){
     for (i=0; i<=1; i++){
         for(j=0; j<=1; j++){
 
-            xCoord = xOffset + (j * quadSideLegth) + OffsetSecondField;
+            xCoord = xOffset + (j * quadSideLegth);
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
             //qDebug() << "Koordinaten (x/y): (" << xCoord << " / " << yCoord << ")\n";
             painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
@@ -316,8 +344,33 @@ void OutputNextWidgetOBlock (QPainter *painter, Node tempfigure[4][4]){
 
 
 
+//---------------------------------------------------------------------------------------------------------------------------------------
 
 
+void OutputModeSelection(QPainter *painter, int spawn_number, Field* field, char position){
+     //                 für PintEvent       Auswahl in NextWidget  Spielfeld    Position NextWidget und Spielfeld
+
+    int OffsetZero = 0;
+
+    switch (position) {
+    case 'm':                                                               //Singleplayer
+
+        draw_field(painter, field, xBasisCoordPlayFieldSg, yBasisCoordPlayFieldSg);
+        OutputNextWidget(painter, spawn_number, xBasisCoordNextWidgetSg, yBasisCoordNextWidgetSg, xCenterPointNextWidgetSg, yCenterPointNextWidgetSg);
+        break;
+
+    case 'l':                                                               //Multiplayer links
+
+        draw_field(painter,field, xBasisCoordPlayFieldMpLeft, yBasisCoordPlayFieldMpLeft);
+        OutputNextWidget(painter,spawn_number, xBasisCoordNextWidgetMpLeft, yBasisCoordNextWidgetMpLeft, xCenterPointNextWidgetMpLeft, yCenterPointNextWidgetMpLeft);
+        break;
+
+    case 'r':                                                               //Multiplayer rechts
+        draw_field(painter,field, xBasisCoordPlayFieldMpRight, yBasisCoordPlayFieldMpRight);
+        OutputNextWidget(painter,spawn_number, xBasisCoordNextWidgetMpRight, yBasisCoordNextWidgetMpRight, xCenterPointNextWidgetMpRight, yCenterPointNextWidgetMpRight);
+        break;
+    }
+}
 
 
 

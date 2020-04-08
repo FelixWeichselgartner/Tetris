@@ -32,9 +32,8 @@ MainWindow3::~MainWindow3()
 void MainWindow3::paintEvent(QPaintEvent *event) {
     qDebug() << "HelloWorld!" << endl;
     QPainter painter(this);
-    draw_field(&painter, &this->tetris1.field);
-    //draw_field(&painter, &this->tetris2.field);
-    OutputNextWidget(&painter, 19);
+    OutputModeSelection(&painter, this->tetris1.spawn_number.get(), &this->tetris1.field, 'l');
+    OutputModeSelection(&painter, this->tetris2.spawn_number.get(), &this->tetris2.field, 'r');
     this->update();
 }
 
