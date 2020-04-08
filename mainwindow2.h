@@ -44,6 +44,7 @@ private slots:
 private:
     Ui::MainWindow2 *ui;
     Tetris tetris;
+    QThread *t1;
 };
 
 #endif // MAINWINDOW2_H

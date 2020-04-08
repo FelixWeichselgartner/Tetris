@@ -10,13 +10,16 @@ MainWindow2::MainWindow2(QWidget *parent) :
     ui(new Ui::MainWindow2)
 {
     tetris = Tetris();
-    QThread *t1 = QThread::create([this](){ tetris.run();});
+    t1 = QThread::create([this](){ tetris.run();});
     t1->start();
     ui->setupUi(this);
 }
 
 MainWindow2::~MainWindow2()
 {
+    tetris.quit.set();
+    t1->quit();
+    t1->wait();
     delete ui;
 }
 
@@ -26,9 +29,10 @@ void MainWindow2::on_pshExit_clicked()
 }
 
 void MainWindow2::paintEvent(QPaintEvent *event) {
+    //qDebug() << "HelloWorld!" << endl;
     QPainter painter(this);
     draw_field(&painter, &this->tetris.field);
-    OutputNextWidget(&painter, 19);
+    OutputNextWidget(&painter, this->tetris.spawn_number.get());
     this->update();
 }
 

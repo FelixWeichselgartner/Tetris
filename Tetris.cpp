@@ -32,8 +32,7 @@ void Tetris::place_piece(Node ptr[4][4], int rows, int columns, int x_start, int
 	{
 		for (int j = 0; j < rows; j++)
 		{
-			//gr��er als 10
-			//gr��er als 26
+            // bigger than 10 and 26
 			if ((j + x_start) > 9 || (j + x_start) < 0)
 			{
 				boarder = 1;
@@ -200,13 +199,13 @@ void Tetris::rotate_piece(char rotation)
 }
 
 //Funktion zum Kopieren von arrays
-void Tetris::figcpy(Node ptr[4][4], Node ptrf[4][4])
+void Tetris::figcpy(Node target[4][4], Node ptr[4][4])
 {
 	for (int i = 0; i < 4; i++)
 	{
         for (int j = 0; j < 4; j++)
 		{
-			ptr[i][j] = ptrf[i][j];
+            target[i][j] = ptr[i][j];
 			//weil andersrum
 		}
 	}
@@ -247,14 +246,14 @@ void Tetris::moveable2solid()
 //Funktion zur Zählung des Scores
 void Tetris::update_score(int a)
 {
-	score += a;
+    score.set(score.get() + a);
 }
 
 void Tetris::generate_new_piece() {
     QTime now = QTime::currentTime();
     qsrand((unsigned int)now.msec());
-
-    switch (qrand() % 23 + 1)
+    spawn_number.set(qrand() % 23 + 1);
+    switch (spawn_number.get())
     {
     case 1:
         figcpy(next_piece, fig1);
@@ -334,15 +333,18 @@ void Tetris::generate_new_piece() {
 //Funktion zum Spawnen der Teile im Feld
 void Tetris::spawn_new_piece()
 {
+    Node current_piece[4][4];
+    figcpy(current_piece, next_piece);
+
+    generate_new_piece();
+
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-            field.set(next_piece[i][j], i + 3, j);
+            field.set(current_piece[i][j], i + 3, j);
 		}
 	}
-
-    generate_new_piece();
 }
 
 //Kollisionsprüfung
@@ -385,11 +387,9 @@ void Tetris::delete_line()
         if (condition)
 		{
 			vertical_movement(i);
-			score += 1;
+            score.inc();
 			delete_line(); //rekursive funktion
 		}
-
-        // if multiplayer -> enemy one new line
 	}
 }
 
@@ -414,7 +414,7 @@ void Tetris::highscore()
 	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
 	scanf("%s", name);
 
-	fprintf(fptr, "%s; %i;", name, score);
+    fprintf(fptr, "%s; %i;", name, score.get());
 	fprintf(fptr, "\n");
 
 	fehler = fclose(fptr);
@@ -431,13 +431,6 @@ int abs(int a)
 		return a;
 	else
 		return -a;
-}
-
-void Tetris::delay(int milli_seconds)
-{
-	clock_t start_time = clock();
-	while (clock() < start_time + milli_seconds)
-		;
 }
 
 void Tetris::down()
@@ -468,6 +461,8 @@ void Tetris::down()
 
 void Tetris::input()
 {
+    QThread::msleep(100);
+
     if (this->pressed_left.is_set())
     {
         this->pressed_left.clear();
@@ -478,12 +473,6 @@ void Tetris::input()
     {
         this->pressed_right.clear();
         horizontal_movement('r');
-    }
-
-    if (this->pressed_down.is_set())
-    {
-        this->pressed_down.clear();
-        return;
     }
 
     if (this->pressed_rotate_right.is_set())
@@ -498,7 +487,13 @@ void Tetris::input()
         rotate_piece('l');
     }
 
-    QThread::msleep(1000);
+    if (this->pressed_down.is_set())
+    {
+        this->pressed_down.clear();
+        return;
+    }
+
+    QThread::msleep(900);
 
 	return;
 }
@@ -595,12 +590,12 @@ int Tetris::gameloop()
 {
     int flag_spawn = 1;
 
-    while (!check_lost())
+    while (!check_lost() && !quit.is_set())
     {
         spawn_new_piece();
         flag_spawn = 1;
 
-        while (!check_collision())
+        while (!check_collision() && !quit.is_set())
         {
             if (flag_spawn != 0) {
                 down();
@@ -622,6 +617,6 @@ void Tetris::run()
 {
     if (gameloop())
 	{
-		highscore();
+        //highscore();
 	}
 }

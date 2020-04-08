@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ProtectedInt.hpp"
 #include "Node.hpp"
 #include "Field.hpp"
 #include "Event.hpp"
@@ -12,7 +13,6 @@ class Tetris
 
 private:
     QMainWindow *window;
-	int score = 0;
     Node next_piece[4][4], empty;
 
 	void highscore_aufruf();
@@ -39,7 +39,10 @@ private:
 
 public:
     Event pressed_left, pressed_right, pressed_down, pressed_rotate_left, pressed_rotate_right;
+    Event quit;
     Tetris();
+    ProtectedInt score;
+    ProtectedInt spawn_number;
     Field field;
 	void run();
 };
