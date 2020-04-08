@@ -28,6 +28,7 @@ void MainWindow2::on_pshExit_clicked()
 void MainWindow2::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     draw_field(&painter, &this->tetris.field);
+    OutputNextWidget(&painter, 19);
     this->update();
 }
 

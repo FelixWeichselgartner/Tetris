@@ -13,12 +13,9 @@
 #define yBasisCoordPlayField 70
 
 #define xBasisCoordNextWidget 230
-#define yBasisCoordNextWidget 67
+#define yBasisCoordNextWidget 70
 
-#define xOBlockCoordNextWidget 355
-#define yOBlockCoordNextWidget 124
-
-#define xGap 0
+#define xGap 0                  //in mehreren Fnk verwendet
 #define yGap 0
 
 #define quadSideLegth 35
@@ -26,7 +23,8 @@
 
 #define OffsetSecondField 0        // im Singleplayer, im Mp konstanter Wert
 
-#define CenterPointNextWidget 0
+#define xCenterPointNextWidget 300
+#define yCenterPointNextWidget 124
 //-------------------------------------------------------------------------------------------
 
 
@@ -116,8 +114,8 @@ void draw_field(QPainter *painter, Field* field) {       //fehlt Übergabe von F
 
 
 
-
-
+//---------------------------------------------------------------------------------------------------------------
+//Output des next-Widget
 
 
 
@@ -130,7 +128,7 @@ void OutputNextWidget(QPainter *painter, int spawn_number){
         OutputNextWidgetIBlock(painter, fig2);
     }
     else if (spawn_number == 3){                            // O-Block / Smashboy / color: yellow
-
+        OutputNextWidgetOBlock(painter, fig3);
     }
     else if (spawn_number == 4 || spawn_number == 5){       // S-Block / Rhode Island Z / color: green
         OutputNextWidget3x2(painter, fig5);
@@ -187,10 +185,10 @@ void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4]){
     yCoord = yOffset;                         // kein Offset notw.
 
 
-    for(i = 4; i <=2; i--){
+    for(i = 1; i <=3; i++){
 
         brush.setColor(color);                              // Farbe der Füllung
-        painter->setBrush(brush);                               // Setzten der Füllung
+        painter->setBrush(brush);                           // Setzten der Füllung
         painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
 
         for (j=0; j<=2; j++){
@@ -202,6 +200,7 @@ void OutputNextWidget3x2 (QPainter *painter, Node tempfigure[4][4]){
             painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
         }
         yCoord +=35;
+        xCoord = xOffset + OffsetSecondField;
     }
 }
 
@@ -288,24 +287,29 @@ void OutputNextWidgetOBlock (QPainter *painter, Node tempfigure[4][4]){
     QPen pen;                           // Var für Rahmen
     QBrush brush;                       // Var für Füllung
 
-    xOffset = xOBlockCoordNextWidget + xGap;                      //kann im vorhinein berechnet werden, bleibt immer konstant
-    yOffset = yOBlockCoordNextWidget + yGap;
+
+    xOffset = xCenterPointNextWidget - quadSideLegth;       //linke obere Ecke des 1. Quadrats
+    yOffset = yCenterPointNextWidget - quadSideLegth;
+
+    //immer gleich für O-Block
+    pen.setColor(Qt::black);                                // Farbe des Rahmens
+    pen.setWidth(quadFrameWidth);                           // Breite des Rahmens
+    painter->setPen(pen);                                   // Setzten des Rahmens
+
+    brush.setStyle(Qt::SolidPattern);                       // Art der Füllung
+    brush.setColor(tempfigure[0][3].get_color());
+    //brush.setColor(Qt::yellow);
+    painter->setBrush(brush);                               // Setzten der Füllung
+
 
     for (i=0; i<=1; i++){
         for(j=0; j<=1; j++){
 
             xCoord = xOffset + (j * quadSideLegth) + OffsetSecondField;
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
-
-            pen.setColor(Qt::black);                                // Farbe des Rahmens
-            pen.setWidth(quadFrameWidth);                           // Breite des Rahmens
-            painter->setPen(pen);                                   // Setzten des Rahmens
-
-            brush.setStyle(Qt::SolidPattern);                       // Art der Füllung
-            brush.setColor(tempfigure[3][3].get_color());
-            painter->setBrush(brush);                               // Setzten der Füllung
-
+            //qDebug() << "Koordinaten (x/y): (" << xCoord << " / " << yCoord << ")\n";
             painter->drawRect(QRect(xCoord, yCoord, quadSideLegth, quadSideLegth));
+            //qDebug() << "Zeichen erfolgt!\n";
         }
     }
 }
