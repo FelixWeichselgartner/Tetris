@@ -14,7 +14,8 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);</string>
+   <string notr="true">background-color: rgba(0, 0, 0, 0);
+ </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="lblscorefield1">

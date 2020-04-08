@@ -105,19 +105,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="37"/>
-        <location filename="mainwindow3.ui" line="217"/>
+        <location filename="mainwindow3.ui" line="38"/>
+        <location filename="mainwindow3.ui" line="218"/>
         <source>&lt;font color = yellow&gt;Score:&lt;font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="90"/>
-        <location filename="mainwindow3.ui" line="194"/>
+        <location filename="mainwindow3.ui" line="91"/>
+        <location filename="mainwindow3.ui" line="195"/>
         <source>&lt;font color = green&gt;Next:&lt;font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="110"/>
+        <location filename="mainwindow3.ui" line="111"/>
         <source>&lt;h2&gt;&lt;font color = red&gt;T
 &lt;font color = green&gt;E
 &lt;font color = orange&gt;T
@@ -127,28 +127,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="141"/>
-        <location filename="mainwindow3.ui" line="239"/>
+        <location filename="mainwindow3.ui" line="142"/>
+        <location filename="mainwindow3.ui" line="240"/>
         <source>SCORE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="273"/>
+        <location filename="mainwindow3.ui" line="274"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="301"/>
+        <location filename="mainwindow3.ui" line="302"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="325"/>
+        <location filename="mainwindow3.ui" line="326"/>
         <source>Player 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow3.ui" line="349"/>
+        <location filename="mainwindow3.ui" line="350"/>
         <source>Player 2</source>
         <translation type="unfinished"></translation>
     </message>

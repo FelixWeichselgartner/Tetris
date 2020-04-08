@@ -124,7 +124,7 @@ void draw_field(QPainter *painter, Field* field, int xBasisCoordPlayField, int y
             xCoord = xOffset + (j * quadSideLegth);
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
 
-            //qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
+            qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
 
 
             pen.setColor(Qt::black);                                // Farbe des Rahmens
@@ -152,10 +152,10 @@ void OutputNextWidget(QPainter *painter, int spawn_number, int xBasisCoordNextWi
 
     //qDebug() << "Spawnnumber: " << spawn_number << "\n";
 
-    if (spawn_number == 1 || spawn_number == 2){            // I-Block / Hero / color: cyan
+    if (spawn_number == 1 || spawn_number == 2 || spawn_number == 23 || spawn_number == 24){            // I-Block / Hero / color: cyan
         OutputNextWidgetIBlock(painter, fig2, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
-    else if (spawn_number == 3){                            // O-Block / Smashboy / color: yellow
+    else if (spawn_number == 3 || spawn_number == 20 || spawn_number == 21 || spawn_number == 22){                            // O-Block / Smashboy / color: yellow
         OutputNextWidgetOBlock(painter, fig3, xCenterPointNextWidget, yCenterPointNextWidget);
     }
     else if (spawn_number == 4 || spawn_number == 5){       // S-Block / Rhode Island Z / color: green
