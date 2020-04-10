@@ -39,7 +39,7 @@ private:
 
 public:
     Event pressed_left, pressed_right, pressed_down, pressed_rotate_left, pressed_rotate_right;
-    Event quit;
+    Event quit, pause;
     Tetris();
     ProtectedInt score;
     ProtectedInt spawn_number;

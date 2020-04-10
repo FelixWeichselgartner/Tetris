@@ -592,11 +592,13 @@ int Tetris::gameloop()
 
     while (!check_lost() && !quit.is_set())
     {
+        while(pause.is_set());
         spawn_new_piece();
         flag_spawn = 1;
 
         while (!check_collision() && !quit.is_set())
         {
+            while(pause.is_set());
             if (flag_spawn != 0) {
                 down();
             }

@@ -29,12 +29,8 @@ void MainWindow2::on_pshExit_clicked()
 }
 
 void MainWindow2::paintEvent(QPaintEvent *event) {
-    //qDebug() << "HelloWorld!" << endl;
     QPainter painter(this);
-    //draw_field(&painter, &this->tetris.field);
-    //OutputNextWidget(&painter, 19);
     OutputModeSelection(&painter, this->tetris.spawn_number.get(), &this->tetris.field, 'm');
-            //                     spawn_number             position
     this->update();
 }
 

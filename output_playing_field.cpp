@@ -31,7 +31,7 @@
 #define yCenterPointNextWidgetMpLeft 170
     // Spielfeld Multiplayer rechts
 #define xBasisCoordPlayFieldMpRight 637
-#define yBasisCoordPlayFieldMpRight 1000
+#define yBasisCoordPlayFieldMpRight 117
     // NextWidget Multiplayer rechts
 #define xBasisCoordNextWidgetMpRight 1000
 #define yBasisCoordNextWidgetMpRight 117
