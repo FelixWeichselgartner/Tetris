@@ -489,7 +489,7 @@ void Tetris::input()
 
     if (this->pressed_down.is_set())
     {
-        this->pressed_down.clear();
+        //this->pressed_down.clear();
         return;
     }
 
@@ -606,6 +606,7 @@ int Tetris::gameloop()
         }
         delete_line();
     }
+    quit.set();
     return true;
 }
 

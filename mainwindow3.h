@@ -23,6 +23,9 @@ public:
 protected:
     void keyPressEvent(QKeyEvent *event) override
          {
+             if (event->isAutoRepeat()) {
+                return;
+             }
              switch(event->key()) {
              case Qt::Key_A: tetris1.pressed_left.set(); break;
              case Qt::Key_D: tetris1.pressed_right.set(); break;
@@ -36,6 +39,17 @@ protected:
              case Qt::Key_O: tetris2.pressed_rotate_right.set(); break;
              }
          }
+
+    void keyReleaseEvent(QKeyEvent *event) override
+    {
+        if (event->isAutoRepeat()) {
+           return;
+        }
+        switch(event->key()) {
+        case Qt::Key_S: tetris1.pressed_down.clear(); break;
+        case Qt::Key_K: tetris2.pressed_down.clear(); break;
+        }
+    }
 
 private slots:
     void on_pshExit_clicked();
