@@ -78,7 +78,8 @@
     </message>
     <message>
         <location filename="mainwindow2.ui" line="172"/>
-        <source>Pause</source>
+        <source>Pause/Play</source>
+        <oldsource>Pause</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

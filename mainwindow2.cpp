@@ -3,6 +3,7 @@
 #include "output_playing_field.h"
 #include <QThread>
 
+bool pause = 0;
 
 MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
@@ -41,4 +42,16 @@ void MainWindow2::on_pushButton_clicked()
 void MainWindow2::on_pushButton_2_clicked()
 {
     showNormal();
+}
+
+void MainWindow2::on_pshPause_clicked()
+{
+    if(pause==0){
+        tetris.pause.set();
+        pause=1;
+    }
+    else if(pause==1){
+        tetris.pause.clear();
+        pause=0;
+    }
 }

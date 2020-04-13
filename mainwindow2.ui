@@ -45,8 +45,8 @@
    <widget class="QLabel" name="lblfield">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>70</y>
+      <x>397</x>
+      <y>67</y>
       <width>356</width>
       <height>776</height>
      </rect>
@@ -169,7 +169,7 @@ border-style: solid;
 border-color: red;</string>
        </property>
        <property name="text">
-        <string>Pause</string>
+        <string>Pause/Play</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>

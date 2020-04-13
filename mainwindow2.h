@@ -59,6 +59,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pshPause_clicked();
+
 private:
     Ui::MainWindow2 *ui;
     Tetris tetris;
