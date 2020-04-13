@@ -73,13 +73,13 @@
     </message>
     <message>
         <location filename="mainwindow2.ui" line="138"/>
-        <source>SCORE</source>
+        <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow2.ui" line="172"/>
-        <source>Pause/Play</source>
-        <oldsource>Pause</oldsource>
+        <source>Pause</source>
+        <oldsource>Pause/Play</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -4,6 +4,7 @@
 #include <QThread>
 
 bool pause = 0;
+int score;
 
 MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
@@ -13,6 +14,9 @@ MainWindow2::MainWindow2(QWidget *parent) :
     t1 = QThread::create([this](){ tetris.run();});
     t1->start();
     ui->setupUi(this);
+
+
+
 }
 
 MainWindow2::~MainWindow2()
@@ -32,6 +36,9 @@ void MainWindow2::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     OutputModeSelection(&painter, this->tetris.spawn_number.get(), &this->tetris.field, 'm');
     this->update();
+
+    score=tetris.score.get();
+    ui->lblscore->setNum(score);
 }
 
 void MainWindow2::on_pushButton_clicked()
@@ -49,9 +56,13 @@ void MainWindow2::on_pshPause_clicked()
     if(pause==0){
         tetris.pause.set();
         pause=1;
+        ui->pshPause->setText("Play");
     }
     else if(pause==1){
         tetris.pause.clear();
         pause=0;
+        ui->pshPause->setText("Pause");
+
     }
 }
+

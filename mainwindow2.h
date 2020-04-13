@@ -61,6 +61,7 @@ private slots:
 
     void on_pshPause_clicked();
 
+
 private:
     Ui::MainWindow2 *ui;
     Tetris tetris;
