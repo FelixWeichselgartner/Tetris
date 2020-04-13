@@ -40,6 +40,9 @@ if(ANDROID)
     mainwindow3.cpp
     mainwindow3.h
     mainwindow3.ui
+    nameeingabe.cpp
+    nameeingabe.h
+    nameeingabe.ui
     Event.hpp
     Tetris.cpp
     Tetris.hpp
@@ -64,6 +67,9 @@ else()
     mainwindow3.cpp
     mainwindow3.h
     mainwindow3.ui
+    nameeingabe.cpp
+    nameeingabe.h
+    nameeingabe.ui
     Event.hpp
     Tetris.cpp
     Tetris.hpp

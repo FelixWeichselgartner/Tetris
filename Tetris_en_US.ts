@@ -79,7 +79,6 @@
     <message>
         <location filename="mainwindow2.ui" line="172"/>
         <source>Pause</source>
-        <oldsource>Pause/Play</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -151,6 +150,29 @@
     <message>
         <location filename="mainwindow3.ui" line="350"/>
         <source>Player 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Nameeingabe</name>
+    <message>
+        <location filename="nameeingabe.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="nameeingabe.ui" line="49"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="nameeingabe.ui" line="84"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="nameeingabe.ui" line="94"/>
+        <source>cancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

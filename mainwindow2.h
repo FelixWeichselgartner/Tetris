@@ -6,6 +6,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include "Tetris.hpp"
+#include "nameeingabe.h"
 
 namespace Ui {
 class MainWindow2;
@@ -54,7 +55,6 @@ private slots:
 
 	void on_pshExit_clicked();
 
-
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
@@ -66,6 +66,7 @@ private:
     Ui::MainWindow2 *ui;
     Tetris tetris;
     QThread *t1;
+     Nameeingabe *eingabe;
 };
 
 #endif // MAINWINDOW2_H

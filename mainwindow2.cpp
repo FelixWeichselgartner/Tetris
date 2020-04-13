@@ -14,9 +14,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
     t1 = QThread::create([this](){ tetris.run();});
     t1->start();
     ui->setupUi(this);
-
-
-
 }
 
 MainWindow2::~MainWindow2()
@@ -29,6 +26,8 @@ MainWindow2::~MainWindow2()
 
 void MainWindow2::on_pshExit_clicked()
 {
+    //eingabe = new Nameeingabe(this);
+    //eingabe -> show();
     close();
 }
 
@@ -62,7 +61,6 @@ void MainWindow2::on_pshPause_clicked()
         tetris.pause.clear();
         pause=0;
         ui->pshPause->setText("Pause");
-
     }
 }
 
