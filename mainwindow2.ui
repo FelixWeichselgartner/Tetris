@@ -206,8 +206,8 @@ border-color: red;</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -227,8 +227,8 @@ color: purple;
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>1100</x>
-      <y>0</y>
+      <x>50</x>
+      <y>10</y>
       <width>31</width>
       <height>31</height>
      </rect>
