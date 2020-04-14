@@ -3,8 +3,7 @@
 #include "output_playing_field.h"
 #include <QThread>
 
-bool pause = 0;
-int score;
+
 
 MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
@@ -22,12 +21,11 @@ MainWindow2::~MainWindow2()
     t1->quit();
     t1->wait();
     delete ui;
+    delete eingabe;
 }
 
 void MainWindow2::on_pshExit_clicked()
 {
-    //eingabe = new Nameeingabe(this);
-    //eingabe -> show();
     close();
 }
 
@@ -38,6 +36,11 @@ void MainWindow2::paintEvent(QPaintEvent *event) {
 
     score=tetris.score.get();
     ui->lblscore->setNum(score);
+
+    if(tetris.quit.is_set()){
+        eingabe = new Nameeingabe(this);
+        eingabe -> show();
+    }
 }
 
 void MainWindow2::on_pushButton_clicked()

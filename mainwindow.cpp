@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete window2;
+    delete window3;
 }
 
 

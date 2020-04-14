@@ -66,7 +66,10 @@ private:
     Ui::MainWindow2 *ui;
     Tetris tetris;
     QThread *t1;
-     Nameeingabe *eingabe;
+    Nameeingabe *eingabe;
+
+    bool pause = 0; //Variable zur Abfrage, ob das Spiel pausiert ist
+    int score;      //Variable zur Übergabe des Scores
 };
 
 #endif // MAINWINDOW2_H

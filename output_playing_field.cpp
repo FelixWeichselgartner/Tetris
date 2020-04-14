@@ -152,16 +152,16 @@ void OutputNextWidget(QPainter *painter, int spawn_number, int xBasisCoordNextWi
 
     //qDebug() << "Spawnnumber: " << spawn_number << "\n";
 
-    if (spawn_number == 1 || spawn_number == 2 || spawn_number == 23 || spawn_number == 24){            // I-Block / Hero / color: cyan
+    if (spawn_number == 1 || spawn_number == 2 || spawn_number == 23 || spawn_number == 24){               // I-Block / Hero / color: cyan
         OutputNextWidgetIBlock(painter, fig2, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
-    else if (spawn_number == 3 || spawn_number == 20 || spawn_number == 21 || spawn_number == 22){                            // O-Block / Smashboy / color: yellow
+    else if (spawn_number == 3 || spawn_number == 20 || spawn_number == 21 || spawn_number == 22){         // O-Block / Smashboy / color: yellow
         OutputNextWidgetOBlock(painter, fig3, xCenterPointNextWidget, yCenterPointNextWidget);
     }
-    else if (spawn_number == 4 || spawn_number == 5){       // S-Block / Rhode Island Z / color: green
+    else if (spawn_number == 4 || spawn_number == 5){                                                       // S-Block / Rhode Island Z / color: green
         OutputNextWidget3x2(painter, fig5, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
-    else if (spawn_number == 6 || spawn_number == 7){       // Z-Block / Cleveland Z / color: red
+    else if (spawn_number == 6 || spawn_number == 7){                                                       // Z-Block / Cleveland Z / color: red
         OutputNextWidget3x2(painter, fig7, xBasisCoordNextWidget, yBasisCoordNextWidget);
     }
     else if (spawn_number == 8 || spawn_number == 9 || spawn_number == 10 || spawn_number == 11){           // T-Block / Teewee / color: magenta

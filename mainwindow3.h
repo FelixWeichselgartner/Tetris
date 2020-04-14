@@ -54,10 +54,15 @@ protected:
 private slots:
     void on_pshExit_clicked();
 
+    void on_pshPause_clicked();
+
 private:
     Ui::MainWindow3 *ui;
     Tetris tetris1, tetris2;
     QThread *t1, *t2;
+
+    int score1, score2;     //Variablen für den score der Spieler
+    bool pause;             //Variable zur Abfrage der Pause
 };
 
 #endif // MAINWINDOW3_H

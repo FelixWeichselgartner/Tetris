@@ -18,3 +18,9 @@ void Nameeingabe::on_pshCancel_clicked()
 {
     close();
 }
+
+void Nameeingabe::on_pshOK_clicked()
+{
+    QString name = ui->lineName->text();
+    int score = tetris.score.get();
+}

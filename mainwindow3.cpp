@@ -35,9 +35,29 @@ void MainWindow3::paintEvent(QPaintEvent *event) {
     OutputModeSelection(&painter, this->tetris1.spawn_number.get(), &this->tetris1.field, 'l');
     OutputModeSelection(&painter, this->tetris2.spawn_number.get(), &this->tetris2.field, 'r');
     this->update();
+    score1=tetris1.score.get();
+    ui->lblscore1->setNum(score1);
+    score2=tetris2.score.get();
+    ui->lblscore2->setNum(score2);
 }
 
 void MainWindow3::on_pshExit_clicked()
 {
     close();
+}
+
+void MainWindow3::on_pshPause_clicked()
+{
+    if(pause==0){
+        tetris1.pause.set();
+        tetris2.pause.set();
+        pause=1;
+        ui->pshPause->setText("Play");
+    }
+    else if(pause==1){
+        tetris1.pause.clear();
+        tetris2.pause.clear();
+        pause=0;
+        ui->pshPause->setText("Pause");
+    }
 }
