@@ -22,7 +22,6 @@ private:
 	void spawnturn(int, int, int);
 	void figcpy(Node ptr[4][4], Node ptrf[4][4]);
 	void update_score(int);
-	void highscore();
 	void delay(int);
     void input();
 

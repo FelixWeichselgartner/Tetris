@@ -38,7 +38,7 @@ void MainWindow2::paintEvent(QPaintEvent *event) {
     ui->lblscore->setNum(score);
 
     if(tetris.quit.is_set()){
-        eingabe = new Nameeingabe(this, &score);
+        eingabe = new Nameeingabe(this); //, &score
         eingabe -> show();
     }
 }

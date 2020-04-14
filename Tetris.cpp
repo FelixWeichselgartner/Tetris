@@ -393,37 +393,7 @@ void Tetris::delete_line()
 	}
 }
 
-//Speicherung in einer Textdatei
-void Tetris::highscore()
-{
-	int fehler;
-	char name[10];
-	FILE *fptr;
-	fptr = fopen("Highscores.txt", "a+");
-    if (fptr == nullptr)
-	{
-		printf("\nDie Datei konnte nicht geoeffnet werden!\n");
-		return;
-	}
-	fflush(stdin);
-	while (getchar() != '\n')
-		;
-	//hier virtuelles enter
-	//system("cls");
-	//ausgabe();
-	printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
-	scanf("%s", name);
 
-    fprintf(fptr, "%s; %i;", name, score.get());
-	fprintf(fptr, "\n");
-
-	fehler = fclose(fptr);
-	if (fehler != 0)
-	{
-		printf("\nFehler %i beim Schließen der Datei!\n", fehler);
-	}
-	highscore_aufruf();
-}
 
 int abs(int a)
 {

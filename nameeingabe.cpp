@@ -2,7 +2,7 @@
 #include "ui_nameeingabe.h"
 #include "QString"
 
-Nameeingabe::Nameeingabe(QWidget *parent, int *scorepointer) :
+Nameeingabe::Nameeingabe(QWidget *parent) ://, int *scorepointer
     QWidget(parent),
     ui(new Ui::Nameeingabe)
 {
@@ -22,7 +22,7 @@ void Nameeingabe::on_pshCancel_clicked()
 }
 
 //Speicherung in einer Textdatei
-void highscore(string name, int score)
+void highscore(std::string name, int score)
 {
     int fehler;
     FILE *fptr;
@@ -41,7 +41,7 @@ void highscore(string name, int score)
     printf("Name fuer die Highscoreliste eingeben (max 10 Buchstaben): ");
     //scanf("%s", name);
 
-    fprintf(fptr, "%s; %i;", name, score);
+   // fprintf(fptr, "%s; %i;", name, score);
     fprintf(fptr, "\n");
 
     fehler = fclose(fptr);
@@ -55,5 +55,5 @@ void Nameeingabe::on_pshOK_clicked()
 {
     QString name = ui->lineName->text();
     int score = *scorepointer;    //liefert den score
-    highscore(name, score);
+    //highscore(name, score);
 }
