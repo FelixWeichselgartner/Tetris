@@ -9,7 +9,7 @@ MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow2)
 {
-    tetris = Tetris();
+    tetris = Tetris(0);
     t1 = QThread::create([this](){ tetris.run();});
     t1->start();
     ui->setupUi(this);

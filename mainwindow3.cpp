@@ -9,9 +9,9 @@ MainWindow3::MainWindow3(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow3)
 {
-    tetris1 = Tetris();
+    tetris1 = Tetris(1);
     t1 = QThread::create([this](){ tetris1.run();});
-    tetris2 = Tetris();
+    tetris2 = Tetris(2);
     t2 = QThread::create([this](){ tetris2.run();});
     t1->start();
     t2->start();
@@ -30,14 +30,25 @@ MainWindow3::~MainWindow3()
 }
 
 void MainWindow3::paintEvent(QPaintEvent *event) {
-    //qDebug() << "HelloWorld!" << endl;
     QPainter painter(this);
     OutputModeSelection(&painter, this->tetris1.spawn_number.get(), &this->tetris1.field, 'l');
     OutputModeSelection(&painter, this->tetris2.spawn_number.get(), &this->tetris2.field, 'r');
     this->update();
-    score1=tetris1.score.get();
+
+    int competive_score = 6;
+
+    if ((tetris1.score.get() != 0) && (tetris1.score.get() % competive_score) == 0) {
+        tetris1.score.set(tetris1.score.get() + 5);
+        tetris2.insert_competitive_line();
+    }
+    score1 = tetris1.score.get();
     ui->lblscore1->setNum(score1);
-    score2=tetris2.score.get();
+
+    if ((tetris2.score.get() != 0) && (tetris2.score.get() % competive_score) == 0) {
+        tetris2.score.set(tetris2.score.get() + competive_score);
+        tetris1.insert_competitive_line();
+    }
+    score2 = tetris2.score.get();
     ui->lblscore2->setNum(score2);
 }
 
@@ -48,16 +59,16 @@ void MainWindow3::on_pshExit_clicked()
 
 void MainWindow3::on_pshPause_clicked()
 {
-    if(pause==0){
+    if(pause == 0){
         tetris1.pause.set();
         tetris2.pause.set();
-        pause=1;
+        pause = 1;
         ui->pshPause->setText("Play");
     }
-    else if(pause==1){
+    else if(pause == 1){
         tetris1.pause.clear();
         tetris2.pause.clear();
-        pause=0;
+        pause = 0;
         ui->pshPause->setText("Pause");
     }
 }

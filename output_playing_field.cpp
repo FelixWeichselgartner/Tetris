@@ -51,7 +51,7 @@
 //-------------------------------------------------------------------------------------------
 
 
-void Tetris::highscore_aufruf() {						//Highscoreausgabe
+void highscore_aufruf() {						//Highscoreausgabe
 	char c;												//Hilfsarray
 	int a = 0;											//Zählvariable
 	FILE *fptr;
@@ -91,7 +91,6 @@ void Tetris::highscore_aufruf() {						//Highscoreausgabe
 	getchar();
 }
 
-int i = 0;
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------

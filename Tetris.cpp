@@ -211,12 +211,14 @@ void Tetris::figcpy(Node target[4][4], Node ptr[4][4])
 	}
 }
 
-void Tetris::vertical_movement(int i)
-{
+void Tetris::clear_line(int i) {
     for (int k = 0; k < xlength; k++) {
         field.set(empty, k, i);
     }
+}
 
+void Tetris::vertical_movement_down(int i)
+{
 	for (; i > 4; i--)
 	{
 		for (int k = 0; k < xlength; k++)
@@ -251,7 +253,7 @@ void Tetris::update_score(int a)
 
 void Tetris::generate_new_piece() {
     QTime now = QTime::currentTime();
-    qsrand((unsigned int)now.msec());
+    qsrand((unsigned int)now.msec() * identifier);
     spawn_number.set(qrand() % 23 + 1);
     switch (spawn_number.get())
     {
@@ -386,7 +388,8 @@ void Tetris::delete_line()
 
         if (condition)
 		{
-			vertical_movement(i);
+            clear_line(i);
+            vertical_movement_down(i);
             score.inc();
 			delete_line(); //rekursive funktion
 		}
@@ -403,7 +406,7 @@ int abs(int a)
 		return -a;
 }
 
-void Tetris::down()
+void Tetris::vertical_movement_moveable_blocks()
 {
 	Node tempfield[xlength][ylength];
 
@@ -466,6 +469,28 @@ void Tetris::input()
     QThread::msleep(900);
 
 	return;
+}
+
+void Tetris::vertical_movement_up() {
+    for (int i = 4; i < ylength; i++)
+    {
+        for (int k = 0; k < xlength; k++)
+        {
+            field.set(field.get_copy(k, i + 1), k, i);
+        }
+    }
+}
+
+void Tetris::insert_competitive_line() {
+    vertical_movement_up();
+
+    int empty_slot = qrand() % 10;
+
+    for (int k = 0; k < xlength; k++) {
+        if (k != empty_slot) {
+            field.set(Node('X', QColor(42, 141, 7), rand() % 23, 0, 0), k, ylength - 1);
+        }
+    }
 }
 
 void Tetris::horizontal_movement(char direction)
@@ -570,7 +595,7 @@ int Tetris::gameloop()
         {
             while(pause.is_set());
             if (flag_spawn != 0) {
-                down();
+                vertical_movement_moveable_blocks();
             }
             input();
         }
@@ -582,6 +607,14 @@ int Tetris::gameloop()
 
 Tetris::Tetris()
 {
+    this->identifier = 0;
+    generate_new_piece();
+    initialise_pieces();
+}
+
+Tetris::Tetris(int identifier)
+{
+    this->identifier = identifier;
     generate_new_piece();
     initialise_pieces();
 }
