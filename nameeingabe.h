@@ -12,7 +12,7 @@ class Nameeingabe : public QWidget
     Q_OBJECT
 
 public:
-    explicit Nameeingabe(QWidget *parent = nullptr); //, int *scorepointer
+    explicit Nameeingabe(int *, QWidget *parent = nullptr);
     ~Nameeingabe();
 
 private slots:

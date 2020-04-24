@@ -9,7 +9,7 @@ MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow2)
 {
-    tetris = Tetris(0);
+    tetris = Tetris(1);
     t1 = QThread::create([this](){ tetris.run();});
     t1->start();
     ui->setupUi(this);
@@ -38,7 +38,7 @@ void MainWindow2::paintEvent(QPaintEvent *event) {
     ui->lblscore->setNum(score);
 
     if(tetris.quit.is_set()){
-        eingabe = new Nameeingabe(this); //, &score
+        eingabe = new Nameeingabe(&score, this); //, &score
         eingabe -> show();
     }
 }
