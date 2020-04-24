@@ -1,109 +1,29 @@
-Tetris in C
-===========
+# TetrisQt with Multiplayer
 
-*************************************************
-Copyright (c) 2018 	
-- Felix Weichselgartner
-- Marc Zeitler
-- Matthias Lohberger
+## Game modes
 
-further information on the end of the file
-*************************************************
+### Singleplayer:
 
-This is how the game looks like (in windows shell):
+![img](Singleplayer.png)
 
-![img](https://github.com/FelixWeichselgartner/Tetris/blob/master/Tetris.png)
+### Multiplayer
 
-*************************************************
+![img](Multiplayer.png)
 
-Compiling:
-==========
+The multiplayer mode has a competitive component. If one player completes a certain amount of lines the other one will get a line inserted from the bottom.
 
-* with cmake for windows:
-	* `cmake . -G "MinGW Makefiles"`
-	* `mingw32-make`
+## Work distribution
 
-* with gcc:
-	* `gcc -o Tetris.exe Tetris.c Gameloop_Wei.c Gamefunctions_Zei.c Spielfeld_loh.c Spielfiguren.c rotate_function.c`
+* Signals and Slots (Marc)
 
-*************************************************
+* Threading (Felix)
 
-Aufteilung der Dateien und Funktionen:
+* Multiplayer(Felix)
 
-- Matthias:
-	- Spielfiguren.c
-	- Spielfeld_loh.c
-		- spielfeldausgabe()
-		- figuren
-		- farbliche Gestaltung
+* Field visualization and next piece visuals (Matthias)
 
-- Marc:
-	- Gamefunctions_Zei.c
-		- spawn()
-		- collision() //Returnwert 1: kollision, 0: keine kollision
-		- reiheloeschen()
-		- score()
+* Highscores (Marc)
 
-- Felix:
-	- Gameloop_Wei.c
-	- Tetris.c
-		- main()
-		- gameloop()
-		- down()
-		- leftright()
-        - verloren()
+* Git (Felix)
 
-- Alle:
-	- rotate_function.c
-		- rotate()
-		- place_fgr()
-		
-*************************************************
-
-Usage of Github:
-
-If you want to clone the repository:
-```
-git clone https://github.com/FelixWeichselgartner/Tetris.git
-```
-
-For developers:
-
-You can pull files with this:
-```
-git pull origin master
-```
-
-After editing files:
-```
-git commit -am "Here your comment"
-git push origin master
-```
-
-Adding files to the repository:
-```
-git add filename.fileending
-git status
-git commit -am ""
-git push origin master
-```
-
-How to restore an old commit-state:
-```
-git reset --hard <commit-number>
-git push -f origin master
-```
-
-*************************************************
-
-Here the information on Copyright:
-
-All files and all lines of code are owned by the
-persons named in the beginning of the file.
-All rights are reserved.
-
-If you want to use our code please contact:
-
-e-mail: info@felix-weichselgartner.de
-
-*************************************************
+* Original program (https://github.com/FelixWeichselgartner/Tetris/tree/Cli, Matthias, Marc, Felix)
