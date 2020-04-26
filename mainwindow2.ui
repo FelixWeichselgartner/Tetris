@@ -69,10 +69,10 @@ gridline-style: solid;
    <widget class="QLabel" name="lblnext">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>70</y>
-      <width>140</width>
-      <height>105</height>
+      <x>227</x>
+      <y>67</y>
+      <width>143</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -99,7 +99,7 @@ border-style: solid;
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>70</y>
+      <y>67</y>
       <width>121</width>
       <height>81</height>
      </rect>
@@ -252,7 +252,7 @@ color: purple;
      <x>0</x>
      <y>0</y>
      <width>1138</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
