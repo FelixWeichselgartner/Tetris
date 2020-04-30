@@ -71,6 +71,11 @@ void MainWindow2::on_pshPause_clicked()
 
 void highscore(QString name, int score)
 {
+    char *str;
+    QByteArray ba;
+    ba=name.toLatin1();
+    str=ba.data();
+
     FILE *fptr;
     fptr = fopen("Highscores.txt", "a+");
 
@@ -79,7 +84,7 @@ void highscore(QString name, int score)
         return;
     }
 
-    fprintf(fptr, "%s; %i;", "Name", score);
+    fprintf(fptr, "%s; %i;", str, score);
     fprintf(fptr, "\n");
 
     fclose(fptr);
