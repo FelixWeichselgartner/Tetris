@@ -6,7 +6,6 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include "Tetris.hpp"
-#include "nameeingabe.h"
 
 namespace Ui {
 class MainWindow2;
@@ -61,14 +60,14 @@ private slots:
 
     void on_pshPause_clicked();
 
-
     void on_pshOK_clicked();
+
+    void on_pshCancel_clicked();
 
 private:
     Ui::MainWindow2 *ui;
     Tetris tetris;
     QThread *t1;
-    Nameeingabe *eingabe;
 
     bool pause = 0; //Variable zur Abfrage, ob das Spiel pausiert ist
     int score;      //Variable zur Übergabe des Scores

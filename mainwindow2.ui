@@ -309,7 +309,8 @@ font-size: 20px;</string>
         <item>
          <widget class="QPushButton" name="pshOK">
           <property name="styleSheet">
-           <string notr="true">background-color: white;</string>
+           <string notr="true">background-color: white;
+font-color: black;</string>
           </property>
           <property name="text">
            <string>OK</string>
@@ -319,7 +320,8 @@ font-size: 20px;</string>
         <item>
          <widget class="QPushButton" name="pshCancel">
           <property name="styleSheet">
-           <string notr="true">background-color: white;</string>
+           <string notr="true">background-color: white;
+font-color: black;</string>
           </property>
           <property name="text">
            <string>cancel</string>

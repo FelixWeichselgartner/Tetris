@@ -1,6 +1,7 @@
 #include "mainwindow2.h"
 #include "ui_mainwindow2.h"
 #include "output_playing_field.h"
+#include "Highscore.hpp"
 #include <QThread>
 
 
@@ -22,7 +23,6 @@ MainWindow2::~MainWindow2()
     t1->quit();
     t1->wait();
     delete ui;
-    delete eingabe;
 }
 
 void MainWindow2::on_pshExit_clicked()
@@ -39,8 +39,6 @@ void MainWindow2::paintEvent(QPaintEvent *event) {
     ui->lblscore->setNum(score);
 
     if(tetris.quit.is_set()){
-        //eingabe = new Nameeingabe(&score, this); //, &score
-        //eingabe -> showFullScreen();
         ui->groupBox->show();
     }
 }
@@ -69,30 +67,14 @@ void MainWindow2::on_pshPause_clicked()
     }
 }
 
-void highscore(QString name, int score)
-{
-    char *str;
-    QByteArray ba;
-    ba=name.toLatin1();
-    str=ba.data();
-
-    FILE *fptr;
-    fptr = fopen("Highscores.txt", "a+");
-
-    if (fptr == nullptr)
-    {
-        return;
-    }
-
-    fprintf(fptr, "%s; %i;", str, score);
-    fprintf(fptr, "\n");
-
-    fclose(fptr);
-}
-
 void MainWindow2::on_pshOK_clicked()
 {
     QString name = ui->lineEdit->text();
-    highscore(name, score);
+    set_highscore(name, score);
+    close();
+}
+
+void MainWindow2::on_pshCancel_clicked()
+{
     close();
 }
