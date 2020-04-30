@@ -6,6 +6,7 @@
 #include <QCoreApplication>
 #include <QHeaderView>
 #include <QMessageBox>
+#include <QDebug>
 
 #include <QFile>
 #include <QTextStream>
@@ -57,7 +58,30 @@ void Highscoreausgabe::get_highscore() {                        //Highscoreausga
     QTextStream in(&file);
     while (!in.atEnd()) {
         QString line = in.readLine();
-        ui->tableWidget->setItem(x, 0, new QTableWidgetItem(line));
+
+        QString name, score;
+        bool before_seperation = true;
+
+        for (int j = 0; j < line.length(); j++) {
+            QChar c = line.at(j);
+
+            if (before_seperation) {
+                if (c == ':') {
+                    before_seperation = false;
+                    continue;
+                }
+                if (c != ' ') {
+                    name.append(c);
+                }
+            } else {
+                if (c != ' ' && c != ':') {
+                    score.append(c);
+                }
+            }
+        }
+
+        ui->tableWidget->setItem(x, 0, new QTableWidgetItem(name));
+        ui->tableWidget->setItem(x, 1, new QTableWidgetItem(score));
         x++;
     }
 }
