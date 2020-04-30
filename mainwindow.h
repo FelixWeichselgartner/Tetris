@@ -5,6 +5,7 @@
 
 #include "mainwindow2.h"
 #include "mainwindow3.h"
+#include "highscoreausgabe.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +34,7 @@ private:
     Ui::MainWindow *ui;
     MainWindow2 *window2;
     MainWindow3 *window3;
+    Highscoreausgabe *ausgabe;
 };
 
 #endif // MAINWINDOW_H

@@ -16,10 +16,11 @@ void set_highscore(QString name, int score)
         return;
     }
 
-    fprintf(fptr, "%s; %i;", str, score);
-    fprintf(fptr, "\n");
+    fprintf(fptr, "%s: %i \n", str, score);
 
     fclose(fptr);
 }
+
+
 
 #endif // HIGHSCORE_HPP

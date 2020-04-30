@@ -21,6 +21,7 @@ MainWindow::~MainWindow()
     delete ui;
     delete window2;
     delete window3;
+    delete ausgabe;
 }
 
 
@@ -39,7 +40,8 @@ void MainWindow::on_btnplay2_clicked()
 
 void MainWindow::on_btnscores_clicked()
 {
-
+    ausgabe = new Highscoreausgabe(this);
+    ausgabe -> show();
 }
 
 void MainWindow::on_btnexit_clicked()

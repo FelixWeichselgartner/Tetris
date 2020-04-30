@@ -2,6 +2,34 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>Highscoreausgabe</name>
+    <message>
+        <location filename="highscoreausgabe.ui" line="14"/>
+        <source>MainWindow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="highscoreausgabe.ui" line="50"/>
+        <source>&lt;h1&gt;&lt;font color = red&gt;H
+&lt;font color = green&gt;I
+&lt;font color = orange&gt;G
+&lt;font color = purple&gt;H
+&lt;font color = blue&gt;S
+&lt;font color = yellow&gt;C
+&lt;font color = red&gt;0
+&lt;font color = green&gt;R
+&lt;font color = orange&gt;E
+&lt;font color = purple&gt;S
+&lt;font&gt;&lt;/h1&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="highscoreausgabe.ui" line="79"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
