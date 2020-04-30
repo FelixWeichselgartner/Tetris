@@ -2,13 +2,17 @@
 
 ## Game modes
 
+### Menu:
+
+![img](images/Menu.png)
+
 ### Singleplayer:
 
-![img](Singleplayer.png)
+![img](images/Singleplayer.png)
 
 ### Multiplayer
 
-![img](Multiplayer.png)
+![img](images/Multiplayer.png)
 
 The multiplayer mode has a competitive component. If one player completes a certain amount of lines the other one will get a line inserted from the bottom.
 
