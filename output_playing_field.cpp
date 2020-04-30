@@ -126,8 +126,8 @@ void draw_field(QPainter *painter, Field* field, int xBasisCoordPlayField, int y
             qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
 
 
-            //pen.setColor(Qt::black);                                // Farbe des Rahmens
-            pen.setColor(Qt::red);                                // Farbe des Rahmens
+            pen.setColor(Qt::black);                                // Farbe des Rahmens
+            //pen.setColor(Qt::red);                                // Farbe des Rahmens
             pen.setWidth(quadFrameWidth);                           // Breite des Rahmens
             painter->setPen(pen);                                   // Setzten des Rahmens
 

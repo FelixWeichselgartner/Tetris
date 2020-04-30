@@ -22,6 +22,7 @@ void Nameeingabe::on_pshCancel_clicked()
 }
 
 //Speicherung in einer Textdatei
+/*
 void highscore(QString name, int score)
 {
     FILE *fptr;
@@ -37,10 +38,11 @@ void highscore(QString name, int score)
 
     fclose(fptr);
 }
+*/
 
 void Nameeingabe::on_pshOK_clicked()
 {
     QString name = ui->lineName->text();
     int score = *scorepointer;
-    highscore(name, score);
+    //highscore(name, score);
 }

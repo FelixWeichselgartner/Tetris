@@ -96,6 +96,26 @@
         <source>Norm</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="mainwindow2.ui" line="261"/>
+        <source>Highscoreliste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow2.ui" line="292"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow2.ui" line="315"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow2.ui" line="325"/>
+        <source>cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow3</name>

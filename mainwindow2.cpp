@@ -13,6 +13,7 @@ MainWindow2::MainWindow2(QWidget *parent) :
     t1 = QThread::create([this](){ tetris.run();});
     t1->start();
     ui->setupUi(this);
+    ui->groupBox->hide();
 }
 
 MainWindow2::~MainWindow2()
@@ -38,8 +39,9 @@ void MainWindow2::paintEvent(QPaintEvent *event) {
     ui->lblscore->setNum(score);
 
     if(tetris.quit.is_set()){
-        eingabe = new Nameeingabe(&score, this); //, &score
-        eingabe -> show();
+        //eingabe = new Nameeingabe(&score, this); //, &score
+        //eingabe -> showFullScreen();
+        ui->groupBox->show();
     }
 }
 
@@ -67,3 +69,25 @@ void MainWindow2::on_pshPause_clicked()
     }
 }
 
+void highscore(QString name, int score)
+{
+    FILE *fptr;
+    fptr = fopen("Highscores.txt", "a+");
+
+    if (fptr == nullptr)
+    {
+        return;
+    }
+
+    fprintf(fptr, "%s; %i;", "Name", score);
+    fprintf(fptr, "\n");
+
+    fclose(fptr);
+}
+
+void MainWindow2::on_pshOK_clicked()
+{
+    QString name = ui->lineEdit->text();
+    highscore(name, score);
+    close();
+}
