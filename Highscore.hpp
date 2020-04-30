@@ -1,7 +1,7 @@
 #ifndef HIGHSCORE_HPP
 #define HIGHSCORE_HPP
 
-void highscore(QString name, int score)
+void set_highscore(QString name, int score)
 {
     char *str;
     QByteArray ba;

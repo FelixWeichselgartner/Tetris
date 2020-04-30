@@ -41,6 +41,9 @@ if(ANDROID)
     mainwindow3.h
     mainwindow3.ui
     Highscore.hpp
+    highscoreausgabe.cpp
+    highscoreausgabe.h
+    highscoreausgabe.ui
     Event.hpp
     Tetris.cpp
     Tetris.hpp
@@ -66,6 +69,9 @@ else()
     mainwindow3.h
     mainwindow3.ui
     Highscore.hpp
+    highscoreausgabe.cpp
+    highscoreausgabe.h
+    highscoreausgabe.ui
     Event.hpp
     Tetris.cpp
     Tetris.hpp
