@@ -1,9 +1,8 @@
 #include "mainwindow2.h"
 #include "ui_mainwindow2.h"
 #include "output_playing_field.h"
-#include "Highscore.hpp"
 #include <QThread>
-
+#include "Highscore.hpp"
 
 
 MainWindow2::MainWindow2(QWidget *parent) :

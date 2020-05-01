@@ -125,22 +125,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="261"/>
+        <location filename="mainwindow2.ui" line="262"/>
         <source>Highscoreliste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="292"/>
+        <location filename="mainwindow2.ui" line="293"/>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="316"/>
+        <location filename="mainwindow2.ui" line="317"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow2.ui" line="327"/>
+        <location filename="mainwindow2.ui" line="328"/>
         <source>cancel</source>
         <translation type="unfinished"></translation>
     </message>
