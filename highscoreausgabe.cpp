@@ -46,6 +46,9 @@ void Highscoreausgabe::set_Table(){
     ui->tableWidget->setHorizontalHeaderLabels(m_TableHeader);
     ui->tableWidget->setColumnWidth(0, 150);
     ui->tableWidget->setColumnWidth(1, 150);
+    ui->tableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section { background-color:black }");
+    ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section { background-color:black }");
+
 
 }
 
