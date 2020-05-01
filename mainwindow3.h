@@ -56,6 +56,10 @@ private slots:
 
     void on_pshPause_clicked();
 
+    void on_pshOK_clicked();
+
+    void on_pshCancel_clicked();
+
 private:
     Ui::MainWindow3 *ui;
     Tetris tetris1, tetris2;

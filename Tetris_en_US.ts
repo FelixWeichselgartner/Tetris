@@ -200,5 +200,30 @@
         <source>Player 2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="mainwindow3.ui" line="370"/>
+        <source>Highscoreliste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="401"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="425"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="436"/>
+        <source>cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow3.ui" line="459"/>
+        <source>Player</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

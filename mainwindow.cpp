@@ -14,8 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
-
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -23,8 +21,6 @@ MainWindow::~MainWindow()
     delete window3;
     delete ausgabe;
 }
-
-
 
 void MainWindow::on_btnplay1_clicked()
 {

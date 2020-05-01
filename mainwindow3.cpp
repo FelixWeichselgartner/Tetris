@@ -3,6 +3,7 @@
 #include "output_playing_field.h"
 #include <QDebug>
 #include <QThread>
+#include "Highscore.hpp"
 
 
 MainWindow3::MainWindow3(QWidget *parent) :
@@ -16,6 +17,7 @@ MainWindow3::MainWindow3(QWidget *parent) :
     t1->start();
     t2->start();
     ui->setupUi(this);
+    ui->groupBox->hide();
 }
 
 MainWindow3::~MainWindow3()
@@ -50,6 +52,16 @@ void MainWindow3::paintEvent(QPaintEvent *event) {
     }
     score2 = tetris2.score.get();
     ui->lblscore2->setNum(score2);
+
+    if(tetris1.quit.is_set()&&tetris2.quit.is_set()){
+        ui->groupBox->show();
+        if(score1>=score2){
+            ui->lblname->setText("Player 1");
+        } else{
+            score1=score2;
+            ui->lblname->setText("Player 2");
+        }
+    }
 }
 
 void MainWindow3::on_pshExit_clicked()
@@ -71,4 +83,16 @@ void MainWindow3::on_pshPause_clicked()
         pause = 0;
         ui->pshPause->setText("Pause");
     }
+}
+
+void MainWindow3::on_pshOK_clicked()
+{
+    QString name = ui->lineEdit->text();
+    set_highscore(name, score1);
+    close();
+}
+
+void MainWindow3::on_pshCancel_clicked()
+{
+    close();
 }

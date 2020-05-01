@@ -16,12 +16,7 @@ public:
     explicit Highscoreausgabe(QWidget *parent = nullptr);
     ~Highscoreausgabe();
 
-
-
-
 private slots:
-
-    //void cellSelected(int nRow, int nCol);
 
     void on_btnexit_clicked();
 

@@ -41,6 +41,7 @@ if(ANDROID)
     mainwindow3.h
     mainwindow3.ui
     Highscore.hpp
+    Highscore.cpp
     highscoreausgabe.cpp
     highscoreausgabe.h
     highscoreausgabe.ui
@@ -69,6 +70,7 @@ else()
     mainwindow3.h
     mainwindow3.ui
     Highscore.hpp
+    Highscore.cpp
     highscoreausgabe.cpp
     highscoreausgabe.h
     highscoreausgabe.ui

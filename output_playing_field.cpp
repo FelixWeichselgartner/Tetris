@@ -50,7 +50,7 @@
 //#define OffsetSecondField 0        // im Singleplayer, im Mp konstanter Wert
 //-------------------------------------------------------------------------------------------
 
-
+/*
 void highscore_aufruf() {						//Highscoreausgabe
 	char c;												//Hilfsarray
 	int a = 0;											//Zählvariable
@@ -91,7 +91,7 @@ void highscore_aufruf() {						//Highscoreausgabe
 	getchar();
 }
 
-
+*/
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
