@@ -5,7 +5,7 @@
     <name>Highscoreausgabe</name>
     <message>
         <location filename="highscoreausgabe.ui" line="14"/>
-        <source>MainWindow</source>
+        <source>Tetris-Highscores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -31,11 +31,6 @@
 </context>
 <context>
     <name>MainWindow</name>
-    <message>
-        <location filename="mainwindow.ui" line="14"/>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="mainwindow.ui" line="35"/>
         <source>&lt;h1&gt;&lt;font color = red&gt;T
@@ -67,6 +62,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="14"/>
         <location filename="mainwindow.ui" line="135"/>
         <source>Tetris</source>
         <translation type="unfinished"></translation>
@@ -149,7 +145,7 @@
     <name>MainWindow3</name>
     <message>
         <location filename="mainwindow3.ui" line="14"/>
-        <source>MainWindow</source>
+        <source>Tetris-Multiplayer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
