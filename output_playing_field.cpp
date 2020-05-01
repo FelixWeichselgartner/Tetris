@@ -123,7 +123,7 @@ void draw_field(QPainter *painter, Field* field, int xBasisCoordPlayField, int y
             xCoord = xOffset + (j * quadSideLegth);
             yCoord = yOffset + (i * quadSideLegth);                         // kein Offset notw.
 
-            qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
+            //qDebug() << "Array (Xpos/Ypos): ( " << i << " / " << j << " )" << "\t||" << "Seitenlänge: " << quadSideLegth << "Randdicke: " << quadFrameWidth << "\t||" << "Reale Koord (x/y): ( " << xCoord << " / " << yCoord << " )" << "\t||" << "\n";
 
 
             pen.setColor(Qt::black);                                // Farbe des Rahmens
