@@ -63,7 +63,6 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="14"/>
-        <location filename="mainwindow.ui" line="135"/>
         <source>Tetris</source>
         <translation type="unfinished"></translation>
     </message>

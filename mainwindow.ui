@@ -121,22 +121,6 @@ font-size: 20px;
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuTetris">
-    <property name="title">
-     <string>Tetris</string>
-    </property>
-   </widget>
-   <addaction name="menuTetris"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
