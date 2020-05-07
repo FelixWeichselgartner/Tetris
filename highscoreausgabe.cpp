@@ -17,6 +17,16 @@ Highscoreausgabe::Highscoreausgabe(QWidget *parent) :
     ui(new Ui::Highscoreausgabe)
 {
     ui->setupUi(this);
+
+    FILE *fptr;
+    fptr = fopen("Highscores.txt", "r");
+
+    if (fptr == nullptr)
+    {
+        fptr = fopen("Highscores.txt", "w");;
+    }
+    fclose(fptr);
+
     set_Table();
     get_highscore();
 
